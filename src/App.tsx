@@ -34,11 +34,11 @@ const MODES: { key: GameMode; label: string; icon: string }[] = [
   { key: 'pixel', label: 'Pixel', icon: '🔲' },
   { key: 'spellName', label: 'Spell', icon: '📜' },
   { key: 'feet', label: 'Feet', icon: '🦶' },
-  { key: 'whoami', label: 'Who Am I?', icon: '🕵️' },
+  { key: 'whoami', label: 'Who?', icon: '🕵️' },
   { key: 'anagram', label: 'Anagram', icon: '🔤' },
   { key: 'missingLetters', label: 'Fill In', icon: '🔡' },
   { key: 'skinName', label: 'Skin', icon: '🎨' },
-  { key: 'allAbilities', label: 'Full Kit', icon: '🃏' },
+  { key: 'allAbilities', label: 'Kit', icon: '🃏' },
   { key: 'zoomedIcon', label: 'Zoomed', icon: '🔍' },
   { key: 'warped', label: 'Warped', icon: '🌀' },
   { key: 'colorShift', label: 'Colors', icon: '🌈' },
@@ -103,7 +103,6 @@ export default function App() {
   }
 
   const ActiveComponent = MODE_COMPONENT[activeMode]
-  const activeLabel = MODES.find(m => m.key === activeMode)?.label || ''
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -113,7 +112,6 @@ export default function App() {
             <h1 className="text-xl font-bold tracking-wide">
               <span className="text-lol-gold">LoL</span>
               <span className="text-lol-text-light">dle</span>
-              <span className="text-sm font-normal text-lol-text ml-3">{activeLabel}</span>
             </h1>
             <div className="flex items-center gap-2">
               <button
@@ -142,22 +140,21 @@ export default function App() {
             </div>
           </div>
 
-          <nav className="grid grid-cols-10 gap-1" role="tablist">
+          <nav className="flex flex-wrap gap-1 justify-center" role="tablist">
             {MODES.map(mode => (
               <button
                 key={mode.key}
                 onClick={() => setActiveMode(mode.key)}
                 role="tab"
                 aria-selected={activeMode === mode.key}
-                aria-label={mode.label}
-                title={mode.label}
-                className={`flex items-center justify-center py-1.5 rounded-md text-lg transition-all
+                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-all
                   ${activeMode === mode.key
-                    ? 'bg-lol-gold/20 ring-1 ring-lol-gold/40 scale-110'
-                    : 'text-lol-text hover:bg-lol-card hover:scale-105'
+                    ? 'bg-lol-gold/20 text-lol-gold ring-1 ring-lol-gold/30'
+                    : 'text-lol-text hover:text-lol-text-light hover:bg-lol-card'
                   }`}
               >
-                {mode.icon}
+                <span className="text-sm leading-none">{mode.icon}</span>
+                <span>{mode.label}</span>
               </button>
             ))}
           </nav>
