@@ -27,7 +27,7 @@ export function VictoryState({ champion, mode, guessCount, givenUp = false, onNe
         <img
           src={champion.splash}
           alt={champion.name}
-          className={`w-32 h-20 sm:w-44 sm:h-26 object-cover rounded-lg border-2 shadow-lg ${
+          className={`w-32 h-20 sm:w-44 sm:h-28 object-cover rounded-lg border-2 shadow-lg ${
             givenUp ? 'border-lol-red' : 'border-lol-gold'
           }`}
         />

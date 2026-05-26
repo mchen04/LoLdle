@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useCallback } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
@@ -22,8 +22,27 @@ interface Props {
   settings: AppSettings
 }
 
+const TABLE_MIN_W = 560
+
+function useScaleToFit(enabled: boolean) {
+  const [scale, setScale] = useState(1)
+  const [ro] = useState(() => new ResizeObserver(([entry]) => {
+    const w = entry.contentRect.width
+    setScale(w < TABLE_MIN_W ? w / TABLE_MIN_W : 1)
+  }))
+
+  const containerRef = useCallback((el: HTMLDivElement | null) => {
+    ro.disconnect()
+    if (enabled && el) ro.observe(el)
+    else setScale(1)
+  }, [enabled, ro])
+
+  return { containerRef, scale }
+}
+
 export function ClassicMode({ settings }: Props) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('classic')
+  const { containerRef, scale } = useScaleToFit(settings.scaleToFit)
 
   const guessResults: ClassicGuessResult[] = useMemo(() => {
     if (!target) return []
@@ -36,6 +55,7 @@ export function ClassicMode({ settings }: Props) {
   if (!target) return null
 
   const isFinished = solved || givenUp
+  const scaled = scale < 1
 
   return (
     <div className="flex flex-col h-full gap-2">
@@ -56,23 +76,25 @@ export function ClassicMode({ settings }: Props) {
       )}
 
       {guessResults.length > 0 && (
-        <div className="flex-1 min-h-0 w-full overflow-auto scrollbar-thin">
-          <table className="w-full border-collapse min-w-[560px] table-fixed">
-            <thead className="sticky top-0 z-10 bg-lol-dark">
-              <tr>
-                {COLUMNS.map(col => (
-                  <th key={col.key} className="px-1 py-1 text-[10px] font-semibold text-lol-text uppercase tracking-wider text-center">
-                    {col.label}
-                  </th>
+        <div ref={containerRef} className="flex-1 min-h-0 w-full overflow-auto scrollbar-thin">
+          <div style={scaled ? { zoom: scale } : undefined}>
+            <table className="w-full border-collapse table-fixed min-w-[560px]">
+              <thead className="sticky top-0 z-10 bg-lol-dark">
+                <tr>
+                  {COLUMNS.map(col => (
+                    <th key={col.key} className="px-1 py-1 text-[10px] font-semibold text-lol-text uppercase tracking-wider text-center">
+                      {col.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {guessResults.map((result, i) => (
+                  <GuessRow key={result.champion.id} result={result} colorblind={settings.colorblind} isNew={i === 0 && !isFinished} />
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {guessResults.map((result, i) => (
-                <GuessRow key={result.champion.id} result={result} colorblind={settings.colorblind} isNew={i === 0 && !isFinished} />
-              ))}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
