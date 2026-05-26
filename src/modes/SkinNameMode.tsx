@@ -29,53 +29,53 @@ export function SkinNameMode({ settings }: { settings: AppSettings }) {
   const splashRevealed = !!extras.splashRevealed
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <>
-          <VictoryState champion={target} mode="skinName" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-          <div className="text-sm text-lol-text text-center">
-            Skin: <span className="text-lol-gold font-medium">{randomSkin.name}</span>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <p className="text-lol-text text-sm mb-4">Which champion has this skin?</p>
-            <p className="text-2xl md:text-3xl text-lol-gold font-bold tracking-wide">
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <>
+            <VictoryState champion={target} mode="skinName" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+            <div className="text-xs text-lol-text text-center">
+              Skin: <span className="text-lol-gold font-medium">{randomSkin.name}</span>
+            </div>
+          </>
+        ) : (
+          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 sm:p-5 text-center">
+            <p className="text-lol-text text-xs mb-3">Which champion has this skin?</p>
+            <p className="text-xl sm:text-2xl text-lol-gold font-bold tracking-wide">
               {skinLine || randomSkin.name}
             </p>
-            <p className="text-lol-text text-xs mt-2 italic">
+            <p className="text-lol-text text-[10px] mt-1 italic">
               {nameWasStripped ? '(champion name removed)' : ''}
             </p>
-
             {splashRevealed && (
-              <div className="mt-4">
+              <div className="mt-3">
                 <img
                   src={randomSkin.splash}
                   alt="Skin splash hint"
-                  className="w-full h-32 object-cover rounded-lg border border-lol-border"
+                  className="w-full h-24 sm:h-28 object-cover rounded-lg border border-lol-border"
                   style={{ filter: 'blur(8px) grayscale(0.8)' }}
                   onError={e => {
-                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="128"><rect fill="%231a1f2e" width="400" height="128" rx="8"/><text x="200" y="70" text-anchor="middle" fill="%23a09b8c" font-size="14">Image unavailable</text></svg>'
+                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="112"><rect fill="%231a1f2e" width="400" height="112" rx="8"/><text x="200" y="62" text-anchor="middle" fill="%23a09b8c" font-size="12">Image unavailable</text></svg>'
                   }}
                 />
               </div>
             )}
-
             {!splashRevealed && wrongGuesses.length >= 3 && (
-              <button
-                onClick={() => updateExtra('splashRevealed', true)}
-                className="mt-3 text-sm text-lol-text hover:text-lol-gold transition-colors underline"
-              >
+              <button onClick={() => updateExtra('splashRevealed', true)} className="mt-2 text-xs text-lol-text hover:text-lol-gold transition-colors underline">
                 Reveal blurred splash
               </button>
             )}
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

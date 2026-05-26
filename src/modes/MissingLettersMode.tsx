@@ -15,7 +15,6 @@ function getHiddenIndices(name: string, seed: number): number[] {
     .filter(({ ch }) => /[a-zA-Z]/.test(ch))
     .map(({ i }) => i)
 
-  // Hide ~60% of letters initially
   const hideCount = Math.max(2, Math.ceil(letterIndices.length * 0.6))
   const shuffled = [...letterIndices]
   let s = Math.abs(seed)
@@ -39,18 +38,17 @@ export function MissingLettersMode({ settings }: { settings: AppSettings }) {
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
-  // Each wrong guess reveals one hidden letter
   const revealCount = Math.min(wrongGuesses.length, hiddenIndices.length - 1)
   const currentlyHidden = new Set(hiddenIndices.slice(revealCount))
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="missingLetters" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <p className="text-lol-text text-sm mb-4">Fill in the missing letters</p>
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="missingLetters" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 sm:p-5 text-center">
+            <p className="text-lol-text text-xs mb-3">Fill in the missing letters</p>
             <div className="flex justify-center gap-1 flex-wrap">
               {target.name.split('').map((ch, i) => {
                 const isHidden = currentlyHidden.has(i)
@@ -58,13 +56,13 @@ export function MissingLettersMode({ settings }: { settings: AppSettings }) {
                 const isSpecial = /[^a-zA-Z ]/.test(ch)
 
                 if (isSpace) {
-                  return <span key={i} className="w-3" />
+                  return <span key={i} className="w-2.5" />
                 }
 
                 return (
                   <span
                     key={i}
-                    className={`inline-flex items-center justify-center w-9 h-11 rounded-lg text-lg font-bold transition-all duration-300 ${
+                    className={`inline-flex items-center justify-center w-7 h-9 sm:w-8 sm:h-10 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
                       isHidden
                         ? 'bg-lol-darker border-2 border-dashed border-lol-border text-transparent'
                         : isSpecial
@@ -77,15 +75,20 @@ export function MissingLettersMode({ settings }: { settings: AppSettings }) {
                 )
               })}
             </div>
-            <p className="text-lol-text text-xs mt-3">
+            <p className="text-lol-text text-[10px] mt-2">
               {currentlyHidden.size} letter{currentlyHidden.size > 1 ? 's' : ''} hidden
             </p>
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

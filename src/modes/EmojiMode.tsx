@@ -30,14 +30,14 @@ export function EmojiMode({ settings }: { settings: AppSettings }) {
   const revealedCount = isFinished ? emojiArray.length : Math.min(wrongGuesses.length + 1, emojiArray.length)
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="emoji" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="bg-lol-card border border-lol-border rounded-xl p-8 text-center">
-            <p className="text-lol-text text-sm mb-4">Which champion do these emoji represent?</p>
-            <div className="text-6xl md:text-7xl tracking-widest select-none flex justify-center gap-2">
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="emoji" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="bg-lol-card border border-lol-border rounded-xl p-4 sm:p-6 text-center">
+            <p className="text-lol-text text-xs mb-3">Which champion do these emoji represent?</p>
+            <div className="text-5xl sm:text-6xl tracking-widest select-none flex justify-center gap-2">
               {emojiArray.map((emoji, i) => (
                 <span
                   key={i}
@@ -49,15 +49,20 @@ export function EmojiMode({ settings }: { settings: AppSettings }) {
                 </span>
               ))}
             </div>
-            <p className="text-lol-text text-xs mt-3">
+            <p className="text-lol-text text-[10px] mt-2">
               {revealedCount} / {emojiArray.length} clues revealed
             </p>
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

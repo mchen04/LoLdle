@@ -8,13 +8,13 @@ import { getChampionById } from '../data'
 import type { ClassicGuessResult, AppSettings } from '../types/champion'
 
 const COLUMNS = [
-  { key: 'champion', label: 'Champion' },
+  { key: 'champion', label: 'Champ' },
   { key: 'gender', label: 'Gender' },
-  { key: 'positions', label: 'Position(s)' },
+  { key: 'positions', label: 'Pos' },
   { key: 'species', label: 'Species' },
-  { key: 'resource', label: 'Resource' },
+  { key: 'resource', label: 'Res' },
   { key: 'rangeType', label: 'Range' },
-  { key: 'regions', label: 'Region(s)' },
+  { key: 'regions', label: 'Region' },
   { key: 'releaseYear', label: 'Year' },
 ] as const
 
@@ -38,11 +38,13 @@ export function ClassicMode({ settings }: Props) {
   const isFinished = solved || givenUp
 
   return (
-    <div className="flex flex-col items-center gap-4 w-full">
+    <div className="flex flex-col h-full gap-2">
       {isFinished ? (
-        <VictoryState champion={target} mode="classic" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        <div className="flex justify-center">
+          <VictoryState champion={target} mode="classic" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        </div>
       ) : (
-        <>
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch
             onSelect={submitGuess}
             usedIds={guessIds}
@@ -50,19 +52,16 @@ export function ClassicMode({ settings }: Props) {
             hardMode={settings.hardMode}
           />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
 
       {guessResults.length > 0 && (
-        <div className={`w-full overflow-x-auto scrollbar-thin ${settings.scaleToFit ? 'max-w-full' : ''}`}>
-          <table className={`w-full border-collapse min-w-[640px] ${settings.scaleToFit ? 'table-fixed' : ''}`}>
-            <thead>
+        <div className="flex-1 min-h-0 w-full overflow-auto scrollbar-thin">
+          <table className="w-full border-collapse min-w-[560px] table-fixed">
+            <thead className="sticky top-0 z-10 bg-lol-dark">
               <tr>
                 {COLUMNS.map(col => (
-                  <th
-                    key={col.key}
-                    className="px-2 py-2 text-xs font-semibold text-lol-text uppercase tracking-wider text-center"
-                  >
+                  <th key={col.key} className="px-1 py-1 text-[10px] font-semibold text-lol-text uppercase tracking-wider text-center">
                     {col.label}
                   </th>
                 ))}
@@ -70,12 +69,7 @@ export function ClassicMode({ settings }: Props) {
             </thead>
             <tbody>
               {guessResults.map((result, i) => (
-                <GuessRow
-                  key={result.champion.id}
-                  result={result}
-                  colorblind={settings.colorblind}
-                  isNew={i === 0 && !isFinished}
-                />
+                <GuessRow key={result.champion.id} result={result} colorblind={settings.colorblind} isNew={i === 0 && !isFinished} />
               ))}
             </tbody>
           </table>
@@ -85,73 +79,27 @@ export function ClassicMode({ settings }: Props) {
   )
 }
 
-function GuessRow({ result, colorblind, isNew }: {
-  result: ClassicGuessResult
-  colorblind: boolean
-  isNew: boolean
-}) {
+function GuessRow({ result, colorblind, isNew }: { result: ClassicGuessResult; colorblind: boolean; isNew: boolean }) {
   const { champion: guess, matches } = result
   const isCorrect = matches.champion === 'correct'
 
   const cells = [
-    {
-      content: (
-        <div className="flex flex-col items-center gap-1">
-          <img src={guess.icon} alt="" className="w-8 h-8 rounded" />
-          <span className="text-xs font-medium leading-tight">{guess.name}</span>
-        </div>
-      ),
-      color: getMatchColor(matches.champion, colorblind),
-    },
-    {
-      content: <span className="text-sm">{guess.gender}</span>,
-      color: getMatchColor(matches.gender, colorblind),
-    },
-    {
-      content: <span className="text-xs leading-tight">{guess.positions.join(', ')}</span>,
-      color: getMatchColor(matches.positions, colorblind),
-    },
-    {
-      content: <span className="text-xs leading-tight">{guess.species.join(', ')}</span>,
-      color: getMatchColor(matches.species, colorblind),
-    },
-    {
-      content: <span className="text-xs leading-tight">{guess.resource}</span>,
-      color: getMatchColor(matches.resource, colorblind),
-    },
-    {
-      content: <span className="text-sm">{guess.rangeType}</span>,
-      color: getMatchColor(matches.rangeType, colorblind),
-    },
-    {
-      content: <span className="text-xs leading-tight">{guess.regions.join(', ')}</span>,
-      color: getMatchColor(matches.regions, colorblind),
-    },
-    {
-      content: (
-        <div className="flex items-center justify-center gap-1">
-          <span className="text-sm">{guess.releaseYear}</span>
-          {matches.releaseYear.hint !== 'correct' && (
-            <span className="text-base">{matches.releaseYear.hint === 'higher' ? '↑' : '↓'}</span>
-          )}
-        </div>
-      ),
-      color: getMatchColor(matches.releaseYear.result, colorblind),
-    },
+    { content: (<div className="flex flex-col items-center gap-0.5"><img src={guess.icon} alt="" className="w-6 h-6 rounded" /><span className="text-[9px] font-medium leading-tight">{guess.name}</span></div>), color: getMatchColor(matches.champion, colorblind) },
+    { content: <span className="text-xs">{guess.gender}</span>, color: getMatchColor(matches.gender, colorblind) },
+    { content: <span className="text-[10px] leading-tight">{guess.positions.join(', ')}</span>, color: getMatchColor(matches.positions, colorblind) },
+    { content: <span className="text-[10px] leading-tight">{guess.species.join(', ')}</span>, color: getMatchColor(matches.species, colorblind) },
+    { content: <span className="text-[10px] leading-tight">{guess.resource}</span>, color: getMatchColor(matches.resource, colorblind) },
+    { content: <span className="text-xs">{guess.rangeType}</span>, color: getMatchColor(matches.rangeType, colorblind) },
+    { content: <span className="text-[10px] leading-tight">{guess.regions.join(', ')}</span>, color: getMatchColor(matches.regions, colorblind) },
+    { content: (<div className="flex items-center justify-center gap-0.5"><span className="text-xs">{guess.releaseYear}</span>{matches.releaseYear.hint !== 'correct' && <span className="text-sm">{matches.releaseYear.hint === 'higher' ? '↑' : '↓'}</span>}</div>), color: getMatchColor(matches.releaseYear.result, colorblind) },
   ]
 
   return (
     <tr className={isCorrect ? 'ring-2 ring-lol-gold rounded' : ''}>
       {cells.map((cell, colIdx) => (
-        <td
-          key={colIdx}
-          className={`p-1.5 text-center ${cell.color} border border-lol-darker/50
-                     ${isNew ? 'tile-reveal' : ''}`}
-          style={isNew ? { animationDelay: `${colIdx * 0.08}s` } : undefined}
-        >
-          <div className="flex items-center justify-center min-h-[3rem] text-white">
-            {cell.content}
-          </div>
+        <td key={colIdx} className={`p-1 text-center ${cell.color} border border-lol-darker/50 ${isNew ? 'tile-reveal' : ''}`}
+          style={isNew ? { animationDelay: `${colIdx * 0.08}s` } : undefined}>
+          <div className="flex items-center justify-center min-h-[2.2rem] text-white">{cell.content}</div>
         </td>
       ))}
     </tr>

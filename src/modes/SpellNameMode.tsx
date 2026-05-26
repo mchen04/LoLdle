@@ -35,64 +35,61 @@ export function SpellNameMode({ settings }: { settings: AppSettings }) {
   const secondRevealed = !!extras.secondRevealed
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <>
-          <VictoryState champion={target} mode="spellName" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-          <div className="flex items-center gap-3 text-sm text-lol-text">
-            <img src={primaryAbility.icon} alt="" className="w-8 h-8 rounded" />
-            <span>
-              <span className="text-lol-gold font-medium">{primaryAbility.name}</span>
-              {' '}({primaryAbility.slot})
-            </span>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <p className="text-lol-text text-sm mb-4">Which champion has this ability?</p>
-            <p className="text-2xl md:text-3xl text-lol-text-light font-bold tracking-wide">
-              {primaryAbility.name}
-            </p>
-
-            {slotRevealed && (
-              <span className="inline-block mt-3 bg-lol-gold/15 text-lol-gold px-3 py-1 rounded-full text-sm">
-                Slot: {SLOT_NAMES[primaryAbility.slot] || primaryAbility.slot}
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <>
+            <VictoryState champion={target} mode="spellName" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+            <div className="flex items-center gap-2 text-xs text-lol-text">
+              <img src={primaryAbility.icon} alt="" className="w-6 h-6 rounded" />
+              <span>
+                <span className="text-lol-gold font-medium">{primaryAbility.name}</span>
+                {' '}({primaryAbility.slot})
               </span>
-            )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 sm:p-5 text-center">
+              <p className="text-lol-text text-xs mb-3">Which champion has this ability?</p>
+              <p className="text-xl sm:text-2xl text-lol-text-light font-bold tracking-wide">
+                {primaryAbility.name}
+              </p>
+              {slotRevealed && (
+                <span className="inline-block mt-2 bg-lol-gold/15 text-lol-gold px-2.5 py-0.5 rounded-full text-xs">
+                  Slot: {SLOT_NAMES[primaryAbility.slot] || primaryAbility.slot}
+                </span>
+              )}
+              {secondRevealed && secondAbility && (
+                <div className="mt-2 pt-2 border-t border-lol-border">
+                  <p className="text-lol-text text-[10px] mb-0.5">Same champion also has:</p>
+                  <p className="text-base text-lol-text-light font-medium">{secondAbility.name}</p>
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3">
+              {!slotRevealed && wrongGuesses.length >= 2 && (
+                <button onClick={() => updateExtra('slotRevealed', true)} className="text-xs text-lol-text hover:text-lol-gold transition-colors underline">
+                  Reveal ability slot
+                </button>
+              )}
+              {slotRevealed && !secondRevealed && secondAbility && wrongGuesses.length >= 4 && (
+                <button onClick={() => updateExtra('secondRevealed', true)} className="text-xs text-lol-text hover:text-lol-gold transition-colors underline">
+                  Reveal another ability
+                </button>
+              )}
+            </div>
+          </>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
 
-            {secondRevealed && secondAbility && (
-              <div className="mt-3 pt-3 border-t border-lol-border">
-                <p className="text-lol-text text-xs mb-1">Same champion also has:</p>
-                <p className="text-lg text-lol-text-light font-medium">{secondAbility.name}</p>
-              </div>
-            )}
-          </div>
-
-          <div className="flex gap-3">
-            {!slotRevealed && wrongGuesses.length >= 2 && (
-              <button
-                onClick={() => updateExtra('slotRevealed', true)}
-                className="text-sm text-lol-text hover:text-lol-gold transition-colors underline"
-              >
-                Reveal ability slot
-              </button>
-            )}
-            {slotRevealed && !secondRevealed && secondAbility && wrongGuesses.length >= 4 && (
-              <button
-                onClick={() => updateExtra('secondRevealed', true)}
-                className="text-sm text-lol-text hover:text-lol-gold transition-colors underline"
-              >
-                Reveal another ability
-              </button>
-            )}
-          </div>
-
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

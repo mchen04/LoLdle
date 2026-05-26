@@ -18,34 +18,39 @@ export function PixelMode({ settings }: { settings: AppSettings }) {
   const blur = isFinished ? 0 : BLUR_LEVELS[Math.min(wrongGuesses.length, BLUR_LEVELS.length - 1)]
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="pixel" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="pixel" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="flex flex-col items-center gap-2">
             <div className="relative">
               <img
                 src={target.icon}
                 alt="Mystery champion"
-                className="w-36 h-36 rounded-xl border-2 border-lol-border shadow-lg transition-all duration-700"
+                className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl border-2 border-lol-border shadow-lg transition-all duration-700"
                 style={{ filter: `blur(${blur}px)` }}
                 draggable={false}
                 onError={e => {
-                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144"><rect fill="%231a1f2e" width="144" height="144" rx="12"/><text x="72" y="78" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
+                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect fill="%231a1f2e" width="128" height="128" rx="12"/><text x="64" y="70" text-anchor="middle" fill="%23a09b8c" font-size="14">?</text></svg>'
                 }}
               />
-              <div className="absolute bottom-1 right-1 bg-black/60 px-2 py-0.5 rounded text-[10px] text-lol-text">
+              <div className="absolute bottom-1 right-1 bg-black/60 px-1.5 py-0.5 rounded text-[10px] text-lol-text">
                 {blur > 0 ? `blur: ${blur}px` : 'Clear'}
               </div>
             </div>
-            <p className="text-lol-text text-sm">Who is this champion?</p>
+            <p className="text-lol-text text-xs">Who is this champion?</p>
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

@@ -65,7 +65,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
   }, [selectedIndex, isOpen])
 
   return (
-    <div className="relative w-full max-w-lg mx-auto">
+    <div className="relative w-full max-w-md mx-auto flex-shrink-0">
       <div className="relative">
         <input
           ref={inputRef}
@@ -76,9 +76,9 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
           onFocus={() => results.length > 0 && setIsOpen(true)}
           disabled={disabled}
           placeholder={placeholder}
-          className="w-full px-4 py-3 bg-lol-card border border-lol-border rounded-lg text-lol-text-light
+          className="w-full px-3 py-2.5 bg-lol-card border border-lol-border rounded-lg text-lol-text-light
                      placeholder-lol-text focus:outline-none focus:border-lol-gold transition-colors
-                     disabled:opacity-50 disabled:cursor-not-allowed text-base"
+                     disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           aria-label="Search champions"
           aria-expanded={isOpen}
           aria-autocomplete="list"
@@ -99,7 +99,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
         <div
           ref={listRef}
           className="absolute z-50 w-full mt-1 bg-lol-card border border-lol-border rounded-lg
-                     shadow-xl max-h-64 overflow-y-auto scrollbar-thin"
+                     shadow-xl max-h-48 overflow-y-auto scrollbar-thin"
           role="listbox"
         >
           {results.map((champion, i) => (
@@ -107,7 +107,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
               key={champion.id}
               onClick={() => handleSelect(champion)}
               onMouseEnter={() => setSelectedIndex(i)}
-              className={`w-full flex items-center gap-3 px-3 py-2 text-left transition-colors
+              className={`w-full flex items-center gap-2 px-3 py-1.5 text-left transition-colors
                 ${i === selectedIndex ? 'bg-lol-card-hover' : 'hover:bg-lol-card-hover'}`}
               role="option"
               aria-selected={i === selectedIndex}
@@ -116,11 +116,11 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
                 <img
                   src={champion.icon}
                   alt=""
-                  className="w-8 h-8 rounded"
+                  className="w-7 h-7 rounded"
                   loading="lazy"
                 />
               )}
-              <span className="text-lol-text-light">{hardMode ? '???' : champion.name}</span>
+              <span className="text-sm text-lol-text-light">{hardMode ? '???' : champion.name}</span>
             </button>
           ))}
         </div>

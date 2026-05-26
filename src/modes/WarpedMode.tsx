@@ -6,11 +6,7 @@ import { GiveUpButton } from '../components/GiveUpButton'
 import { getWrongGuesses } from '../data'
 import type { AppSettings } from '../types/champion'
 
-interface WarpStage {
-  transform: string
-  filter: string
-  label: string
-}
+interface WarpStage { transform: string; filter: string; label: string }
 
 const WARP_STAGES: WarpStage[] = [
   { transform: 'perspective(200px) rotateY(35deg) skewX(15deg) scaleX(0.7)', filter: 'contrast(1.8) saturate(2.5) hue-rotate(90deg)', label: 'Heavily warped' },
@@ -29,40 +25,35 @@ export function WarpedMode({ settings }: { settings: AppSettings }) {
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
-  const stageIdx = isFinished
-    ? WARP_STAGES.length - 1
-    : Math.min(wrongGuesses.length, WARP_STAGES.length - 1)
+  const stageIdx = isFinished ? WARP_STAGES.length - 1 : Math.min(wrongGuesses.length, WARP_STAGES.length - 1)
   const stage = WARP_STAGES[stageIdx]
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="warped" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-72 overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative p-2">
-              <img
-                src={target.splash}
-                alt="Mystery champion"
-                className="w-full h-44 object-cover rounded-lg transition-all duration-700"
-                style={{ transform: stage.transform, filter: stage.filter }}
-                draggable={false}
-                onError={e => {
-                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="288" height="176"><rect fill="%231a1f2e" width="288" height="176" rx="12"/><text x="144" y="94" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
-                }}
-              />
-              <div className="absolute bottom-1 right-1 bg-black/60 px-2 py-0.5 rounded text-[10px] text-lol-text">
-                {stage.label}
-              </div>
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="warped" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-56 sm:w-64 overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative p-1.5">
+              <img src={target.splash} alt="Mystery champion"
+                className="w-full h-32 sm:h-36 object-cover rounded-lg transition-all duration-700"
+                style={{ transform: stage.transform, filter: stage.filter }} draggable={false}
+                onError={e => { (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="144"><rect fill="%231a1f2e" width="256" height="144" rx="12"/><text x="128" y="78" text-anchor="middle" fill="%23a09b8c" font-size="14">?</text></svg>' }} />
+              <div className="absolute bottom-1 right-1 bg-black/60 px-1.5 py-0.5 rounded text-[10px] text-lol-text">{stage.label}</div>
             </div>
-            <p className="text-lol-text text-sm">Identify this warped champion</p>
+            <p className="text-lol-text text-xs">Identify this warped champion</p>
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

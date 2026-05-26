@@ -27,38 +27,31 @@ export function ZoomedIconMode({ settings }: { settings: AppSettings }) {
   const zoom = isFinished ? 1 : ZOOM_LEVELS[Math.min(wrongGuesses.length, ZOOM_LEVELS.length - 1)]
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="zoomedIcon" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-36 h-36 overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative">
-              <div
-                className="w-full h-full transition-transform duration-700 ease-out"
-                style={{ transform: `scale(${zoom})`, transformOrigin: cropOrigin }}
-              >
-                <img
-                  src={target.icon}
-                  alt="Mystery champion"
-                  className="w-full h-full object-cover"
-                  draggable={false}
-                  onError={e => {
-                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144"><rect fill="%231a1f2e" width="144" height="144" rx="12"/><text x="72" y="78" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
-                  }}
-                />
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="zoomedIcon" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative">
+              <div className="w-full h-full transition-transform duration-700 ease-out" style={{ transform: `scale(${zoom})`, transformOrigin: cropOrigin }}>
+                <img src={target.icon} alt="Mystery champion" className="w-full h-full object-cover" draggable={false}
+                  onError={e => { (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect fill="%231a1f2e" width="128" height="128" rx="12"/><text x="64" y="70" text-anchor="middle" fill="%23a09b8c" font-size="14">?</text></svg>' }} />
               </div>
-              <div className="absolute bottom-1 right-1 bg-black/60 px-2 py-0.5 rounded text-[10px] text-lol-text">
-                {zoom > 1 ? `${zoom.toFixed(1)}x` : 'Full'}
-              </div>
+              <div className="absolute bottom-1 right-1 bg-black/60 px-1.5 py-0.5 rounded text-[10px] text-lol-text">{zoom > 1 ? `${zoom.toFixed(1)}x` : 'Full'}</div>
             </div>
-            <p className="text-lol-text text-sm">Identify the champion icon</p>
+            <p className="text-lol-text text-xs">Identify the champion icon</p>
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

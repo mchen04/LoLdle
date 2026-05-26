@@ -34,7 +34,6 @@ export function BackwardsQuoteMode({ settings }: { settings: AppSettings }) {
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const hintRevealed = !!extras.hintRevealed
-  // Each wrong guess fixes one word into its correct position
   const fixedCount = Math.min(wrongGuesses.length, originalWords.length - 2)
 
   const displayWords = (() => {
@@ -54,45 +53,47 @@ export function BackwardsQuoteMode({ settings }: { settings: AppSettings }) {
   })()
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="backwardsQuote" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <p className="text-lol-text text-sm mb-4">The words in this quote have been scrambled. Who said it?</p>
-            <blockquote className="text-xl md:text-2xl text-lol-text-light italic leading-relaxed">
-              &ldquo;{displayWords.map((w, i) => (
-                <span key={i} className={w.fixed ? 'text-lol-green' : ''}>
-                  {w.text}{i < displayWords.length - 1 ? ' ' : ''}
-                </span>
-              ))}&rdquo;
-            </blockquote>
-            {fixedCount > 0 && (
-              <p className="text-lol-text text-xs mt-2">
-                {fixedCount} word{fixedCount > 1 ? 's' : ''} unscrambled
-              </p>
-            )}
-            {hintRevealed && (
-              <div className="mt-3 pt-3 border-t border-lol-border">
-                <span className="text-lol-text text-sm">Region: </span>
-                <span className="text-lol-gold text-sm font-medium">{target.regions.join(' / ')}</span>
-              </div>
-            )}
-            {!hintRevealed && wrongGuesses.length >= 3 && (
-              <button
-                onClick={() => updateExtra('hintRevealed', true)}
-                className="mt-3 text-sm text-lol-text hover:text-lol-gold transition-colors underline"
-              >
-                Reveal region hint
-              </button>
-            )}
-          </div>
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="backwardsQuote" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <>
+            <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 sm:p-5 text-center">
+              <p className="text-lol-text text-xs mb-3">The words in this quote have been scrambled. Who said it?</p>
+              <blockquote className="text-base sm:text-lg text-lol-text-light italic leading-relaxed">
+                &ldquo;{displayWords.map((w, i) => (
+                  <span key={i} className={w.fixed ? 'text-lol-green' : ''}>
+                    {w.text}{i < displayWords.length - 1 ? ' ' : ''}
+                  </span>
+                ))}&rdquo;
+              </blockquote>
+              {fixedCount > 0 && (
+                <p className="text-lol-text text-[10px] mt-1">{fixedCount} word{fixedCount > 1 ? 's' : ''} unscrambled</p>
+              )}
+              {hintRevealed && (
+                <div className="mt-2 pt-2 border-t border-lol-border">
+                  <span className="text-lol-text text-xs">Region: </span>
+                  <span className="text-lol-gold text-xs font-medium">{target.regions.join(' / ')}</span>
+                </div>
+              )}
+              {!hintRevealed && wrongGuesses.length >= 3 && (
+                <button onClick={() => updateExtra('hintRevealed', true)} className="mt-2 text-xs text-lol-text hover:text-lol-gold transition-colors underline">
+                  Reveal region hint
+                </button>
+              )}
+            </div>
+          </>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Who said this?" hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

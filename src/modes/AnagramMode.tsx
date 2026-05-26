@@ -27,7 +27,6 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
     const letters = target.name.split('')
     const seed = hashCode(target.id + 'anagram')
     const shuffled = shuffleWithSeed(letters, seed)
-    // Make sure it's actually different from the original
     if (shuffled.join('') === target.name) {
       const temp = shuffled[0]
       shuffled[0] = shuffled[shuffled.length - 1]
@@ -40,7 +39,6 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
-  // Each wrong guess locks one letter into its correct position
   const lockedCount = Math.min(wrongGuesses.length, revealed.length - 2)
 
   const displayLetters = (() => {
@@ -60,18 +58,18 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
   })()
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {isFinished ? (
-        <VictoryState champion={target} mode="anagram" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-      ) : (
-        <>
-          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <p className="text-lol-text text-sm mb-4">Unscramble the champion name</p>
-            <div className="flex justify-center gap-1.5 flex-wrap">
+    <div className="flex flex-col h-full gap-2 max-w-lg mx-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin flex flex-col items-center gap-2 justify-center">
+        {isFinished ? (
+          <VictoryState champion={target} mode="anagram" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+        ) : (
+          <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 sm:p-5 text-center">
+            <p className="text-lol-text text-xs mb-3">Unscramble the champion name</p>
+            <div className="flex justify-center gap-1 flex-wrap">
               {displayLetters.map((l, i) => (
                 <span
                   key={i}
-                  className={`inline-flex items-center justify-center w-10 h-12 rounded-lg text-xl font-bold uppercase transition-all duration-300 ${
+                  className={`inline-flex items-center justify-center w-8 h-10 sm:w-9 sm:h-11 rounded-lg text-lg font-bold uppercase transition-all duration-300 ${
                     l.locked
                       ? 'bg-lol-green/20 text-lol-green border border-lol-green/40'
                       : 'bg-lol-darker border border-lol-border text-lol-text-light'
@@ -82,16 +80,21 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
               ))}
             </div>
             {lockedCount > 0 && (
-              <p className="text-lol-text text-xs mt-3">
+              <p className="text-lol-text text-[10px] mt-2">
                 {lockedCount} letter{lockedCount > 1 ? 's' : ''} locked in place
               </p>
             )}
           </div>
+        )}
+        <WrongGuesses guesses={wrongGuesses} />
+      </div>
+
+      {!isFinished && (
+        <div className="flex-shrink-0 flex flex-col items-center gap-1 w-full">
           <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
           <GiveUpButton onClick={giveUp} />
-        </>
+        </div>
       )}
-      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }
