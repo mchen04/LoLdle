@@ -17,7 +17,7 @@ export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion
     : [...champions]
 
   if (mode === 'quote') {
-    pool = pool.filter(c => c.quote && c.quote.length > 5)
+    pool = pool.filter(c => c.quote && c.quote.length > 0)
   }
   if (mode === 'emoji') {
     pool = pool.filter(c => c.emojiClue && c.emojiClue.length > 0)

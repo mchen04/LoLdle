@@ -17,6 +17,8 @@ interface ModeProgress {
   guessIds: string[]
   solved: boolean
   hintRevealed?: boolean
+  givenUp?: boolean
+  extras?: Record<string, unknown>
 }
 
 interface ModeStats {
@@ -68,6 +70,14 @@ export function recordWin(mode: GameMode, guessCount: number) {
   stats.bestScore = Math.min(stats.bestScore, guessCount)
   stats.currentStreak++
   stats.bestStreak = Math.max(stats.bestStreak, stats.currentStreak)
+  saveModeStats(mode, stats)
+}
+
+export function recordGiveUp(mode: GameMode, guessCount: number) {
+  const stats = loadModeStats(mode)
+  stats.gamesPlayed++
+  stats.totalGuesses += guessCount
+  stats.currentStreak = 0
   saveModeStats(mode, stats)
 }
 

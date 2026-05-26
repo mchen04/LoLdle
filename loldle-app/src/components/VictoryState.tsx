@@ -6,10 +6,11 @@ interface Props {
   champion: Champion
   mode: GameMode
   guessCount: number
+  givenUp?: boolean
   onNextRound: () => void
 }
 
-export function VictoryState({ champion, mode, guessCount, onNextRound }: Props) {
+export function VictoryState({ champion, mode, guessCount, givenUp = false, onNextRound }: Props) {
   const [copied, setCopied] = useState(false)
 
   const handleShare = () => {
@@ -26,15 +27,24 @@ export function VictoryState({ champion, mode, guessCount, onNextRound }: Props)
         <img
           src={champion.splash}
           alt={champion.name}
-          className="w-48 h-28 object-cover rounded-lg border-2 border-lol-gold shadow-lg"
+          className={`w-48 h-28 object-cover rounded-lg border-2 shadow-lg ${
+            givenUp ? 'border-lol-red' : 'border-lol-gold'
+          }`}
         />
-        <div className="absolute -top-3 -right-3 bg-lol-green text-white text-xs font-bold px-2 py-1 rounded-full">
-          {guessCount === 1 ? '1 guess' : `${guessCount} guesses`}
+        <div className={`absolute -top-3 -right-3 text-white text-xs font-bold px-2 py-1 rounded-full ${
+          givenUp ? 'bg-lol-red' : 'bg-lol-green'
+        }`}>
+          {givenUp
+            ? 'Given Up'
+            : guessCount === 1 ? '1 guess' : `${guessCount} guesses`
+          }
         </div>
       </div>
 
       <div className="text-center">
-        <h3 className="text-2xl font-bold text-lol-gold">{champion.name}</h3>
+        <h3 className={`text-2xl font-bold ${givenUp ? 'text-lol-text-light' : 'text-lol-gold'}`}>
+          {champion.name}
+        </h3>
         <p className="text-lol-text text-sm italic">{champion.title}</p>
       </div>
 
@@ -46,13 +56,15 @@ export function VictoryState({ champion, mode, guessCount, onNextRound }: Props)
         >
           Next Round
         </button>
-        <button
-          onClick={handleShare}
-          className="px-4 py-2.5 bg-lol-card border border-lol-border rounded-lg
-                     text-lol-text-light hover:bg-lol-card-hover transition-colors"
-        >
-          {copied ? 'Copied!' : 'Share'}
-        </button>
+        {!givenUp && (
+          <button
+            onClick={handleShare}
+            className="px-4 py-2.5 bg-lol-card border border-lol-border rounded-lg
+                       text-lol-text-light hover:bg-lol-card-hover transition-colors"
+          >
+            {copied ? 'Copied!' : 'Share'}
+          </button>
+        )}
       </div>
     </div>
   )

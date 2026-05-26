@@ -7,7 +7,7 @@ import { getWrongGuesses } from '../data'
 import { hashCode } from '../utils/hash'
 
 export function SplashMode({ hardMode }: { hardMode?: boolean }) {
-  const { target, guessIds, solved, guessCount, submitGuess, nextRound } = useGame('splash')
+  const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('splash')
   const [skinGuess, setSkinGuess] = useState('')
   const [skinAnswered, setSkinAnswered] = useState(false)
 
@@ -18,19 +18,27 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
     return target.skins[idx]
   }, [target])
 
+  const cropOrigin = useMemo(() => {
+    if (!target) return '50% 50%'
+    const x = (Math.abs(hashCode(target.id + 'cropX')) % 60) + 20
+    const y = (Math.abs(hashCode(target.id + 'cropY')) % 60) + 20
+    return `${x}% ${y}%`
+  }, [target])
+
   const splashUrl = randomSkin?.splash || target?.splash || ''
   const zoom = getSplashZoom(guessCount)
 
   const wrongGuesses = getWrongGuesses(guessIds, target?.id ?? '')
+  const isFinished = solved || givenUp
 
   if (!target) return null
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {solved ? (
+      {isFinished ? (
         <>
-          <VictoryState champion={target} mode="splash" guessCount={guessCount} onNextRound={nextRound} />
-          {randomSkin && (
+          <VictoryState champion={target} mode="splash" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+          {randomSkin && !givenUp && (
             <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 text-center">
               {!skinAnswered ? (
                 <>
@@ -71,12 +79,16 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
           <div className="w-full aspect-square max-w-sm overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative">
             <div
               className="w-full h-full transition-transform duration-700 ease-out"
-              style={{ transform: `scale(${zoom})` }}
+              style={{
+                transform: `scale(${zoom})`,
+                transformOrigin: cropOrigin,
+              }}
             >
               <img
                 src={splashUrl}
                 alt="Mystery champion splash"
                 className="w-full h-full object-cover"
+                style={{ filter: 'grayscale(1)' }}
                 draggable={false}
                 onError={e => {
                   (e.target as HTMLImageElement).style.display = 'none'
@@ -94,10 +106,17 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
             placeholder="Guess the champion..."
             hardMode={hardMode}
           />
+
+          <button
+            onClick={giveUp}
+            className="text-xs text-lol-text/60 hover:text-lol-red transition-colors"
+          >
+            Give Up
+          </button>
         </>
       )}
 
-      {wrongGuesses.length > 0 && !solved && (
+      {wrongGuesses.length > 0 && !isFinished && (
         <div className="w-full space-y-2">
           <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
           <div className="flex flex-wrap gap-2">

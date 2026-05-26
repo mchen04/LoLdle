@@ -4,24 +4,25 @@ import { VictoryState } from '../components/VictoryState'
 import { getWrongGuesses } from '../data'
 
 export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
-  const { target, guessIds, solved, guessCount, hintRevealed, submitGuess, nextRound, revealHint } = useGame('quote')
+  const { target, guessIds, solved, givenUp, guessCount, hintRevealed, submitGuess, nextRound, revealHint, giveUp } = useGame('quote')
 
   if (!target) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
+  const isFinished = solved || givenUp
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {solved ? (
-        <VictoryState champion={target} mode="quote" guessCount={guessCount} onNextRound={nextRound} />
+      {isFinished ? (
+        <VictoryState champion={target} mode="quote" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
       ) : (
         <>
           <div className="w-full bg-lol-card border border-lol-border rounded-xl p-6 text-center">
-            <div className="text-4xl mb-4 opacity-60">❝</div>
+            <div className="text-4xl mb-4 opacity-60">&ldquo;</div>
             <blockquote className="text-xl md:text-2xl text-lol-text-light italic leading-relaxed">
               {target.quote || 'No quote available for this champion.'}
             </blockquote>
-            <div className="text-4xl mt-4 opacity-60">❞</div>
+            <div className="text-4xl mt-4 opacity-60">&rdquo;</div>
 
             {hintRevealed && guessCount >= 3 && (
               <div className="mt-4 pt-4 border-t border-lol-border">
@@ -46,6 +47,13 @@ export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
             placeholder="Who said this?"
             hardMode={hardMode}
           />
+
+          <button
+            onClick={giveUp}
+            className="text-xs text-lol-text/60 hover:text-lol-red transition-colors"
+          >
+            Give Up
+          </button>
         </>
       )}
 

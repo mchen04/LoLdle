@@ -43,7 +43,7 @@ export function getMatchColor(result: MatchResult, colorblind: boolean): string 
   return 'bg-lol-wrong'
 }
 
-const ZOOM_LEVELS = [6, 4.5, 3.5, 2.5, 2, 1.5, 1.2, 1]
+const ZOOM_LEVELS = [5, 4, 3, 2.5, 2, 1.5, 1.2, 1]
 
 export function getSplashZoom(guessCount: number): number {
   return ZOOM_LEVELS[Math.min(guessCount, ZOOM_LEVELS.length - 1)]

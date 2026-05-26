@@ -1,13 +1,15 @@
 import { useState, useCallback, useEffect } from 'react'
 import type { Champion, GameMode } from '../types/champion'
 import { getChampionById, getRandomChampion } from '../data'
-import { saveModeProgress, loadModeProgress, clearModeProgress, recordWin } from '../utils/storage'
+import { saveModeProgress, loadModeProgress, clearModeProgress, recordWin, recordGiveUp } from '../utils/storage'
 
 export function useGame(mode: GameMode) {
   const [target, setTarget] = useState<Champion | null>(null)
   const [guessIds, setGuessIds] = useState<string[]>([])
   const [solved, setSolved] = useState(false)
+  const [givenUp, setGivenUp] = useState(false)
   const [hintRevealed, setHintRevealed] = useState(false)
+  const [extras, setExtras] = useState<Record<string, unknown>>({})
 
   useEffect(() => {
     const saved = loadModeProgress(mode)
@@ -17,12 +19,16 @@ export function useGame(mode: GameMode) {
       setTarget(champion)
       setGuessIds(saved.guessIds)
       setSolved(saved.solved)
+      setGivenUp(saved.givenUp ?? false)
       setHintRevealed(saved.hintRevealed ?? false)
+      setExtras(saved.extras ?? {})
     } else {
       setTarget(getRandomChampion(undefined, mode))
       setGuessIds([])
       setSolved(false)
+      setGivenUp(false)
       setHintRevealed(false)
+      setExtras({})
     }
   }, [mode])
 
@@ -32,13 +38,15 @@ export function useGame(mode: GameMode) {
         targetId: target.id,
         guessIds,
         solved,
+        givenUp,
         hintRevealed,
+        extras,
       })
     }
-  }, [mode, target, guessIds, solved, hintRevealed])
+  }, [mode, target, guessIds, solved, givenUp, hintRevealed, extras])
 
   const submitGuess = useCallback((champion: Champion) => {
-    if (solved || !target) return false
+    if (solved || givenUp || !target) return false
     if (guessIds.includes(champion.id)) return false
 
     const newGuessIds = [champion.id, ...guessIds]
@@ -50,7 +58,13 @@ export function useGame(mode: GameMode) {
       return true
     }
     return false
-  }, [solved, target, guessIds, mode])
+  }, [solved, givenUp, target, guessIds, mode])
+
+  const giveUp = useCallback(() => {
+    if (solved || givenUp || !target) return
+    setGivenUp(true)
+    recordGiveUp(mode, guessIds.length)
+  }, [solved, givenUp, target, mode, guessIds.length])
 
   const nextRound = useCallback(() => {
     clearModeProgress(mode)
@@ -58,21 +72,31 @@ export function useGame(mode: GameMode) {
     setTarget(newTarget)
     setGuessIds([])
     setSolved(false)
+    setGivenUp(false)
     setHintRevealed(false)
+    setExtras({})
   }, [mode, target])
 
   const revealHint = useCallback(() => {
     setHintRevealed(true)
   }, [])
 
+  const updateExtra = useCallback((key: string, value: unknown) => {
+    setExtras(prev => ({ ...prev, [key]: value }))
+  }, [])
+
   return {
     target,
     guessIds,
     solved,
+    givenUp,
     guessCount: guessIds.length,
     hintRevealed,
+    extras,
     submitGuess,
     nextRound,
     revealHint,
+    giveUp,
+    updateExtra,
   }
 }
