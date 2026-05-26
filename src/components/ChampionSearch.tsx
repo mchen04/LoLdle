@@ -78,7 +78,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
           placeholder={placeholder}
           className="w-full px-3 py-2.5 bg-lol-card border border-lol-border rounded-lg text-lol-text-light
                      placeholder-lol-text focus:outline-none focus:border-lol-gold transition-colors
-                     disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                     disabled:opacity-50 disabled:cursor-not-allowed text-base"
           aria-label="Search champions"
           aria-expanded={isOpen}
           aria-autocomplete="list"

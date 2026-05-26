@@ -68,6 +68,11 @@ body {
   animation: drawer-in 0.15s ease-out forwards;
 }
 
+input, textarea, select {
+  font-size: 16px !important;
+  touch-action: manipulation;
+}
+
 .scrollbar-thin::-webkit-scrollbar {
   width: 4px;
   height: 4px;

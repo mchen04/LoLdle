@@ -49,7 +49,7 @@ export function SplashMode({ settings }: { settings: AppSettings }) {
                         onChange={e => setSkinGuess(e.target.value)}
                         onKeyDown={e => { if (e.key === 'Enter' && skinGuess) setSkinAnswered(true) }}
                         placeholder="Skin name..."
-                        className="flex-1 px-3 py-1.5 bg-lol-darker border border-lol-border rounded-lg text-xs
+                        className="flex-1 px-3 py-1.5 bg-lol-darker border border-lol-border rounded-lg text-base
                                    text-lol-text-light placeholder-lol-text focus:outline-none focus:border-lol-gold"
                       />
                       <button
