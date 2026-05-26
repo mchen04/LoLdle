@@ -63,13 +63,12 @@ export function ClassicMode({ settings }: Props) {
               </tr>
             </thead>
             <tbody>
-              {guessResults.map((result, rowIdx) => (
+              {guessResults.map((result, i) => (
                 <GuessRow
                   key={result.champion.id}
                   result={result}
-                  rowIdx={rowIdx}
                   colorblind={settings.colorblind}
-                  isNew={rowIdx === 0 && !solved}
+                  isNew={i === 0 && !solved}
                 />
               ))}
             </tbody>
@@ -80,9 +79,8 @@ export function ClassicMode({ settings }: Props) {
   )
 }
 
-function GuessRow({ result, rowIdx, colorblind, isNew }: {
+function GuessRow({ result, colorblind, isNew }: {
   result: ClassicGuessResult
-  rowIdx: number
   colorblind: boolean
   isNew: boolean
 }) {
