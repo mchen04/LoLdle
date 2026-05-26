@@ -10,7 +10,7 @@ interface Props {
   hardMode?: boolean
 }
 
-export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder = 'Type champion name...', hardMode }: Props) {
+export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder = 'Type champion name...', hardMode = false }: Props) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Champion[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)

@@ -57,7 +57,7 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
                 </>
               ) : (
                 <p className="text-sm">
-                  {skinGuess.toLowerCase().includes(randomSkin.name.toLowerCase().split(' ').at(-1) ?? '')
+                  {randomSkin.name.toLowerCase().includes(skinGuess.toLowerCase().trim())
                     ? <span className="text-lol-green">Correct! It's {randomSkin.name}</span>
                     : <span className="text-lol-orange">It was: {randomSkin.name}</span>
                   }

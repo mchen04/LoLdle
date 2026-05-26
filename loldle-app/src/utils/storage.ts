@@ -4,7 +4,12 @@ const STORAGE_PREFIX = 'loldle_'
 
 function safeJsonParse<T>(raw: string | null, fallback: T): T {
   if (!raw) return fallback
-  try { return JSON.parse(raw) } catch { return fallback }
+  try {
+    return JSON.parse(raw)
+  } catch {
+    console.warn('Failed to parse stored data, using defaults')
+    return fallback
+  }
 }
 
 interface ModeProgress {
