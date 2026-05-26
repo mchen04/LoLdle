@@ -36,7 +36,7 @@ export function SplashMode({ settings }: { settings: AppSettings }) {
       {isFinished ? (
         <>
           <VictoryState champion={target} mode="splash" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
-          {randomSkin && !givenUp && (
+          {randomSkin && (
             <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 text-center">
               {!skinAnswered ? (
                 <>

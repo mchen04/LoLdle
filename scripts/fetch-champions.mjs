@@ -214,9 +214,15 @@ async function main() {
       })
     }
 
-    // Build skins (all, no cap)
-    const skins = (ddDetail.skins || [])
-      .filter(s => s.num !== 0)
+    // Build skins — exclude chromas (no splash art on DD CDN)
+    const allSkins = (ddDetail.skins || []).filter(s => s.num !== 0)
+    const chromaParents = new Set(allSkins.filter(s => s.chromas).map(s => s.name))
+    const skins = allSkins
+      .filter(s => {
+        if (!s.name.includes('(')) return true
+        const baseName = s.name.split('(')[0].trim()
+        return !chromaParents.has(baseName)
+      })
       .map(s => ({
         id: `${id}_${s.num}`,
         name: s.name === 'default' ? `${ddDetail.name} ${s.num}` : s.name,

@@ -267,15 +267,19 @@ Deno.serve(async (req) => {
         });
       }
 
-      for (const s of ddDetail.skins ?? []) {
-        if (s.num === 0) continue;
+      const allSkins = (ddDetail.skins ?? []).filter((s: Record<string, any>) => s.num !== 0);
+      const chromaParents = new Set(
+        allSkins.filter((s: Record<string, any>) => s.chromas).map((s: Record<string, any>) => s.name)
+      );
+      for (const s of allSkins) {
+        if (s.name.includes("(")) {
+          const baseName = s.name.split("(")[0].trim();
+          if (chromaParents.has(baseName)) continue;
+        }
         skinRows.push({
           id: `${id}_${s.num}`,
           champion_id: id,
-          name:
-            s.name === "default"
-              ? `${ddDetail.name} ${s.num}`
-              : s.name,
+          name: s.name === "default" ? `${ddDetail.name} ${s.num}` : s.name,
           splash_url: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`,
         });
       }
@@ -299,10 +303,11 @@ Deno.serve(async (req) => {
       if (error) throw error;
     }
 
+    await supabase.from("skins").delete().neq("id", "");
     for (let i = 0; i < skinRows.length; i += BATCH) {
       const { error } = await supabase
         .from("skins")
-        .upsert(skinRows.slice(i, i + BATCH));
+        .insert(skinRows.slice(i, i + BATCH));
       if (error) throw error;
     }
 
