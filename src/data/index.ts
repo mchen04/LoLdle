@@ -14,7 +14,7 @@ export function getChampionByName(name: string): Champion | undefined {
 export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion {
   let pool = exclude
     ? champions.filter(c => !exclude.includes(c.id))
-    : [...champions]
+    : champions
 
   if (mode === 'quote') {
     pool = pool.filter(c => !!c.quote)
