@@ -9,7 +9,6 @@ const MODES: { key: GameMode; label: string }[] = [
   { key: 'splash', label: 'Splash' },
   { key: 'title', label: 'Title' },
   { key: 'pixel', label: 'Pixel' },
-  { key: 'silhouette', label: 'Shadow' },
   { key: 'spellName', label: 'Spell' },
   { key: 'feet', label: 'Feet' },
   { key: 'whoami', label: 'Who Am I?' },

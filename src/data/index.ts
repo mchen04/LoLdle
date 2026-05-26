@@ -4,6 +4,17 @@ import type { Champion, GameMode } from '../types/champion'
 let champions: Champion[] = []
 let loaded = false
 
+const FEET_CHAMPIONS = new Set([
+  'Akali', 'Akshan', 'Alistar', 'Amumu', 'Ashe', 'Azir', 'Blitzcrank',
+  'Brand', 'Briar', 'Caitlyn', 'Camille', 'Diana', 'Elise', 'Evelynn',
+  'Fiddlesticks', 'Fizz', 'Galio', 'Gnar', 'Gwen', 'Hecarim', 'Irelia',
+  'JarvanIV', 'Jhin', 'Kennen', 'Khazix', 'Kindred', 'Kled', 'LeeSin',
+  'Malzahar', 'MasterYi', 'Milio', 'Morgana', 'Nautilus', 'Neeko',
+  'Nidalee', 'Orianna', 'Poppy', 'Shaco', 'Smolder', 'Sylas', 'Syndra',
+  'Teemo', 'Thresh', 'Trundle', 'Twitch', 'Varus', 'Vex', 'Vi', 'Viktor',
+  'XinZhao', 'Zed', 'Ziggs', 'Zoe', 'Zyra', 'Yunara',
+])
+
 interface DbChampion {
   id: string
   name: string
@@ -105,7 +116,10 @@ export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion
   if (mode === 'passive') {
     pool = pool.filter(c => c.abilities.some(a => a.slot === 'P'))
   }
-  if (mode === 'feet' || mode === 'silhouette' || mode === 'warped') {
+  if (mode === 'feet') {
+    pool = pool.filter(c => FEET_CHAMPIONS.has(c.id))
+  }
+  if (mode === 'warped') {
     pool = pool.filter(c => !!c.splash)
   }
   if (mode === 'pixel' || mode === 'colorShift' || mode === 'zoomedIcon') {

@@ -89,7 +89,7 @@ export function generateShareText(mode: GameMode, guessCount: number, solved: bo
   const modeNames: Record<GameMode, string> = {
     classic: 'Classic', quote: 'Quote', ability: 'Ability',
     emoji: 'Emoji', splash: 'Splash', title: 'Title',
-    pixel: 'Pixel', silhouette: 'Silhouette', spellName: 'Spell',
+    pixel: 'Pixel', spellName: 'Spell',
     feet: 'Feet', whoami: 'Who Am I?', anagram: 'Anagram',
     missingLetters: 'Missing Letters', skinName: 'Skin Name',
     allAbilities: 'All Abilities', zoomedIcon: 'Zoomed Icon',

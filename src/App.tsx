@@ -8,7 +8,6 @@ import { EmojiMode } from './modes/EmojiMode'
 import { SplashMode } from './modes/SplashMode'
 import { TitleMode } from './modes/TitleMode'
 import { PixelMode } from './modes/PixelMode'
-import { SilhouetteMode } from './modes/SilhouetteMode'
 import { SpellNameMode } from './modes/SpellNameMode'
 import { FeetMode } from './modes/FeetMode'
 import { WhoAmIMode } from './modes/WhoAmIMode'
@@ -33,7 +32,6 @@ const MODES: { key: GameMode; label: string; icon: string }[] = [
   { key: 'splash', label: 'Splash', icon: '🖼️' },
   { key: 'title', label: 'Title', icon: '👑' },
   { key: 'pixel', label: 'Pixel', icon: '🔲' },
-  { key: 'silhouette', label: 'Shadow', icon: '🌑' },
   { key: 'spellName', label: 'Spell', icon: '📜' },
   { key: 'feet', label: 'Feet', icon: '🦶' },
   { key: 'whoami', label: 'Who Am I?', icon: '🕵️' },
@@ -47,6 +45,28 @@ const MODES: { key: GameMode; label: string; icon: string }[] = [
   { key: 'backwardsQuote', label: 'Scramble', icon: '🔀' },
   { key: 'passive', label: 'Passive', icon: '💠' },
 ]
+
+const MODE_COMPONENT: Record<GameMode, React.FC<{ settings: AppSettings }>> = {
+  classic: ClassicMode,
+  quote: QuoteMode,
+  ability: AbilityMode,
+  emoji: EmojiMode,
+  splash: SplashMode,
+  title: TitleMode,
+  pixel: PixelMode,
+  spellName: SpellNameMode,
+  feet: FeetMode,
+  whoami: WhoAmIMode,
+  anagram: AnagramMode,
+  missingLetters: MissingLettersMode,
+  skinName: SkinNameMode,
+  allAbilities: AllAbilitiesMode,
+  zoomedIcon: ZoomedIconMode,
+  warped: WarpedMode,
+  colorShift: ColorShiftMode,
+  backwardsQuote: BackwardsQuoteMode,
+  passive: PassiveMode,
+}
 
 export default function App() {
   const [activeMode, setActiveMode] = useState<GameMode>('classic')
@@ -82,14 +102,18 @@ export default function App() {
     )
   }
 
+  const ActiveComponent = MODE_COMPONENT[activeMode]
+  const activeLabel = MODES.find(m => m.key === activeMode)?.label || ''
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-40 bg-lol-darker/95 backdrop-blur border-b border-lol-border">
         <div className="max-w-5xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-2">
             <h1 className="text-xl font-bold tracking-wide">
               <span className="text-lol-gold">LoL</span>
               <span className="text-lol-text-light">dle</span>
+              <span className="text-sm font-normal text-lol-text ml-3">{activeLabel}</span>
             </h1>
             <div className="flex items-center gap-2">
               <button
@@ -118,21 +142,22 @@ export default function App() {
             </div>
           </div>
 
-          <nav className="flex gap-1 overflow-x-auto scrollbar-thin" role="tablist">
+          <nav className="grid grid-cols-10 gap-1" role="tablist">
             {MODES.map(mode => (
               <button
                 key={mode.key}
                 onClick={() => setActiveMode(mode.key)}
                 role="tab"
                 aria-selected={activeMode === mode.key}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all
+                aria-label={mode.label}
+                title={mode.label}
+                className={`flex items-center justify-center py-1.5 rounded-md text-lg transition-all
                   ${activeMode === mode.key
-                    ? 'bg-lol-gold/20 text-lol-gold border border-lol-gold/30'
-                    : 'text-lol-text hover:text-lol-text-light hover:bg-lol-card'
+                    ? 'bg-lol-gold/20 ring-1 ring-lol-gold/40 scale-110'
+                    : 'text-lol-text hover:bg-lol-card hover:scale-105'
                   }`}
               >
-                <span>{mode.icon}</span>
-                <span>{mode.label}</span>
+                {mode.icon}
               </button>
             ))}
           </nav>
@@ -140,26 +165,7 @@ export default function App() {
       </header>
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-6">
-        {activeMode === 'classic' && <ClassicMode settings={settings} />}
-        {activeMode === 'quote' && <QuoteMode settings={settings} />}
-        {activeMode === 'ability' && <AbilityMode settings={settings} />}
-        {activeMode === 'emoji' && <EmojiMode settings={settings} />}
-        {activeMode === 'splash' && <SplashMode settings={settings} />}
-        {activeMode === 'title' && <TitleMode settings={settings} />}
-        {activeMode === 'pixel' && <PixelMode settings={settings} />}
-        {activeMode === 'silhouette' && <SilhouetteMode settings={settings} />}
-        {activeMode === 'spellName' && <SpellNameMode settings={settings} />}
-        {activeMode === 'feet' && <FeetMode settings={settings} />}
-        {activeMode === 'whoami' && <WhoAmIMode settings={settings} />}
-        {activeMode === 'anagram' && <AnagramMode settings={settings} />}
-        {activeMode === 'missingLetters' && <MissingLettersMode settings={settings} />}
-        {activeMode === 'skinName' && <SkinNameMode settings={settings} />}
-        {activeMode === 'allAbilities' && <AllAbilitiesMode settings={settings} />}
-        {activeMode === 'zoomedIcon' && <ZoomedIconMode settings={settings} />}
-        {activeMode === 'warped' && <WarpedMode settings={settings} />}
-        {activeMode === 'colorShift' && <ColorShiftMode settings={settings} />}
-        {activeMode === 'backwardsQuote' && <BackwardsQuoteMode settings={settings} />}
-        {activeMode === 'passive' && <PassiveMode settings={settings} />}
+        <ActiveComponent settings={settings} />
       </main>
 
       <footer className="border-t border-lol-border bg-lol-darker/50 py-4 px-4">
