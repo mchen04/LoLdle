@@ -1,0 +1,210 @@
+Goal: Implement a polished, playable League of Legends endless champion guessing web app inspired by
+LoLdle.
+
+Build the actual playable app, not a landing page. The first screen should be the game experience.
+Focus on user experience: fast guessing, clear feedback, readable mobile layout, satisfying motion,
+and no confusing dead ends.
+
+This is an infinite/endless game, not a daily game. Do not implement daily puzzles, daily rotations,
+daily reset timers, date-seeded answers, one-shared-answer-per-day behavior, or any UX that blocks
+continued play until another day. Every mode should support immediate randomized replay forever.
+
+Research summary
+LoLdle is a League of Legends champion guessing game with attribute-based feedback. This project
+should use that feedback style as product inspiration, but implement endless replayable modes.
+Players should be able to keep starting new rounds and identify champions through several clue formats:
+
+- Classic: guess a champion and receive color-coded feedback for champion attributes.
+- Quote: guess the champion from an in-game quote, with optional audio if the data source supports it.
+- Ability: guess the champion from one ability icon; include the ability slot as a hint or bonus.
+- Emoji: guess the champion from a short emoji clue sequence.
+- Splash: guess the champion from a heavily zoomed/cropped splash art image that zooms out after misses.
+
+Classic feedback attributes should include:
+- Champion
+- Gender
+- Position(s)
+- Species
+- Resource
+- Range type
+- Region(s)
+- Release year
+
+Classic feedback rules:
+- Green: exact match.
+- Orange/yellow: partial overlap for multi-value attributes.
+- Red/dark: no match.
+- Release year should show exact match, or an up/down indicator for whether the target is newer or older.
+
+Required design input
+Fetch this design file, read its README, and implement the relevant aspects of the design:
+https://api.anthropic.com/v1/design/h/Z1c1ax1ELM0eEnBfebC2xA?open_file=Loldle.html
+
+Implement the app surface from Loldle.html. If the repo already has a frontend stack, adapt the
+Loldle.html design into that stack instead of forcing a standalone HTML file. If the design URL is
+unavailable because of auth or network access, document that blocker and proceed only if an equivalent
+local design file exists in the repo.
+
+Treat the design as the UI direction, not as optional inspiration. Preserve the parts that improve
+the LoLdle user experience, and adapt only where the real app requirements demand it.
+
+Data-source gate
+Before building the game data layer, find one data source that can provide everything needed, then
+verify it works end to end. The data source must be checked for:
+
+- full champion roster and canonical names
+- champion square icons
+- splash art and skin splash art
+- ability icons and ability slot labels
+- champion metadata for Classic mode: gender, positions, species, resource, range type, regions, release year
+- quote text and, if possible, quote audio
+- enough emoji clue data to power Emoji mode
+
+Do not assume the source is complete. Write a short note in the repo explaining exactly what endpoint,
+package, or repository was tested, what fields were verified, and what gaps remain. If no true single
+source has all required data, create one normalized local dataset generated from the best primary
+source plus the smallest possible curated supplement, and document that decision. The supplement must
+be explicit, reproducible, and small enough to audit.
+
+The implementation must actually ingest data from the chosen source(s), not hand-wave the data layer.
+Build repeatable import/update scripts that fetch from the verified source, normalize the records, and
+load them into Supabase and/or generated static JSON used by the app.
+
+Likely sources to evaluate first:
+- Riot Data Dragon for official champion data and static assets:
+  https://developer.riotgames.com/docs/lol#data-dragon
+- CommunityDragon for deeper extracted client assets:
+  https://communitydragon.org/documentation/assets
+- Meraki Analytics static data for champion metadata if Data Dragon is missing LoLdle-specific fields:
+  https://github.com/meraki-analytics/lolstaticdata
+
+Core UI
+Build a single-page app with a persistent shell:
+
+- Header with League champion-guessing game branding, five game-mode tabs, stats, settings, language,
+  and support links.
+- Main game stage that swaps between Classic, Quote, Ability, Emoji, and Splash without losing state.
+- Champion search/autocomplete with champion portraits, keyboard selection, click-to-guess, and clear
+  empty/error states.
+- Sticky or easy-to-reach input on mobile so long guess histories remain usable.
+- Footer with Riot legal disclaimer and project links.
+
+Game-mode requirements
+Classic:
+- Render the attribute grid with column headers.
+- New guesses should appear at the top.
+- Animate submitted rows with a staggered tile reveal.
+- Support "scale to fit" so mobile users can see the grid without painful horizontal scrolling.
+- Long values must wrap, stack, or shrink cleanly without overflowing.
+
+Quote:
+- Show a prominent quote card.
+- If audio is available, include a compact play/pause control.
+- After misses, optionally reveal extra hints without making the answer obvious too early.
+
+Ability:
+- Show a large ability icon.
+- Include a hint action that reveals Passive/Q/W/E/R.
+- After success, show champion name and ability name.
+
+Emoji:
+- Show a centered row of large emoji clues.
+- Keep this mode simple, legible, and quick to play.
+
+Splash:
+- Show a square responsive crop of splash art.
+- Start heavily zoomed in.
+- Smoothly zoom out after each wrong guess.
+- After success, ask the bonus skin-name question if skin data is available.
+
+End states and retention
+- On a correct guess, replace the search with a victory state for that mode.
+- Show the answer, artwork, number of guesses, and a clear "next round" action.
+- Include a spoiler-free share result button for each completed round.
+- Save current round progress, guesses, streaks, best scores, aggregate stats, and settings in localStorage.
+- Support endless replay: each mode can start a fresh randomized round immediately after completion.
+- Do not build the product around daily-only content, daily reset timers, date-seeded answers, shared
+  daily targets, or any "come back tomorrow" behavior.
+
+Supabase and persistence
+- Use Supabase for the app database layer.
+- Use the existing Supabase project:
+  https://supabase.com/dashboard/project/wujckwchvygpzlltfmbm
+  Project ref: wujckwchvygpzlltfmbm
+- This repo has been linked with Supabase CLI to project ref wujckwchvygpzlltfmbm. Continue using the
+  Supabase CLI for database access and changes.
+- Do not create a new Supabase project unless explicitly requested. Within the linked project, create
+  only the schemas, tables, migrations, seed data, storage buckets, policies, indexes, functions, and
+  local configuration that are needed for this app.
+- Use the Supabase CLI to access, inspect, migrate, seed, reset, and verify the database. Prefer
+  reproducible CLI commands and checked-in migrations over manual dashboard-only changes.
+- Run linked Supabase database commands serially, not in parallel, because the CLI uses temporary
+  login roles and parallel linked DB queries can trip Supabase auth rate/circuit-breaker behavior.
+- Store normalized champion/game data in Supabase. Store generated round pools, aggregate stats,
+  server-backed user progress, or anonymous player records in Supabase only where they are actually
+  used by the implemented app.
+- Keep localStorage as a fast client-side cache for round progress and settings, but design it to
+  sync cleanly with Supabase if a user/session identity is available.
+- Include schema/migration files or setup instructions so the database can be recreated reliably.
+- Add seed/import scripts for the verified LoL dataset.
+- If automated refresh jobs are implemented, manage them reproducibly through Supabase-compatible
+  migrations/configuration. If scheduled jobs are not necessary for the chosen static LoL data source,
+  document the manual refresh command instead.
+- Document how data refresh runs, how to trigger it manually from the CLI, and how to verify that the
+  latest refresh succeeded.
+- Make database reads resilient, cacheable, and cheap; do not block basic play if only cached/static
+  data is needed.
+
+Settings and accessibility
+- Colorblind mode.
+- Scale-to-fit Classic grid.
+- Click-to-guess toggle.
+- Hide champion names/hard-mode toggle if it fits the design.
+- Keyboard accessible tabs, autocomplete, modals, and buttons.
+- Responsive desktop and mobile layouts.
+- Text must not overlap, clip, or become unreadable.
+
+Technical expectations
+- Use the existing project stack if one exists. If the repo is empty, choose a modern, simple frontend
+  stack suitable for a static web app.
+- Prefer static/generated JSON over a backend unless the data-source verification proves a backend is
+  necessary.
+- Keep Riot/API fetches cacheable and resilient; do not require a private Riot API key for normal play
+  unless there is no public alternative.
+- Structure game logic separately from rendering so comparisons, round selection, and persistence are
+  testable.
+- Avoid copying LoLdle branding or assets beyond what is legally usable from Riot-provided public
+  game assets. Include a Riot "Legal Jibber Jabber" style disclaimer.
+
+Additional game modes
+- After the five required modes are complete and verified, add extra game modes only if they are
+  genuinely fun, low-risk, and possible with the verified data source. Keep them data-driven and
+  replayable.
+- Good candidates include skin guessing, title guessing, region/lore guessing, ability-name guessing,
+  passive-only guessing, silhouette/cropped-icon guessing, release-year higher/lower, or stat/role
+  comparison rounds.
+- Do not add filler modes. Extra modes should have clear clues, fair answers, and a satisfying success
+  state.
+
+Acceptance criteria
+- All five core modes are playable from the first screen, with any additional high-quality modes added
+  if the data supports them.
+- Champion autocomplete works with real champion data.
+- Classic mode gives correct attribute feedback, including partial matches and release-year direction.
+- Splash zoom-out, Classic tile reveal, and victory states are implemented.
+- Progress survives refresh.
+- Endless replay works: after solving a round, the user can immediately start another round in that mode.
+- No daily-game mechanics exist: no daily target, no daily reset timer, no date-seeded answer lock, and
+  no play limit tied to the current date.
+- Mobile layout is usable without broken text, overlapping UI, or hidden core controls.
+- The design file's relevant visual and interaction direction is reflected in the implemented app surface.
+- The data-source verification note exists and proves the chosen source/dataset covers the app.
+- Supabase project wujckwchvygpzlltfmbm is used through the Supabase CLI, with reproducible migrations,
+  seed/import scripts, and refresh workflow documented.
+- Run the app locally and verify the UI manually in a browser.
+
+Final quality gate
+After implementation and manual verification, run the criticality-loop skill with convergence 2 and be
+aggressive. If that skill is unavailable, run an equivalent strict review and document the fallback. The
+review must explicitly include the Supabase/database schema, migrations, seed/import scripts, refresh
+workflow, data integrity, security rules/RLS policies if used, and the app's database access paths.

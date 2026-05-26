@@ -1,0 +1,2947 @@
+{
+  "Aatrox": {
+    "gender": "Male",
+    "species": [
+      "Darkin"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Melee",
+    "resource": "Blood Well",
+    "quote": "I am not your enemy. I am THE enemy.",
+    "emojiClue": "⚔️😈🩸🗡️"
+  },
+  "Ahri": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "My magic? It's... complicated.",
+    "emojiClue": "🦊💋✨🌀"
+  },
+  "Akali": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid",
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Energy",
+    "quote": "They don't call it murder if the target deserves it.",
+    "emojiClue": "🥷💨🌫️🗡️"
+  },
+  "Akshan": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2021,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Being good at being bad.",
+    "emojiClue": "🪝🔫😎🦸"
+  },
+  "Alistar": {
+    "gender": "Male",
+    "species": [
+      "Minotaur"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "You can't milk those.",
+    "emojiClue": "🐂💪🛡️🏟️"
+  },
+  "Ambessa": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2024,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Victory belongs to those who take it.",
+    "emojiClue": "⚔️👑🔥🦁"
+  },
+  "Amumu": {
+    "gender": "Male",
+    "species": [
+      "Undead"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Jungle",
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Why won't anyone be my friend?",
+    "emojiClue": "😭🧟🎀⚰️"
+  },
+  "Anivia": {
+    "gender": "Female",
+    "species": [
+      "Celestial"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I am eternal, born of endless winter.",
+    "emojiClue": "🐦❄️🌨️♾️"
+  },
+  "Annie": {
+    "gender": "Female",
+    "species": [
+      "Human",
+      "Magically Altered"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Tibbers, don't you eat that!",
+    "emojiClue": "🔥🐻👧✨"
+  },
+  "Aphelios": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2019,
+    "rangeType": "Ranged",
+    "resource": "Moonlight",
+    "quote": "...",
+    "emojiClue": "🌙🔫🌸🤫"
+  },
+  "Ashe": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Faster than an arrow, colder than ice.",
+    "emojiClue": "🏹❄️👑🦅"
+  },
+  "AurelionSol": {
+    "gender": "Male",
+    "species": [
+      "Celestial"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I am not something you walk away from.",
+    "emojiClue": "🐉⭐🌌✨"
+  },
+  "Aurora": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top",
+      "Mid"
+    ],
+    "releaseYear": 2024,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The spirits show me all that is, and all that could be.",
+    "emojiClue": "🌌🐰✨🔮"
+  },
+  "Azir": {
+    "gender": "Male",
+    "species": [
+      "Ascended"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Shurima! Your emperor has returned!",
+    "emojiClue": "🏜️👑🦅⚱️"
+  },
+  "Bard": {
+    "gender": "Other",
+    "species": [
+      "Celestial"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2015,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "...",
+    "emojiClue": "🎵⌚🌀🔔"
+  },
+  "BelVeth": {
+    "gender": "Female",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I am everything you left to rot.",
+    "emojiClue": "👁️🌌🐟💜"
+  },
+  "Blitzcrank": {
+    "gender": "Male",
+    "species": [
+      "Golem"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Grab first, ask questions never.",
+    "emojiClue": "🤖⚡🪝🔩"
+  },
+  "Brand": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Burn. It. All.",
+    "emojiClue": "🔥💀🌋😤"
+  },
+  "Braum": {
+    "gender": "Male",
+    "species": [
+      "Iceborn"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Nothing is stronger than a heart of ice.",
+    "emojiClue": "🛡️❄️💪😄"
+  },
+  "Briar": {
+    "gender": "Female",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2023,
+    "rangeType": "Melee",
+    "resource": "Bloodthirst",
+    "quote": "Blood! So much blood! I love it!",
+    "emojiClue": "🩸😈🔗🍖"
+  },
+  "Caitlyn": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Piltover's finest, at your service.",
+    "emojiClue": "🎩🔫🕵️🚔"
+  },
+  "Camille": {
+    "gender": "Female",
+    "species": [
+      "Human",
+      "Magically Altered"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Melee",
+    "resource": "Shield",
+    "quote": "Precision is the difference between a butcher and a surgeon.",
+    "emojiClue": "✂️🦿🕵️🔬"
+  },
+  "Cassiopeia": {
+    "gender": "Female",
+    "species": [
+      "Human",
+      "Magically Altered"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Don't look me in the eyes!",
+    "emojiClue": "🐍👀💚🏛️"
+  },
+  "Chogath": {
+    "gender": "Male",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Your world is a feast, and I... am famished.",
+    "emojiClue": "👹🌀😤🍽️"
+  },
+  "Corki": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City",
+      "Piltover"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I've been waiting for some rocket-propelled excitement!",
+    "emojiClue": "✈️🚀🐾💥"
+  },
+  "Darius": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Noxus does not kneel.",
+    "emojiClue": "🪓💀🔴⚔️"
+  },
+  "Diana": {
+    "gender": "Female",
+    "species": [
+      "Human",
+      "Aspect"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Jungle",
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I answer to the moon, not to you.",
+    "emojiClue": "🌙🌙⚔️🔵"
+  },
+  "DrMundo": {
+    "gender": "Male",
+    "species": [
+      "Human",
+      "Magically Altered"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Mundo goes where he pleases!",
+    "emojiClue": "🪓💜🏥😤"
+  },
+  "Draven": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Draaaven!",
+    "emojiClue": "🪃💪😎🎡"
+  },
+  "Ekko": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Jungle",
+      "Mid"
+    ],
+    "releaseYear": 2015,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I don't cheat death. I just bend time a little.",
+    "emojiClue": "⏰🔄🏙️⚡"
+  },
+  "Elise": {
+    "gender": "Female",
+    "species": [
+      "Human",
+      "Demon"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The spider dances, and the fly falls into her web.",
+    "emojiClue": "🕷️💅🩸🕸️"
+  },
+  "Evelynn": {
+    "gender": "Female",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Pain. Agony. My work is never done.",
+    "emojiClue": "😈💜🔪💋"
+  },
+  "Ezreal": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "It's not bragging if it's true.",
+    "emojiClue": "🗺️💙⚡🧭"
+  },
+  "Fiddlesticks": {
+    "gender": "Other",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Jungle",
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "A Harmless Scarecrow.",
+    "emojiClue": "🎃🦅😱🌾"
+  },
+  "Fiora": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "En garde!",
+    "emojiClue": "🤺⚔️🌹🏰"
+  },
+  "Fizz": {
+    "gender": "Male",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Blub blub blub.",
+    "emojiClue": "🐟🔱🌊😜"
+  },
+  "Galio": {
+    "gender": "Male",
+    "species": [
+      "Golem"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Only in death does duty end. Good thing I cannot die.",
+    "emojiClue": "🗿🛡️🦅🏰"
+  },
+  "Gangplank": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The secret of getting ahead is getting started.",
+    "emojiClue": "🏴‍☠️🍊🔫⚓"
+  },
+  "Garen": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Demacia!",
+    "emojiClue": "⚔️🛡️🏰🌟"
+  },
+  "Gnar": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Ranged",
+    "resource": "Rage",
+    "quote": "Gnar!",
+    "emojiClue": "🦴😤🧊🐾"
+  },
+  "Gragas": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Jungle",
+      "Top",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Gragas needs a drink!",
+    "emojiClue": "🍺🛢️🥊🍻"
+  },
+  "Graves": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I call her Destiny.",
+    "emojiClue": "🔫🚬🏴‍☠️💨"
+  },
+  "Gwen": {
+    "gender": "Female",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2021,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Snip snip!",
+    "emojiClue": "✂️🧵💙👗"
+  },
+  "Hecarim": {
+    "gender": "Male",
+    "species": [
+      "Undead"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Suffering is magic.",
+    "emojiClue": "🐴👻⚔️"
+  },
+  "Heimerdinger": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Mid",
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Ah, a fascinating hypothesis!",
+    "emojiClue": "🔬🤖💡"
+  },
+  "Hwei": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2023,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Art is born from the soul.",
+    "emojiClue": "🎨🖌️🌸"
+  },
+  "Illaoi": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2015,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Your god does not weep for you. Mine does not either.",
+    "emojiClue": "🐙⚓🛐"
+  },
+  "Irelia": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Top",
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "When I fight, I fight for Ionia.",
+    "emojiClue": "🗡️🌸💫"
+  },
+  "Ivern": {
+    "gender": "Male",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Jungle",
+      "Support"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Hello tree! ...Goodbye tree.",
+    "emojiClue": "🌲🌿🤝"
+  },
+  "Janna": {
+    "gender": "Female",
+    "species": [
+      "Spirit"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Let the storm approach. I am the wind.",
+    "emojiClue": "💨🌪️⛵"
+  },
+  "JarvanIV": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Jungle",
+      "Top"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "For Demacia!",
+    "emojiClue": "🛡️👑⚜️"
+  },
+  "Jax": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I've been fighting for so long... I've forgotten what I'm fighting for.",
+    "emojiClue": "🏮💪🗡️"
+  },
+  "Jayce": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Top",
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Progress is a product of will.",
+    "emojiClue": "🔨⚡🔬"
+  },
+  "Jhin": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Death is beautiful. I am the artist.",
+    "emojiClue": "🎭🌹🔫"
+  },
+  "Jinx": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Get Excited!",
+    "emojiClue": "💥🔫😜"
+  },
+  "Kaisa": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2018,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The void does not forgive. Neither do I.",
+    "emojiClue": "🔮👁️🚀"
+  },
+  "Kalista": {
+    "gender": "Female",
+    "species": [
+      "Undead"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Your oath is your bond.",
+    "emojiClue": "🗡️👻🤝"
+  },
+  "Karma": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Support",
+      "Mid",
+      "Top"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "All things exist in perfect balance.",
+    "emojiClue": "☯️🌸🔵"
+  },
+  "Karthus": {
+    "gender": "Male",
+    "species": [
+      "Undead"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Jungle",
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "In the embrace of great Nagakabouros, all things are united.",
+    "emojiClue": "💀🎵☠️"
+  },
+  "Kassadin": {
+    "gender": "Male",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The void calls to me.",
+    "emojiClue": "🌌⚡🔮"
+  },
+  "Katarina": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "None",
+    "quote": "Death is a kindness I rarely offer.",
+    "emojiClue": "🔪💃🌹"
+  },
+  "Kayle": {
+    "gender": "Female",
+    "species": [
+      "Aspect"
+    ],
+    "regions": [
+      "Targon",
+      "Demacia"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "None shall escape judgement.",
+    "emojiClue": "⚖️👼🔥"
+  },
+  "Kayn": {
+    "gender": "Male",
+    "species": [
+      "Darkin",
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2017,
+    "rangeType": "Melee",
+    "resource": "None",
+    "quote": "I will become the last shadow.",
+    "emojiClue": "🌑🔱⚔️"
+  },
+  "Kennen": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Energy",
+    "quote": "To know peace, you must weather the storm.",
+    "emojiClue": "⚡🌩️🥷"
+  },
+  "Khazix": {
+    "gender": "Male",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Isolation is weakness. Adaptation is strength.",
+    "emojiClue": "👁️🪲🌿"
+  },
+  "Kindred": {
+    "gender": "Other",
+    "species": [
+      "Spirit"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2015,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "All things die... even death.",
+    "emojiClue": "🐑🐺🏹"
+  },
+  "Kled": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Melee",
+    "resource": "None",
+    "quote": "Get off my land!",
+    "emojiClue": "🦎🤠⚔️"
+  },
+  "KogMaw": {
+    "gender": "Male",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Ooh, tasty!",
+    "emojiClue": "👾🫧🍬"
+  },
+  "KSante": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I don't avoid danger. I master it.",
+    "emojiClue": "🦁🛡️🌍"
+  },
+  "LeBlanc": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Careful... I'm not the only one wearing my face.",
+    "emojiClue": "🎭🪄🕊️"
+  },
+  "LeeSin": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Energy",
+    "quote": "I must be the master of my own fate.",
+    "emojiClue": "🥋🐉🔥"
+  },
+  "Leona": {
+    "gender": "Female",
+    "species": [
+      "Aspect"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The sun is my judge. Its light, my verdict.",
+    "emojiClue": "☀️🛡️⚔️"
+  },
+  "Lillia": {
+    "gender": "Female",
+    "species": [
+      "Spirit"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Don't worry, I'll try not to be too loud... or visible... or real.",
+    "emojiClue": "🌺🦌💤"
+  },
+  "Lissandra": {
+    "gender": "Female",
+    "species": [
+      "Iceborn"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "All truths are cold. Final truths are coldest of all.",
+    "emojiClue": "🧊👁️❄️"
+  },
+  "Lucian": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Bot",
+      "Mid"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I will purge this world of evil... one bullet at a time.",
+    "emojiClue": "🔫💫⚡"
+  },
+  "Lulu": {
+    "gender": "Female",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City"
+    ],
+    "positions": [
+      "Support",
+      "Top"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Whimsy! Whimsy for everyone!",
+    "emojiClue": "🧚🌈🐢"
+  },
+  "Lux": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Demacia is a beacon of light, and I will help it shine.",
+    "emojiClue": "✨💫🔮"
+  },
+  "Malphite": {
+    "gender": "Male",
+    "species": [
+      "Golem"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Top",
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Unstoppable.",
+    "emojiClue": "🪨💥🌋"
+  },
+  "Malzahar": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The void opens wide. Its voice calls to me.",
+    "emojiClue": "👁️🌌🕳️"
+  },
+  "Maokai": {
+    "gender": "Male",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Support",
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "This place is unnatural... and so am I.",
+    "emojiClue": "🌳💀🌿"
+  },
+  "MasterYi": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "A true master is an eternal student.",
+    "emojiClue": "⚔️👁️🥷"
+  },
+  "Milio": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2023,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "My fuemigo will warm your heart!",
+    "emojiClue": "🔥🌟🤲"
+  },
+  "MissFortune": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Guns don't kill people... I do.",
+    "emojiClue": "🔴🔫⚓"
+  },
+  "Mordekaiser": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Shield",
+    "quote": "Death is a prison. I am the jailer.",
+    "emojiClue": "💀🔒👑"
+  },
+  "Morgana": {
+    "gender": "Female",
+    "species": [
+      "Aspect"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "We'll bring them pain.",
+    "emojiClue": "😈⛓️💜"
+  },
+  "Naafiri": {
+    "gender": "Female",
+    "species": [
+      "Darkin"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2023,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "We are many. We are one.",
+    "emojiClue": "🐺🗡️🌑"
+  },
+  "Nami": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The tide has turned.",
+    "emojiClue": "🧜‍♀️🌊✨"
+  },
+  "Nasus": {
+    "gender": "Male",
+    "species": [
+      "Ascended"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I am eternal.",
+    "emojiClue": "🐕‍🦺⏳🔱"
+  },
+  "Nautilus": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Support",
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "None shall be spared.",
+    "emojiClue": "⚓🤿🌊"
+  },
+  "Neeko": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2018,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Neeko is many things!",
+    "emojiClue": "🦎🌸🎭"
+  },
+  "Nidalee": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The wild calls to me.",
+    "emojiClue": "🐆🪃🌿"
+  },
+  "Nilah": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Joy is a weapon.",
+    "emojiClue": "💧😄⚔️"
+  },
+  "Nocturne": {
+    "gender": "Other",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Embrace the darkness.",
+    "emojiClue": "🌑😱🗡️"
+  },
+  "Nunu": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Willump says hi!",
+    "emojiClue": "🧒❄️🐻"
+  },
+  "Olaf": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I will not die a straw death!",
+    "emojiClue": "🪓⚡🔵"
+  },
+  "Orianna": {
+    "gender": "Female",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Shall we dance?",
+    "emojiClue": "⚙️🎀⚽"
+  },
+  "Ornn": {
+    "gender": "Male",
+    "species": [
+      "God-Warrior"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2017,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I forge. I endure.",
+    "emojiClue": "🔨🐏🔥"
+  },
+  "Pantheon": {
+    "gender": "Male",
+    "species": [
+      "Aspect"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Top",
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Courage is a choice.",
+    "emojiClue": "🛡️🏛️🌟"
+  },
+  "Poppy": {
+    "gender": "Female",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Top",
+      "Jungle",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I'm looking for a hero.",
+    "emojiClue": "🔨🌸🛡️"
+  },
+  "Pyke": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Bilgewater"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2018,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Everyone goes in the list.",
+    "emojiClue": "🔱🌊💀"
+  },
+  "Qiyana": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2019,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I am the greatest.",
+    "emojiClue": "👑🌿⚔️"
+  },
+  "Quinn": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Top",
+      "Bot"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Valor and I are one.",
+    "emojiClue": "🦅🏹💙"
+  },
+  "Rakan": {
+    "gender": "Male",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2017,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "My lady calls!",
+    "emojiClue": "🐦‍⬛💃✨"
+  },
+  "Rammus": {
+    "gender": "Male",
+    "species": [
+      "Magically Altered"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Ok.",
+    "emojiClue": "🦔👍🏜️"
+  },
+  "RekSai": {
+    "gender": "Female",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Melee",
+    "resource": "Fury",
+    "quote": "Survive.",
+    "emojiClue": "🕳️👾🦷"
+  },
+  "RenataGlasc": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Every debt will be repaid.",
+    "emojiClue": "💊💸🧪"
+  },
+  "Renekton": {
+    "gender": "Male",
+    "species": [
+      "Ascended"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Fury",
+    "quote": "Victory is mine to decide.",
+    "emojiClue": "🐊⚔️🔴"
+  },
+  "Rengar": {
+    "gender": "Male",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Ferocity",
+    "quote": "The hunt is everything.",
+    "emojiClue": "🦁🗡️🌿"
+  },
+  "Riven": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "My sins aren't forgotten, just… postponed.",
+    "emojiClue": "🗡️💔🌿"
+  },
+  "Rumble": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Let me show you what this baby can do!",
+    "emojiClue": "🤖🔥🛠️"
+  },
+  "Ryze": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Mid",
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Magic is power. And it must be controlled.",
+    "emojiClue": "📜🔵⚡"
+  },
+  "Samira": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Ranged",
+    "resource": "Manaless",
+    "quote": "Style counts.",
+    "emojiClue": "💃🔫🌹"
+  },
+  "Sejuani": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Bow before Winter's Claw!",
+    "emojiClue": "🐗❄️⛓️"
+  },
+  "Senna": {
+    "gender": "Female",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Support",
+      "Bot"
+    ],
+    "releaseYear": 2019,
+    "rangeType": "Ranged",
+    "resource": "Manaless",
+    "quote": "We carry this together.",
+    "emojiClue": "🌑🔫💛"
+  },
+  "Seraphine": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Piltover"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Every voice deserves to be heard.",
+    "emojiClue": "🎤🎵💖"
+  },
+  "Sett": {
+    "gender": "Male",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Top",
+      "Support"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Melee",
+    "resource": "Grit",
+    "quote": "You want a piece of the boss?",
+    "emojiClue": "👊🐺💪"
+  },
+  "Shaco": {
+    "gender": "Male",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Why so serious?",
+    "emojiClue": "🃏🔪😈"
+  },
+  "Shen": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Top",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Energy",
+    "quote": "A demonstration of our principles.",
+    "emojiClue": "⚖️🥷🌙"
+  },
+  "Shyvana": {
+    "gender": "Female",
+    "species": [
+      "Dragon"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Fury",
+    "quote": "Do not mistake my silence for weakness.",
+    "emojiClue": "🐉🔥👑"
+  },
+  "Singed": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Have you ever considered… not chasing me?",
+    "emojiClue": "🧪☠️💨"
+  },
+  "Sion": {
+    "gender": "Male",
+    "species": [
+      "Undead"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I LIVE AGAIN!",
+    "emojiClue": "💀⚔️🏔️"
+  },
+  "Sivir": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Make way for the Battle Mistress.",
+    "emojiClue": "🪃💰🏜️"
+  },
+  "Skarner": {
+    "gender": "Male",
+    "species": [
+      "Brackern"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The crystal calls to me.",
+    "emojiClue": "🦂💎🌵"
+  },
+  "Smolder": {
+    "gender": "Male",
+    "species": [
+      "Dragon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2024,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I'm going to be the strongest dragon ever!",
+    "emojiClue": "🐲🔥✨"
+  },
+  "Sona": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The music never dies.",
+    "emojiClue": "🎹🎵💙"
+  },
+  "Soraka": {
+    "gender": "Female",
+    "species": [
+      "Celestial"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Let me guide you.",
+    "emojiClue": "⭐🌙💚"
+  },
+  "Swain": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Victory is made of iron will.",
+    "emojiClue": "🦅🔴👁️"
+  },
+  "Sylas": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Mid",
+      "Jungle"
+    ],
+    "releaseYear": 2019,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "They locked me away because of what I am. Now I'll tear their world apart.",
+    "emojiClue": "⛓️🔥✊"
+  },
+  "Syndra": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "My potential is limitless!",
+    "emojiClue": "🔮💜🌑"
+  },
+  "TahmKench": {
+    "gender": "Male",
+    "species": [
+      "Demon"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Support",
+      "Top"
+    ],
+    "releaseYear": 2015,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Every man's got a price. What's yours?",
+    "emojiClue": "🐸🎩😈"
+  },
+  "Taliyah": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Jungle",
+      "Mid"
+    ],
+    "releaseYear": 2016,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Stones don't lie.",
+    "emojiClue": "🪨🌊👧"
+  },
+  "Talon": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Mid",
+      "Jungle"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Death is the only truth.",
+    "emojiClue": "🗡️🌑🩸"
+  },
+  "Taric": {
+    "gender": "Male",
+    "species": [
+      "Celestial",
+      "Human"
+    ],
+    "regions": [
+      "Targon",
+      "Demacia"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "Gems are truly outrageous.",
+    "emojiClue": "💎🛡️✨"
+  },
+  "Teemo": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Captain Teemo on duty!",
+    "emojiClue": "🍄🔍😈"
+  },
+  "Thresh": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Your soul will make a fine addition to my collection.",
+    "emojiClue": "⛓️🏮👻"
+  },
+  "Tristana": {
+    "gender": "Female",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "To the battle!",
+    "emojiClue": "🔫💥🐹"
+  },
+  "Trundle": {
+    "gender": "Male",
+    "species": [
+      "Troll"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "King of the Trolls!",
+    "emojiClue": "🧊🪓👑"
+  },
+  "Tryndamere": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Fury",
+    "quote": "By my blade!",
+    "emojiClue": "⚔️😡🩸"
+  },
+  "TwistedFate": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Runeterra",
+      "Bilgewater"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Lady Luck is smilin'.",
+    "emojiClue": "🃏🎰⚡"
+  },
+  "Twitch": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "They never see me coming.",
+    "emojiClue": "🐀☠️🤢"
+  },
+  "Udyr": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The animal within cannot be caged.",
+    "emojiClue": "🐻🦅🌿"
+  },
+  "Urgot": {
+    "gender": "Male",
+    "species": [
+      "Human",
+      "Cyborg"
+    ],
+    "regions": [
+      "Zaun",
+      "Noxus"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Do you fear death? You will.",
+    "emojiClue": "🦾💀⚙️"
+  },
+  "Varus": {
+    "gender": "Other",
+    "species": [
+      "Darkin",
+      "Human"
+    ],
+    "regions": [
+      "Ionia",
+      "Runeterra"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Infinite hunger.",
+    "emojiClue": "🏹💉🖤"
+  },
+  "Vayne": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The shadows will hide you no longer.",
+    "emojiClue": "🏹🌙🤫"
+  },
+  "Veigar": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City",
+      "Runeterra"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Prepare yourself for oblivion! Can you do that for me?",
+    "emojiClue": "🔮😈👿"
+  },
+  "Velkoz": {
+    "gender": "Other",
+    "species": [
+      "Voidborn"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2014,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "All that exists, I must understand.",
+    "emojiClue": "👁️🔵💜"
+  },
+  "Vex": {
+    "gender": "Female",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Shadow Isles",
+      "Bandle City"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2021,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Ugh, do I have to?",
+    "emojiClue": "😑🌑🖤"
+  },
+  "Vi": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Piltover",
+      "Zaun"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "C'mon, punch something.",
+    "emojiClue": "👊🔩💢"
+  },
+  "Viego": {
+    "gender": "Male",
+    "species": [
+      "Revenant"
+    ],
+    "regions": [
+      "Shadow Isles",
+      "Camavor"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2021,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I will have her back... no matter the cost.",
+    "emojiClue": "👑🖤🗡️"
+  },
+  "Viktor": {
+    "gender": "Male",
+    "species": [
+      "Human",
+      "Cyborg"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Embrace the glorious evolution.",
+    "emojiClue": "⚙️🤖🔬"
+  },
+  "Vladimir": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Top",
+      "Mid"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Ranged",
+    "resource": "Manaless",
+    "quote": "A crimson shadow falls.",
+    "emojiClue": "🩸🌹🧛"
+  },
+  "Volibear": {
+    "gender": "Male",
+    "species": [
+      "Demigod"
+    ],
+    "regions": [
+      "Freljord"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The storm is here.",
+    "emojiClue": "⚡🐻🌩️"
+  },
+  "Warwick": {
+    "gender": "Male",
+    "species": [
+      "Mutant"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Jungle",
+      "Top"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "The city will know fear.",
+    "emojiClue": "🐺🩸🧪"
+  },
+  "Wukong": {
+    "gender": "Male",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "My legend will shake the stars!",
+    "emojiClue": "🐒👑🥢"
+  },
+  "Xayah": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2017,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "We fight, we love, we die.",
+    "emojiClue": "🪶❤️🗡️"
+  },
+  "Xerath": {
+    "gender": "Male",
+    "species": [
+      "Ascended"
+    ],
+    "regions": [
+      "Shurima"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "The chains of mortality are broken!",
+    "emojiClue": "⚡🔵💀"
+  },
+  "XinZhao": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Demacia"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2010,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I will serve with honor.",
+    "emojiClue": "🏮⚔️🔱"
+  },
+  "Yasuo": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid",
+      "Bot"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Melee",
+    "resource": "Flow",
+    "quote": "An Unforgiven.",
+    "emojiClue": "💨⚔️🌸"
+  },
+  "Yone": {
+    "gender": "Male",
+    "species": [
+      "Revenant",
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid",
+      "Top"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I know my path... and it leads through you.",
+    "emojiClue": "👺⚔️🌑"
+  },
+  "Yorick": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Shadow Isles"
+    ],
+    "positions": [
+      "Top"
+    ],
+    "releaseYear": 2011,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "One for sorrow, two for joy.",
+    "emojiClue": "⚰️💀⛏️"
+  },
+  "Yuumi": {
+    "gender": "Female",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2019,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Zoomies!",
+    "emojiClue": "🐱📖✨"
+  },
+  "Zac": {
+    "gender": "Male",
+    "species": [
+      "Mutant"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Jungle",
+      "Top"
+    ],
+    "releaseYear": 2013,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "It's Zac-time!",
+    "emojiClue": "🟢💚🧪"
+  },
+  "Zed": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Mid",
+      "Jungle"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "Death is my shadow.",
+    "emojiClue": "🌑🥷⚡"
+  },
+  "Zeri": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Bot"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Steady hands, sharp spark!",
+    "emojiClue": "⚡🔫💙"
+  },
+  "Ziggs": {
+    "gender": "Male",
+    "species": [
+      "Yordle"
+    ],
+    "regions": [
+      "Bandle City",
+      "Piltover"
+    ],
+    "positions": [
+      "Mid",
+      "Bot"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Boom goes the powder keg!",
+    "emojiClue": "💣💥🧪"
+  },
+  "Zilean": {
+    "gender": "Male",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Runeterra",
+      "Icathia"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2009,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Time waits for no one.",
+    "emojiClue": "⏰🔮🕰️"
+  },
+  "Zoe": {
+    "gender": "Female",
+    "species": [
+      "Celestial",
+      "Human"
+    ],
+    "regions": [
+      "Targon"
+    ],
+    "positions": [
+      "Mid"
+    ],
+    "releaseYear": 2017,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "I am the Aspect of Twilight!",
+    "emojiClue": "🌟💫🎭"
+  },
+  "Zyra": {
+    "gender": "Female",
+    "species": [
+      "Magicborn"
+    ],
+    "regions": [
+      "Ixtal"
+    ],
+    "positions": [
+      "Support",
+      "Mid"
+    ],
+    "releaseYear": 2012,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Let the gardens grow.",
+    "emojiClue": "🌿🌺🌱"
+  }
+}

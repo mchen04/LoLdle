@@ -1,0 +1,48 @@
+import type { Champion, ClassicGuessResult, MatchResult, YearHint } from '../types/champion'
+
+function arrayMatch(a: string[], b: string[]): MatchResult {
+  const setA = new Set(a.map(s => s.toLowerCase()))
+  const setB = new Set(b.map(s => s.toLowerCase()))
+  if (setA.size === setB.size && [...setA].every(x => setB.has(x))) return 'correct'
+  if ([...setA].some(x => setB.has(x))) return 'partial'
+  return 'incorrect'
+}
+
+function stringMatch(a: string, b: string): MatchResult {
+  return a.toLowerCase() === b.toLowerCase() ? 'correct' : 'incorrect'
+}
+
+function yearMatch(guessYear: number, targetYear: number): { result: MatchResult; hint: YearHint } {
+  if (guessYear === targetYear) return { result: 'correct', hint: 'correct' }
+  return {
+    result: 'incorrect',
+    hint: targetYear > guessYear ? 'higher' : 'lower'
+  }
+}
+
+export function evaluateClassicGuess(guess: Champion, target: Champion): ClassicGuessResult {
+  return {
+    champion: guess,
+    matches: {
+      champion: guess.id === target.id ? 'correct' : 'incorrect',
+      gender: stringMatch(guess.gender, target.gender),
+      positions: arrayMatch(guess.positions, target.positions),
+      species: arrayMatch(guess.species, target.species),
+      resource: stringMatch(guess.resource, target.resource),
+      rangeType: stringMatch(guess.rangeType, target.rangeType),
+      regions: arrayMatch(guess.regions, target.regions),
+      releaseYear: yearMatch(guess.releaseYear, target.releaseYear),
+    }
+  }
+}
+
+export function getMatchColor(result: MatchResult, colorblind: boolean): string {
+  if (result === 'correct') return colorblind ? 'bg-blue-600' : 'bg-lol-green'
+  if (result === 'partial') return colorblind ? 'bg-yellow-500' : 'bg-lol-orange'
+  return 'bg-lol-wrong'
+}
+
+export function getSplashZoom(guessCount: number): number {
+  const zooms = [6, 4.5, 3.5, 2.5, 2, 1.5, 1.2, 1]
+  return zooms[Math.min(guessCount, zooms.length - 1)]
+}

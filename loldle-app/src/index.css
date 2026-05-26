@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lol-gold: #c8aa6e;
+  --color-lol-gold-dark: #785a28;
+  --color-lol-blue: #0ac8b9;
+  --color-lol-dark: #0a0e13;
+  --color-lol-darker: #060a0f;
+  --color-lol-card: #1a1f2e;
+  --color-lol-card-hover: #242938;
+  --color-lol-border: #2a2f3e;
+  --color-lol-green: #2ecc71;
+  --color-lol-orange: #e67e22;
+  --color-lol-red: #e74c3c;
+  --color-lol-wrong: #3d3d4d;
+  --color-lol-text: #a09b8c;
+  --color-lol-text-light: #f0e6d2;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-lol-dark);
+  color: var(--color-lol-text-light);
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes tile-reveal {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 170, 110, 0.4); }
+  50% { box-shadow: 0 0 20px 5px rgba(200, 170, 110, 0.2); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+}
+
+.tile-reveal {
+  animation: tile-reveal 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: var(--color-lol-darker);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-lol-border);
+  border-radius: 3px;
+}
