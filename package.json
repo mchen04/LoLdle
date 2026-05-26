@@ -1,13 +1,15 @@
 {
-  "name": "loldle-app",
+  "name": "loldle",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fetch-data": "node scripts/fetch-champions.mjs",
+    "seed-db": "node scripts/seed-supabase.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.2",
