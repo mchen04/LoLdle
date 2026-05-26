@@ -55,7 +55,7 @@ export function FeetMode({ settings }: { settings: AppSettings }) {
                   alt="Mystery champion feet"
                   className="absolute bottom-0 left-0 w-full h-auto"
                   draggable={false}
-                  onError={() => { if (useFallback) setImgError(true); else setUseFallback(true) }}
+                  onError={() => setImgError(true)}
                 />
               ) : (
                 <img

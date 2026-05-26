@@ -16,7 +16,7 @@ export function TitleMode({ settings }: { settings: AppSettings }) {
   const hintLevel = (extras.hintLevel as number) || 0
 
   const hints: { label: string; value: string }[] = [
-    { label: 'First letter', value: target.name[0] },
+    { label: 'First letter', value: target.name[0] || '?' },
     { label: 'Region', value: target.regions.join(', ') },
     { label: 'Species', value: target.species.join(', ') },
   ]

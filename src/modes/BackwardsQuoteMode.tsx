@@ -37,12 +37,21 @@ export function BackwardsQuoteMode({ settings }: { settings: AppSettings }) {
   // Each wrong guess fixes one word into its correct position
   const fixedCount = Math.min(wrongGuesses.length, originalWords.length - 2)
 
-  const displayWords = scrambledWords.map((word, i) => {
-    if (i < fixedCount) {
-      return { text: originalWords[i], fixed: true }
-    }
-    return { text: word, fixed: false }
-  })
+  const displayWords = (() => {
+    if (fixedCount === 0) return scrambledWords.map(w => ({ text: w, fixed: false }))
+    const fixed = originalWords.slice(0, fixedCount)
+    const fixedSet = [...fixed]
+    const remaining = scrambledWords.filter(w => {
+      const idx = fixedSet.indexOf(w)
+      if (idx !== -1) { fixedSet.splice(idx, 1); return false }
+      return true
+    })
+    let ri = 0
+    return originalWords.map((w, i) => {
+      if (i < fixedCount) return { text: w, fixed: true }
+      return { text: remaining[ri++] || w, fixed: false }
+    })
+  })()
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">

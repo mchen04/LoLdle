@@ -43,12 +43,21 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
   // Each wrong guess locks one letter into its correct position
   const lockedCount = Math.min(wrongGuesses.length, revealed.length - 2)
 
-  const displayLetters = scrambled.map((letter, i) => {
-    if (i < lockedCount) {
-      return { char: revealed[i], locked: true }
-    }
-    return { char: letter, locked: false }
-  })
+  const displayLetters = (() => {
+    if (lockedCount === 0) return scrambled.map(ch => ({ char: ch, locked: false }))
+    const locked = revealed.slice(0, lockedCount)
+    const lockedSet = [...locked]
+    const remaining = scrambled.filter(ch => {
+      const idx = lockedSet.indexOf(ch)
+      if (idx !== -1) { lockedSet.splice(idx, 1); return false }
+      return true
+    })
+    let ri = 0
+    return revealed.map((ch, i) => {
+      if (i < lockedCount) return { char: ch, locked: true }
+      return { char: remaining[ri++] || ch, locked: false }
+    })
+  })()
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
