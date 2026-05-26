@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
+import { GiveUpButton } from '../components/GiveUpButton'
 import { evaluateClassicGuess, getMatchColor } from '../utils/gameLogic'
 import { getChampionById } from '../data'
 import type { ClassicGuessResult, AppSettings } from '../types/champion'
@@ -48,12 +49,7 @@ export function ClassicMode({ settings }: Props) {
             placeholder="Guess a champion..."
             hardMode={settings.hardMode}
           />
-          <button
-            onClick={giveUp}
-            className="text-xs text-lol-text/60 hover:text-lol-red transition-colors"
-          >
-            Give Up
-          </button>
+          <GiveUpButton onClick={giveUp} />
         </>
       )}
 

@@ -2,7 +2,10 @@ import { useMemo } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
+import { WrongGuesses } from '../components/WrongGuesses'
+import { GiveUpButton } from '../components/GiveUpButton'
 import { getWrongGuesses } from '../data'
+import type { AppSettings } from '../types/champion'
 
 function parseEmojis(str: string): string[] {
   const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' })
@@ -12,7 +15,7 @@ function parseEmojis(str: string): string[] {
     .slice(0, 5)
 }
 
-export function EmojiMode({ hardMode }: { hardMode?: boolean }) {
+export function EmojiMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('emoji')
 
   const emojiArray = useMemo(() => {
@@ -50,36 +53,11 @@ export function EmojiMode({ hardMode }: { hardMode?: boolean }) {
               {revealedCount} / {emojiArray.length} clues revealed
             </p>
           </div>
-
-          <ChampionSearch
-            onSelect={submitGuess}
-            usedIds={guessIds}
-            placeholder="Guess the champion..."
-            hardMode={hardMode}
-          />
-
-          <button
-            onClick={giveUp}
-            className="text-xs text-lol-text/60 hover:text-lol-red transition-colors"
-          >
-            Give Up
-          </button>
+          <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
+          <GiveUpButton onClick={giveUp} />
         </>
       )}
-
-      {wrongGuesses.length > 0 && (
-        <div className="w-full space-y-2">
-          <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
-          <div className="flex flex-wrap gap-2">
-            {wrongGuesses.map(c => (
-              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <WrongGuesses guesses={wrongGuesses} />
     </div>
   )
 }

@@ -100,10 +100,10 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-6">
         {activeMode === 'classic' && <ClassicMode settings={settings} />}
-        {activeMode === 'quote' && <QuoteMode hardMode={settings.hardMode} />}
-        {activeMode === 'ability' && <AbilityMode hardMode={settings.hardMode} />}
-        {activeMode === 'emoji' && <EmojiMode hardMode={settings.hardMode} />}
-        {activeMode === 'splash' && <SplashMode hardMode={settings.hardMode} />}
+        {activeMode === 'quote' && <QuoteMode settings={settings} />}
+        {activeMode === 'ability' && <AbilityMode settings={settings} />}
+        {activeMode === 'emoji' && <EmojiMode settings={settings} />}
+        {activeMode === 'splash' && <SplashMode settings={settings} />}
       </main>
 
       {/* Footer */}

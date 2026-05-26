@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import type { Champion, GameMode } from '../types/champion'
 import { getChampionById, getRandomChampion } from '../data'
-import { saveModeProgress, loadModeProgress, clearModeProgress, recordWin, recordGiveUp } from '../utils/storage'
+import { saveModeProgress, loadModeProgress, clearModeProgress, recordResult } from '../utils/storage'
 
 export function useGame(mode: GameMode) {
   const [target, setTarget] = useState<Champion | null>(null)
@@ -54,7 +54,7 @@ export function useGame(mode: GameMode) {
 
     if (champion.id === target.id) {
       setSolved(true)
-      recordWin(mode, newGuessIds.length)
+      recordResult(mode, 'win', newGuessIds.length)
       return true
     }
     return false
@@ -63,7 +63,7 @@ export function useGame(mode: GameMode) {
   const giveUp = useCallback(() => {
     if (solved || givenUp || !target) return
     setGivenUp(true)
-    recordGiveUp(mode, guessIds.length)
+    recordResult(mode, 'giveUp', guessIds.length)
   }, [solved, givenUp, target, mode, guessIds.length])
 
   const nextRound = useCallback(() => {

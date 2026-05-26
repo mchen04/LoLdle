@@ -1,14 +1,16 @@
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
+import { WrongGuesses } from '../components/WrongGuesses'
+import { GiveUpButton } from '../components/GiveUpButton'
 import { getWrongGuesses } from '../data'
+import type { AppSettings } from '../types/champion'
 
-export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
+export function QuoteMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, hintRevealed, submitGuess, nextRound, revealHint, giveUp } = useGame('quote')
 
   if (!target) return null
 
-  const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
 
   return (
@@ -23,7 +25,6 @@ export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
               {target.quote || 'No quote available for this champion.'}
             </blockquote>
             <div className="text-4xl mt-4 opacity-60">&rdquo;</div>
-
             {hintRevealed && guessCount >= 3 && (
               <div className="mt-4 pt-4 border-t border-lol-border">
                 <span className="text-lol-text text-sm">Hint: This champion is from </span>
@@ -31,45 +32,16 @@ export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
               </div>
             )}
           </div>
-
           {!hintRevealed && guessCount >= 3 && (
-            <button
-              onClick={revealHint}
-              className="text-sm text-lol-text hover:text-lol-gold transition-colors underline"
-            >
+            <button onClick={revealHint} className="text-sm text-lol-text hover:text-lol-gold transition-colors underline">
               Reveal hint
             </button>
           )}
-
-          <ChampionSearch
-            onSelect={submitGuess}
-            usedIds={guessIds}
-            placeholder="Who said this?"
-            hardMode={hardMode}
-          />
-
-          <button
-            onClick={giveUp}
-            className="text-xs text-lol-text/60 hover:text-lol-red transition-colors"
-          >
-            Give Up
-          </button>
+          <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Who said this?" hardMode={settings.hardMode} />
+          <GiveUpButton onClick={giveUp} />
         </>
       )}
-
-      {wrongGuesses.length > 0 && (
-        <div className="w-full space-y-2">
-          <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
-          <div className="flex flex-wrap gap-2">
-            {wrongGuesses.map(c => (
-              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <WrongGuesses guesses={getWrongGuesses(guessIds, target.id)} />
     </div>
   )
 }
