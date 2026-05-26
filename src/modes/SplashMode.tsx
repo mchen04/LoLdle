@@ -6,7 +6,7 @@ import { WrongGuesses } from '../components/WrongGuesses'
 import { GiveUpButton } from '../components/GiveUpButton'
 import { getSplashZoom } from '../utils/gameLogic'
 import { getWrongGuesses } from '../data'
-import { hashCode } from '../utils/hash'
+import { hashCode } from '../utils/gameLogic'
 import type { AppSettings } from '../types/champion'
 
 export function SplashMode({ settings }: { settings: AppSettings }) {

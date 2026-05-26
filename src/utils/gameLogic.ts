@@ -1,5 +1,13 @@
 import type { Champion, ClassicGuessResult, MatchResult, YearHint } from '../types/champion'
 
+export function hashCode(str: string): number {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0
+  }
+  return hash
+}
+
 function arrayMatch(a: string[], b: string[]): MatchResult {
   if (a.length === 0 || b.length === 0) return 'incorrect'
   const setA = new Set(a.map(s => s.toLowerCase()))

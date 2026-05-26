@@ -13,27 +13,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const MERAKI_BASE = 'https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions'
 const UNIVERSE_BASE = 'https://universe-meeps.leagueoflegends.com/v1/en_us/champions'
 
-const FACTION_MAP = {
-  'demacia': 'Demacia', 'noxus': 'Noxus', 'ionia': 'Ionia',
-  'shurima': 'Shurima', 'freljord': 'Freljord', 'zaun': 'Zaun',
-  'piltover': 'Piltover', 'shadow-isles': 'Shadow Isles', 'void': 'The Void',
-  'mount-targon': 'Targon', 'bilgewater': 'Bilgewater', 'bandle-city': 'Bandle City',
-  'ixtal': 'Ixtal', 'unaffiliated': 'Runeterra', 'camavor': 'Camavor',
-  'icathia': 'Icathia', 'blessed-isles': 'Blessed Isles',
-}
-
-const ROLE_EMOJI = { Fighter: '⚔️', Mage: '🔮', Tank: '🛡️', Assassin: '🗡️', Marksman: '🏹', Support: '💚' }
-const RACE_EMOJI = {
-  Darkin: '😈', Yordle: '🐹', Vastaya: '🦊', Void: '🌀', Celestial: '⭐',
-  Undead: '💀', Spirit: '👻', Dragon: '🐉', Human: '👤', Ascended: '☀️',
-  Golem: '🗿', Demon: '👹', 'God-Warrior': '⚡',
-}
-const REGION_EMOJI = {
-  Demacia: '⚜️', Noxus: '🔴', Ionia: '🌸', Freljord: '❄️',
-  'Shadow Isles': '👻', 'The Void': '🟣', Shurima: '🏜️',
-  Piltover: '⚙️', Zaun: '🧪', Bilgewater: '🏴‍☠️', Targon: '🏔️',
-  'Bandle City': '🍄', Ixtal: '🌿', Runeterra: '🌍',
-}
+const maps = JSON.parse(readFileSync(join(__dirname, 'lib', 'champion-maps.json'), 'utf-8'))
+const FACTION_MAP = maps.factionMap
+const ROLE_EMOJI = maps.roleEmoji
+const RACE_EMOJI = maps.raceEmoji
+const REGION_EMOJI = maps.regionEmoji
 
 async function fetchJSON(url) {
   const res = await fetch(url)

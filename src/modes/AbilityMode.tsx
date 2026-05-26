@@ -5,7 +5,7 @@ import { VictoryState } from '../components/VictoryState'
 import { WrongGuesses } from '../components/WrongGuesses'
 import { GiveUpButton } from '../components/GiveUpButton'
 import { getWrongGuesses } from '../data'
-import { hashCode } from '../utils/hash'
+import { hashCode } from '../utils/gameLogic'
 import type { AppSettings } from '../types/champion'
 
 const ROTATIONS = [90, 180, 270]

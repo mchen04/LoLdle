@@ -10,37 +10,15 @@
 //   Heuristics   → gender (pronoun detection from lore), emoji (tag-based generation)
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import {
+  FACTION_MAP, ROLE_EMOJI, RACE_EMOJI, REGION_EMOJI,
+  detectGender, generateEmoji,
+} from "../_shared/champion-maps.ts";
 
 const MERAKI_BASE =
   "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions";
 const UNIVERSE_BASE =
   "https://universe-meeps.leagueoflegends.com/v1/en_us/champions";
-
-const FACTION_MAP: Record<string, string> = {
-  demacia: "Demacia", noxus: "Noxus", ionia: "Ionia",
-  shurima: "Shurima", freljord: "Freljord", zaun: "Zaun",
-  piltover: "Piltover", "shadow-isles": "Shadow Isles", void: "The Void",
-  "mount-targon": "Targon", bilgewater: "Bilgewater", "bandle-city": "Bandle City",
-  ixtal: "Ixtal", unaffiliated: "Runeterra", camavor: "Camavor",
-  icathia: "Icathia", "blessed-isles": "Blessed Isles",
-};
-
-const ROLE_EMOJI: Record<string, string> = {
-  Fighter: "⚔️", Mage: "🔮", Tank: "🛡️", Assassin: "🗡️",
-  Marksman: "🏹", Support: "💚",
-};
-const RACE_EMOJI: Record<string, string> = {
-  Darkin: "😈", Yordle: "🐹", Vastaya: "🦊", Void: "🌀",
-  Celestial: "⭐", Undead: "💀", Spirit: "👻", Dragon: "🐉",
-  Human: "👤", Ascended: "☀️", Golem: "🗿", Demon: "👹",
-  "God-Warrior": "⚡",
-};
-const REGION_EMOJI: Record<string, string> = {
-  Demacia: "⚜️", Noxus: "🔴", Ionia: "🌸", Freljord: "❄️",
-  "Shadow Isles": "👻", "The Void": "🟣", Shurima: "🏜️",
-  Piltover: "⚙️", Zaun: "🧪", Bilgewater: "🏴‍☠️", Targon: "🏔️",
-  "Bandle City": "🍄", Ixtal: "🌿", Runeterra: "🌍",
-};
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -60,33 +38,6 @@ async function fetchOptional(url: string) {
   } catch {
     return null;
   }
-}
-
-function detectGender(loreText: string): string {
-  if (!loreText) return "Male";
-  const lower = loreText.toLowerCase();
-  const she = (lower.match(/\b(she|her|hers|herself)\b/g) || []).length;
-  const he = (lower.match(/\b(he|him|his|himself)\b/g) || []).length;
-  const they = (lower.match(/\b(they|them|their|themself)\b/g) || []).length;
-  if (they > she && they > he) return "Non-binary";
-  if (she > he) return "Female";
-  return "Male";
-}
-
-function generateEmoji(
-  roles: string[],
-  species: string[],
-  region: string
-): string {
-  const parts: string[] = [];
-  const roleEmoji = roles.map((r) => ROLE_EMOJI[r]).filter(Boolean);
-  if (roleEmoji.length) parts.push(roleEmoji[0]);
-  const specEmoji = species.map((s) => RACE_EMOJI[s]).filter(Boolean);
-  if (specEmoji.length) parts.push(specEmoji[0]);
-  const regEmoji = REGION_EMOJI[region];
-  if (regEmoji) parts.push(regEmoji);
-  if (parts.length < 3) parts.push("❓");
-  return parts.slice(0, 4).join("");
 }
 
 // deno-lint-ignore no-explicit-any
