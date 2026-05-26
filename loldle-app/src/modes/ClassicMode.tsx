@@ -26,10 +26,10 @@ export function ClassicMode({ settings }: Props) {
 
   const guessResults: ClassicGuessResult[] = useMemo(() => {
     if (!target) return []
-    return guessIds
-      .map(id => getChampionById(id))
-      .filter(Boolean)
-      .map(guess => evaluateClassicGuess(guess!, target))
+    return guessIds.flatMap(id => {
+      const guess = getChampionById(id)
+      return guess ? [evaluateClassicGuess(guess, target)] : []
+    })
   }, [guessIds, target])
 
   if (!target) return null

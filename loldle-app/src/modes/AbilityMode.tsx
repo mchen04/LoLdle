@@ -3,6 +3,8 @@ import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
 import { getChampionById } from '../data'
+import { hashCode } from '../utils/hash'
+import type { Champion } from '../types/champion'
 
 export function AbilityMode({ hardMode }: { hardMode?: boolean }) {
   const { target, guessIds, solved, guessCount, hintRevealed, submitGuess, nextRound, revealHint } = useGame('ability')
@@ -18,7 +20,7 @@ export function AbilityMode({ hardMode }: { hardMode?: boolean }) {
   const wrongGuesses = guessIds
     .filter(id => id !== target.id)
     .map(id => getChampionById(id))
-    .filter(Boolean)
+    .filter((c): c is Champion => c !== undefined)
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
@@ -35,16 +37,14 @@ export function AbilityMode({ hardMode }: { hardMode?: boolean }) {
       ) : (
         <>
           <div className="flex flex-col items-center gap-4">
-            <div className="relative">
-              <img
-                src={randomAbility.icon}
-                alt="Mystery ability"
-                className="w-28 h-28 rounded-xl border-2 border-lol-border shadow-lg"
-                onError={e => {
-                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><rect fill="%231a1f2e" width="112" height="112" rx="12"/><text x="56" y="62" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
-                }}
-              />
-            </div>
+            <img
+              src={randomAbility.icon}
+              alt="Mystery ability"
+              className="w-28 h-28 rounded-xl border-2 border-lol-border shadow-lg"
+              onError={e => {
+                (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><rect fill="%231a1f2e" width="112" height="112" rx="12"/><text x="56" y="62" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
+              }}
+            />
 
             <p className="text-lol-text text-sm">Which champion has this ability?</p>
 
@@ -76,9 +76,9 @@ export function AbilityMode({ hardMode }: { hardMode?: boolean }) {
           <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
           <div className="flex flex-wrap gap-2">
             {wrongGuesses.map(c => (
-              <div key={c!.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c!.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c!.name}</span>
+              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
+                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
+                <span className="text-sm text-lol-text-light">{c.name}</span>
               </div>
             ))}
           </div>
@@ -86,12 +86,4 @@ export function AbilityMode({ hardMode }: { hardMode?: boolean }) {
       )}
     </div>
   )
-}
-
-function hashCode(str: string): number {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0
-  }
-  return hash
 }

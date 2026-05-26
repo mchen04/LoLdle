@@ -4,6 +4,8 @@ import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
 import { getSplashZoom } from '../utils/gameLogic'
 import { getChampionById } from '../data'
+import { hashCode } from '../utils/hash'
+import type { Champion } from '../types/champion'
 
 export function SplashMode({ hardMode }: { hardMode?: boolean }) {
   const { target, guessIds, solved, guessCount, submitGuess, nextRound } = useGame('splash')
@@ -23,7 +25,7 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
   const wrongGuesses = guessIds
     .filter(id => id !== target?.id)
     .map(id => getChampionById(id))
-    .filter(Boolean)
+    .filter((c): c is Champion => c !== undefined)
 
   if (!target) return null
 
@@ -59,7 +61,7 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
                 </>
               ) : (
                 <p className="text-sm">
-                  {skinGuess.toLowerCase().includes(randomSkin.name.toLowerCase().split(' ').slice(-1)[0])
+                  {skinGuess.toLowerCase().includes(randomSkin.name.toLowerCase().split(' ').at(-1) ?? '')
                     ? <span className="text-lol-green">Correct! It's {randomSkin.name}</span>
                     : <span className="text-lol-orange">It was: {randomSkin.name}</span>
                   }
@@ -104,9 +106,9 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
           <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
           <div className="flex flex-wrap gap-2">
             {wrongGuesses.map(c => (
-              <div key={c!.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c!.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c!.name}</span>
+              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
+                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
+                <span className="text-sm text-lol-text-light">{c.name}</span>
               </div>
             ))}
           </div>
@@ -114,12 +116,4 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
       )}
     </div>
   )
-}
-
-function hashCode(str: string): number {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0
-  }
-  return hash
 }

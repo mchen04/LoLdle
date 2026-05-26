@@ -2,6 +2,7 @@ import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
 import { getChampionById } from '../data'
+import type { Champion } from '../types/champion'
 
 export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
   const { target, guessIds, solved, guessCount, hintRevealed, submitGuess, nextRound, revealHint } = useGame('quote')
@@ -11,7 +12,7 @@ export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
   const wrongGuesses = guessIds
     .filter(id => id !== target.id)
     .map(id => getChampionById(id))
-    .filter(Boolean)
+    .filter((c): c is Champion => c !== undefined)
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
@@ -57,9 +58,9 @@ export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
           <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
           <div className="flex flex-wrap gap-2">
             {wrongGuesses.map(c => (
-              <div key={c!.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c!.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c!.name}</span>
+              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
+                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
+                <span className="text-sm text-lol-text-light">{c.name}</span>
               </div>
             ))}
           </div>

@@ -26,8 +26,10 @@ export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion
   return pool[Math.floor(Math.random() * pool.length)]
 }
 
+const MAX_SEARCH_RESULTS = 8
+
 export function searchChampions(query: string): Champion[] {
   if (!query) return []
   const q = query.toLowerCase()
-  return champions.filter(c => c.name.toLowerCase().includes(q)).slice(0, 8)
+  return champions.filter(c => c.name.toLowerCase().includes(q)).slice(0, MAX_SEARCH_RESULTS)
 }
