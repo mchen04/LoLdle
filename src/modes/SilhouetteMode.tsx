@@ -44,7 +44,9 @@ export function SilhouetteMode({ settings }: { settings: AppSettings }) {
                 style={{ filter }}
                 draggable={false}
                 onError={e => {
-                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="288" height="176"><rect fill="%231a1f2e" width="288" height="176" rx="12"/><text x="144" y="94" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
+                  const el = e.target as HTMLImageElement
+                  el.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="288" height="176"><rect fill="%231a1f2e" width="288" height="176" rx="12"/><text x="144" y="94" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
+                  el.style.filter = 'none'
                 }}
               />
               <div className="absolute bottom-2 right-2 bg-black/60 px-2 py-0.5 rounded text-[10px] text-lol-text">

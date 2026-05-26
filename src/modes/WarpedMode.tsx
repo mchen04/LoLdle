@@ -48,7 +48,9 @@ export function WarpedMode({ settings }: { settings: AppSettings }) {
                 className="w-full h-44 object-cover rounded-lg transition-all duration-700"
                 style={{ transform: stage.transform, filter: stage.filter }}
                 draggable={false}
-                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                onError={e => {
+                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="288" height="176"><rect fill="%231a1f2e" width="288" height="176" rx="12"/><text x="144" y="94" text-anchor="middle" fill="%23a09b8c" font-size="16">?</text></svg>'
+                }}
               />
               <div className="absolute bottom-1 right-1 bg-black/60 px-2 py-0.5 rounded text-[10px] text-lol-text">
                 {stage.label}

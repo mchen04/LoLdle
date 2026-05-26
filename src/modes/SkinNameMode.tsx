@@ -25,6 +25,7 @@ export function SkinNameMode({ settings }: { settings: AppSettings }) {
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const skinLine = stripChampionName(randomSkin.name, target.name)
+  const nameWasStripped = skinLine !== randomSkin.name
   const splashRevealed = !!extras.splashRevealed
 
   return (
@@ -44,7 +45,7 @@ export function SkinNameMode({ settings }: { settings: AppSettings }) {
               {skinLine || randomSkin.name}
             </p>
             <p className="text-lol-text text-xs mt-2 italic">
-              {skinLine ? '(champion name removed)' : '(skin name is the champion name)'}
+              {nameWasStripped ? '(champion name removed)' : ''}
             </p>
 
             {splashRevealed && (
@@ -54,7 +55,9 @@ export function SkinNameMode({ settings }: { settings: AppSettings }) {
                   alt="Skin splash hint"
                   className="w-full h-32 object-cover rounded-lg border border-lol-border"
                   style={{ filter: 'blur(8px) grayscale(0.8)' }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  onError={e => {
+                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="128"><rect fill="%231a1f2e" width="400" height="128" rx="8"/><text x="200" y="70" text-anchor="middle" fill="%23a09b8c" font-size="14">Image unavailable</text></svg>'
+                  }}
                 />
               </div>
             )}

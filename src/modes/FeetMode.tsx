@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
@@ -16,6 +16,12 @@ function getLoadingScreenUrl(id: string): string {
 export function FeetMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('feet')
   const [useFallback, setUseFallback] = useState(false)
+  const [imgError, setImgError] = useState(false)
+
+  useEffect(() => {
+    setUseFallback(false)
+    setImgError(false)
+  }, [target?.id])
 
   if (!target) return null
 
@@ -41,13 +47,15 @@ export function FeetMode({ settings }: { settings: AppSettings }) {
               className="w-56 overflow-hidden rounded-xl border-2 border-lol-border bg-lol-darker relative transition-all duration-700"
               style={{ height: `${containerHeight}px` }}
             >
-              {!showFullLoading || useFallback ? (
+              {imgError ? (
+                <div className="absolute inset-0 flex items-center justify-center text-lol-text text-sm">?</div>
+              ) : !showFullLoading || useFallback ? (
                 <img
                   src={feetSrc}
                   alt="Mystery champion feet"
                   className="absolute bottom-0 left-0 w-full h-auto"
                   draggable={false}
-                  onError={() => setUseFallback(true)}
+                  onError={() => { if (useFallback) setImgError(true); else setUseFallback(true) }}
                 />
               ) : (
                 <img

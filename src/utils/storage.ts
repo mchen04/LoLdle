@@ -65,8 +65,8 @@ export function saveModeStats(mode: GameMode, stats: ModeStats) {
 export function recordResult(mode: GameMode, outcome: 'win' | 'giveUp', guessCount: number) {
   const stats = loadModeStats(mode)
   stats.gamesPlayed++
-  stats.totalGuesses += guessCount
   if (outcome === 'win') {
+    stats.totalGuesses += guessCount
     stats.gamesWon++
     stats.bestScore = Math.min(stats.bestScore, guessCount)
     stats.currentStreak++
