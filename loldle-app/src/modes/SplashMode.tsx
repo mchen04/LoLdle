@@ -3,9 +3,8 @@ import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
 import { getSplashZoom } from '../utils/gameLogic'
-import { getChampionById } from '../data'
+import { getWrongGuesses } from '../data'
 import { hashCode } from '../utils/hash'
-import type { Champion } from '../types/champion'
 
 export function SplashMode({ hardMode }: { hardMode?: boolean }) {
   const { target, guessIds, solved, guessCount, submitGuess, nextRound } = useGame('splash')
@@ -22,10 +21,7 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
   const splashUrl = randomSkin?.splash || target?.splash || ''
   const zoom = getSplashZoom(guessCount)
 
-  const wrongGuesses = guessIds
-    .filter(id => id !== target?.id)
-    .map(id => getChampionById(id))
-    .filter((c): c is Champion => c !== undefined)
+  const wrongGuesses = getWrongGuesses(guessIds, target?.id ?? '')
 
   if (!target) return null
 

@@ -48,7 +48,7 @@ export function clearModeProgress(mode: GameMode) {
 }
 
 export function loadModeStats(mode: GameMode): ModeStats {
-  return safeJsonParse(localStorage.getItem(`${STORAGE_PREFIX}${mode}_stats`), { ...DEFAULT_STATS })
+  return safeJsonParse(localStorage.getItem(`${STORAGE_PREFIX}${mode}_stats`), DEFAULT_STATS)
 }
 
 export function saveModeStats(mode: GameMode, stats: ModeStats) {
@@ -67,7 +67,7 @@ export function recordWin(mode: GameMode, guessCount: number) {
 }
 
 export function loadSettings(): AppSettings {
-  return safeJsonParse(localStorage.getItem(`${STORAGE_PREFIX}settings`), { ...DEFAULT_SETTINGS })
+  return safeJsonParse(localStorage.getItem(`${STORAGE_PREFIX}settings`), DEFAULT_SETTINGS)
 }
 
 export function saveSettings(settings: AppSettings) {

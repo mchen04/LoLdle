@@ -11,20 +11,19 @@ export function useGame(mode: GameMode) {
 
   useEffect(() => {
     const saved = loadModeProgress(mode)
-    if (saved) {
-      const champion = getChampionById(saved.targetId)
-      if (champion) {
-        setTarget(champion)
-        setGuessIds(saved.guessIds)
-        setSolved(saved.solved)
-        setHintRevealed(saved.hintRevealed || false)
-        return
-      }
+    const champion = saved ? getChampionById(saved.targetId) : null
+
+    if (saved && champion) {
+      setTarget(champion)
+      setGuessIds(saved.guessIds)
+      setSolved(saved.solved)
+      setHintRevealed(saved.hintRevealed ?? false)
+    } else {
+      setTarget(getRandomChampion(undefined, mode))
+      setGuessIds([])
+      setSolved(false)
+      setHintRevealed(false)
     }
-    setTarget(getRandomChampion(undefined, mode))
-    setGuessIds([])
-    setSolved(false)
-    setHintRevealed(false)
   }, [mode])
 
   useEffect(() => {

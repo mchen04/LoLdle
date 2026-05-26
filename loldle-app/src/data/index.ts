@@ -33,3 +33,10 @@ export function searchChampions(query: string): Champion[] {
   const q = query.toLowerCase()
   return champions.filter(c => c.name.toLowerCase().includes(q)).slice(0, MAX_SEARCH_RESULTS)
 }
+
+export function getWrongGuesses(guessIds: string[], targetId: string): Champion[] {
+  return guessIds
+    .filter(id => id !== targetId)
+    .map(id => getChampionById(id))
+    .filter((c): c is Champion => c !== undefined)
+}

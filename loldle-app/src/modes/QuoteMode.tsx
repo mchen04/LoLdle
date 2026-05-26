@@ -1,18 +1,14 @@
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
-import { getChampionById } from '../data'
-import type { Champion } from '../types/champion'
+import { getWrongGuesses } from '../data'
 
 export function QuoteMode({ hardMode }: { hardMode?: boolean }) {
   const { target, guessIds, solved, guessCount, hintRevealed, submitGuess, nextRound, revealHint } = useGame('quote')
 
   if (!target) return null
 
-  const wrongGuesses = guessIds
-    .filter(id => id !== target.id)
-    .map(id => getChampionById(id))
-    .filter((c): c is Champion => c !== undefined)
+  const wrongGuesses = getWrongGuesses(guessIds, target.id)
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">

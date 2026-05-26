@@ -11,7 +11,7 @@ interface Props {
 export function VictoryState({ champion, mode, guessCount, onNextRound }: Props) {
   const handleShare = () => {
     const text = generateShareText(mode, guessCount, true)
-    navigator.clipboard.writeText(text).catch(() => {})
+    navigator.clipboard.writeText(text)
   }
 
   return (
