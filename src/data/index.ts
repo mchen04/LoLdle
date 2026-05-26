@@ -99,6 +99,18 @@ export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion
   if (mode === 'emoji') {
     pool = pool.filter(c => !!c.emojiClue)
   }
+  if (mode === 'spellName' || mode === 'allAbilities' || mode === 'passive') {
+    pool = pool.filter(c => c.abilities.length > 0)
+  }
+  if (mode === 'feet') {
+    pool = pool.filter(c => !!c.splash)
+  }
+  if (mode === 'skinName') {
+    pool = pool.filter(c => c.skins.length > 0)
+  }
+  if (mode === 'backwardsQuote') {
+    pool = pool.filter(c => !!c.quote && c.quote.split(' ').length >= 3)
+  }
 
   if (pool.length === 0) {
     pool = [...champions]

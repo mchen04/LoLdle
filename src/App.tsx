@@ -6,6 +6,21 @@ import { QuoteMode } from './modes/QuoteMode'
 import { AbilityMode } from './modes/AbilityMode'
 import { EmojiMode } from './modes/EmojiMode'
 import { SplashMode } from './modes/SplashMode'
+import { TitleMode } from './modes/TitleMode'
+import { PixelMode } from './modes/PixelMode'
+import { SilhouetteMode } from './modes/SilhouetteMode'
+import { SpellNameMode } from './modes/SpellNameMode'
+import { FeetMode } from './modes/FeetMode'
+import { WhoAmIMode } from './modes/WhoAmIMode'
+import { AnagramMode } from './modes/AnagramMode'
+import { MissingLettersMode } from './modes/MissingLettersMode'
+import { SkinNameMode } from './modes/SkinNameMode'
+import { AllAbilitiesMode } from './modes/AllAbilitiesMode'
+import { ZoomedIconMode } from './modes/ZoomedIconMode'
+import { WarpedMode } from './modes/WarpedMode'
+import { ColorShiftMode } from './modes/ColorShiftMode'
+import { BackwardsQuoteMode } from './modes/BackwardsQuoteMode'
+import { PassiveMode } from './modes/PassiveMode'
 import { SettingsModal } from './components/SettingsModal'
 import { StatsModal } from './components/StatsModal'
 import { loadSettings, saveSettings } from './utils/storage'
@@ -16,6 +31,21 @@ const MODES: { key: GameMode; label: string; icon: string }[] = [
   { key: 'ability', label: 'Ability', icon: '✨' },
   { key: 'emoji', label: 'Emoji', icon: '😀' },
   { key: 'splash', label: 'Splash', icon: '🖼️' },
+  { key: 'title', label: 'Title', icon: '👑' },
+  { key: 'pixel', label: 'Pixel', icon: '🔲' },
+  { key: 'silhouette', label: 'Shadow', icon: '🌑' },
+  { key: 'spellName', label: 'Spell', icon: '📜' },
+  { key: 'feet', label: 'Feet', icon: '🦶' },
+  { key: 'whoami', label: 'Who Am I?', icon: '🕵️' },
+  { key: 'anagram', label: 'Anagram', icon: '🔤' },
+  { key: 'missingLetters', label: 'Fill In', icon: '🔡' },
+  { key: 'skinName', label: 'Skin', icon: '🎨' },
+  { key: 'allAbilities', label: 'Full Kit', icon: '🃏' },
+  { key: 'zoomedIcon', label: 'Zoomed', icon: '🔍' },
+  { key: 'warped', label: 'Warped', icon: '🌀' },
+  { key: 'colorShift', label: 'Colors', icon: '🌈' },
+  { key: 'backwardsQuote', label: 'Scramble', icon: '🔀' },
+  { key: 'passive', label: 'Passive', icon: '💠' },
 ]
 
 export default function App() {
@@ -115,6 +145,21 @@ export default function App() {
         {activeMode === 'ability' && <AbilityMode settings={settings} />}
         {activeMode === 'emoji' && <EmojiMode settings={settings} />}
         {activeMode === 'splash' && <SplashMode settings={settings} />}
+        {activeMode === 'title' && <TitleMode settings={settings} />}
+        {activeMode === 'pixel' && <PixelMode settings={settings} />}
+        {activeMode === 'silhouette' && <SilhouetteMode settings={settings} />}
+        {activeMode === 'spellName' && <SpellNameMode settings={settings} />}
+        {activeMode === 'feet' && <FeetMode settings={settings} />}
+        {activeMode === 'whoami' && <WhoAmIMode settings={settings} />}
+        {activeMode === 'anagram' && <AnagramMode settings={settings} />}
+        {activeMode === 'missingLetters' && <MissingLettersMode settings={settings} />}
+        {activeMode === 'skinName' && <SkinNameMode settings={settings} />}
+        {activeMode === 'allAbilities' && <AllAbilitiesMode settings={settings} />}
+        {activeMode === 'zoomedIcon' && <ZoomedIconMode settings={settings} />}
+        {activeMode === 'warped' && <WarpedMode settings={settings} />}
+        {activeMode === 'colorShift' && <ColorShiftMode settings={settings} />}
+        {activeMode === 'backwardsQuote' && <BackwardsQuoteMode settings={settings} />}
+        {activeMode === 'passive' && <PassiveMode settings={settings} />}
       </main>
 
       <footer className="border-t border-lol-border bg-lol-darker/50 py-4 px-4">

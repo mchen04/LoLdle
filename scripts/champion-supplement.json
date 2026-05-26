@@ -14,7 +14,7 @@
     "rangeType": "Melee",
     "resource": "Blood Well",
     "quote": "I am not your enemy. I am THE enemy.",
-    "emojiClue": "⚔️😈🩸🗡️"
+    "emojiClue": "⚔️😈🩸🗡️🔴"
   },
   "Ahri": {
     "gender": "Female",
@@ -31,7 +31,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "My magic? It's... complicated.",
-    "emojiClue": "🦊💋✨🌀"
+    "emojiClue": "🦊💋✨🌀💙"
   },
   "Akali": {
     "gender": "Female",
@@ -49,7 +49,7 @@
     "rangeType": "Melee",
     "resource": "Energy",
     "quote": "They don't call it murder if the target deserves it.",
-    "emojiClue": "🥷💨🌫️🗡️"
+    "emojiClue": "🥷💨🌫️🗡️🌸"
   },
   "Akshan": {
     "gender": "Male",
@@ -66,7 +66,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Being good at being bad.",
-    "emojiClue": "🪝🔫😎🦸"
+    "emojiClue": "🪝🔫😎🦸🌞"
   },
   "Alistar": {
     "gender": "Male",
@@ -83,7 +83,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "You can't milk those.",
-    "emojiClue": "🐂💪🛡️🏟️"
+    "emojiClue": "🐂💪🛡️🏟️⚜️"
   },
   "Ambessa": {
     "gender": "Female",
@@ -101,7 +101,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Victory belongs to those who take it.",
-    "emojiClue": "⚔️👑🔥🦁"
+    "emojiClue": "⚔️👑🔥🦁🔴"
   },
   "Amumu": {
     "gender": "Male",
@@ -119,7 +119,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Why won't anyone be my friend?",
-    "emojiClue": "😭🧟🎀⚰️"
+    "emojiClue": "😭🧟🎀⚰️🏜️"
   },
   "Anivia": {
     "gender": "Female",
@@ -136,7 +136,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I am eternal, born of endless winter.",
-    "emojiClue": "🐦❄️🌨️♾️"
+    "emojiClue": "🐦❄️🌨️♾️🧊"
   },
   "Annie": {
     "gender": "Female",
@@ -155,7 +155,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Tibbers, don't you eat that!",
-    "emojiClue": "🔥🐻👧✨"
+    "emojiClue": "🔥🐻👧✨🧸"
   },
   "Aphelios": {
     "gender": "Male",
@@ -172,7 +172,7 @@
     "rangeType": "Ranged",
     "resource": "Moonlight",
     "quote": "...",
-    "emojiClue": "🌙🔫🌸🤫"
+    "emojiClue": "🌙🔫🌸🤫🎑"
   },
   "Ashe": {
     "gender": "Female",
@@ -189,7 +189,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Faster than an arrow, colder than ice.",
-    "emojiClue": "🏹❄️👑🦅"
+    "emojiClue": "🏹❄️👑🦅💎"
   },
   "AurelionSol": {
     "gender": "Male",
@@ -206,7 +206,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I am not something you walk away from.",
-    "emojiClue": "🐉⭐🌌✨"
+    "emojiClue": "🐉⭐🌌✨🪐"
   },
   "Aurora": {
     "gender": "Female",
@@ -224,7 +224,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The spirits show me all that is, and all that could be.",
-    "emojiClue": "🌌🐰✨🔮"
+    "emojiClue": "🌌🐰✨🔮❄️"
   },
   "Azir": {
     "gender": "Male",
@@ -241,7 +241,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Shurima! Your emperor has returned!",
-    "emojiClue": "🏜️👑🦅⚱️"
+    "emojiClue": "🏜️👑🦅⚱️☀️"
   },
   "Bard": {
     "gender": "Other",
@@ -258,7 +258,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "...",
-    "emojiClue": "🎵⌚🌀🔔"
+    "emojiClue": "🎵⌚🌀🔔✨"
   },
   "BelVeth": {
     "gender": "Female",
@@ -275,7 +275,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I am everything you left to rot.",
-    "emojiClue": "👁️🌌🐟💜"
+    "emojiClue": "👁️🌌🐟💜🦑"
   },
   "Blitzcrank": {
     "gender": "Male",
@@ -292,7 +292,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Grab first, ask questions never.",
-    "emojiClue": "🤖⚡🪝🔩"
+    "emojiClue": "🤖⚡🪝🔩⚙️"
   },
   "Brand": {
     "gender": "Male",
@@ -310,7 +310,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Burn. It. All.",
-    "emojiClue": "🔥💀🌋😤"
+    "emojiClue": "🔥💀🌋😤🧟"
   },
   "Braum": {
     "gender": "Male",
@@ -327,7 +327,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Nothing is stronger than a heart of ice.",
-    "emojiClue": "🛡️❄️💪😄"
+    "emojiClue": "🛡️❄️💪😄🧔"
   },
   "Briar": {
     "gender": "Female",
@@ -344,7 +344,7 @@
     "rangeType": "Melee",
     "resource": "Bloodthirst",
     "quote": "Blood! So much blood! I love it!",
-    "emojiClue": "🩸😈🔗🍖"
+    "emojiClue": "🩸😈🔗🍖😱"
   },
   "Caitlyn": {
     "gender": "Female",
@@ -361,7 +361,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Piltover's finest, at your service.",
-    "emojiClue": "🎩🔫🕵️🚔"
+    "emojiClue": "🎩🔫🕵️🚔⚙️"
   },
   "Camille": {
     "gender": "Female",
@@ -379,7 +379,7 @@
     "rangeType": "Melee",
     "resource": "Shield",
     "quote": "Precision is the difference between a butcher and a surgeon.",
-    "emojiClue": "✂️🦿🕵️🔬"
+    "emojiClue": "✂️🦿🕵️🔬⚙️"
   },
   "Cassiopeia": {
     "gender": "Female",
@@ -397,7 +397,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Don't look me in the eyes!",
-    "emojiClue": "🐍👀💚🏛️"
+    "emojiClue": "🐍👀💚🏛️🔴"
   },
   "Chogath": {
     "gender": "Male",
@@ -414,7 +414,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Your world is a feast, and I... am famished.",
-    "emojiClue": "👹🌀😤🍽️"
+    "emojiClue": "👹🌀😤🍽️🟣"
   },
   "Corki": {
     "gender": "Male",
@@ -432,7 +432,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I've been waiting for some rocket-propelled excitement!",
-    "emojiClue": "✈️🚀🐾💥"
+    "emojiClue": "✈️🚀🐾💥🧔"
   },
   "Darius": {
     "gender": "Male",
@@ -449,7 +449,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Noxus does not kneel.",
-    "emojiClue": "🪓💀🔴⚔️"
+    "emojiClue": "🪓💀🔴⚔️🩸"
   },
   "Diana": {
     "gender": "Female",
@@ -468,7 +468,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I answer to the moon, not to you.",
-    "emojiClue": "🌙🌙⚔️🔵"
+    "emojiClue": "🌙⚔️🔵🌑✨"
   },
   "DrMundo": {
     "gender": "Male",
@@ -487,7 +487,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Mundo goes where he pleases!",
-    "emojiClue": "🪓💜🏥😤"
+    "emojiClue": "🪓💜🏥😤🧪"
   },
   "Draven": {
     "gender": "Male",
@@ -504,7 +504,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Draaaven!",
-    "emojiClue": "🪃💪😎🎡"
+    "emojiClue": "🪃💪😎🎡🩸"
   },
   "Ekko": {
     "gender": "Male",
@@ -522,7 +522,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I don't cheat death. I just bend time a little.",
-    "emojiClue": "⏰🔄🏙️⚡"
+    "emojiClue": "⏰🔄🏙️⚡🧒"
   },
   "Elise": {
     "gender": "Female",
@@ -540,7 +540,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The spider dances, and the fly falls into her web.",
-    "emojiClue": "🕷️💅🩸🕸️"
+    "emojiClue": "🕷️💅🩸🕸️🌑"
   },
   "Evelynn": {
     "gender": "Female",
@@ -557,7 +557,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Pain. Agony. My work is never done.",
-    "emojiClue": "😈💜🔪💋"
+    "emojiClue": "😈💜🔪💋🌑"
   },
   "Ezreal": {
     "gender": "Male",
@@ -574,7 +574,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "It's not bragging if it's true.",
-    "emojiClue": "🗺️💙⚡🧭"
+    "emojiClue": "🗺️💙⚡🧭🧤"
   },
   "Fiddlesticks": {
     "gender": "Other",
@@ -592,7 +592,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "A Harmless Scarecrow.",
-    "emojiClue": "🎃🦅😱🌾"
+    "emojiClue": "🎃🦅😱🌾⛏️"
   },
   "Fiora": {
     "gender": "Female",
@@ -609,7 +609,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "En garde!",
-    "emojiClue": "🤺⚔️🌹🏰"
+    "emojiClue": "🤺⚔️🌹🏰⚜️"
   },
   "Fizz": {
     "gender": "Male",
@@ -626,7 +626,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Blub blub blub.",
-    "emojiClue": "🐟🔱🌊😜"
+    "emojiClue": "🐟🔱🌊😜🏝️"
   },
   "Galio": {
     "gender": "Male",
@@ -644,7 +644,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Only in death does duty end. Good thing I cannot die.",
-    "emojiClue": "🗿🛡️🦅🏰"
+    "emojiClue": "🗿🛡️🦅🏰⚜️"
   },
   "Gangplank": {
     "gender": "Male",
@@ -661,7 +661,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The secret of getting ahead is getting started.",
-    "emojiClue": "🏴‍☠️🍊🔫⚓"
+    "emojiClue": "🏴‍☠️🍊🔫⚓🗡️"
   },
   "Garen": {
     "gender": "Male",
@@ -678,7 +678,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Demacia!",
-    "emojiClue": "⚔️🛡️🏰🌟"
+    "emojiClue": "⚔️🛡️🏰🌟⚜️"
   },
   "Gnar": {
     "gender": "Male",
@@ -695,7 +695,7 @@
     "rangeType": "Ranged",
     "resource": "Rage",
     "quote": "Gnar!",
-    "emojiClue": "🦴😤🧊🐾"
+    "emojiClue": "🦴😤🧊🐾🔶"
   },
   "Gragas": {
     "gender": "Male",
@@ -714,7 +714,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Gragas needs a drink!",
-    "emojiClue": "🍺🛢️🥊🍻"
+    "emojiClue": "🍺🛢️🥊🍻❄️"
   },
   "Graves": {
     "gender": "Male",
@@ -731,7 +731,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I call her Destiny.",
-    "emojiClue": "🔫🚬🏴‍☠️💨"
+    "emojiClue": "🔫🚬🏴‍☠️💨🧔"
   },
   "Gwen": {
     "gender": "Female",
@@ -749,7 +749,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Snip snip!",
-    "emojiClue": "✂️🧵💙👗"
+    "emojiClue": "✂️🧵💙👗🪡"
   },
   "Hecarim": {
     "gender": "Male",
@@ -766,7 +766,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Suffering is magic.",
-    "emojiClue": "🐴👻⚔️"
+    "emojiClue": "🐴👻⚔️💀🌫️"
   },
   "Heimerdinger": {
     "gender": "Male",
@@ -784,7 +784,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Ah, a fascinating hypothesis!",
-    "emojiClue": "🔬🤖💡"
+    "emojiClue": "🔬🤖💡⚙️🧪"
   },
   "Hwei": {
     "gender": "Male",
@@ -801,7 +801,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Art is born from the soul.",
-    "emojiClue": "🎨🖌️🌸"
+    "emojiClue": "🎨🖌️🌸🎭🖼️"
   },
   "Illaoi": {
     "gender": "Female",
@@ -818,7 +818,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Your god does not weep for you. Mine does not either.",
-    "emojiClue": "🐙⚓🛐"
+    "emojiClue": "🐙⚓🛐💪🌊"
   },
   "Irelia": {
     "gender": "Female",
@@ -836,7 +836,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "When I fight, I fight for Ionia.",
-    "emojiClue": "🗡️🌸💫"
+    "emojiClue": "🗡️🌸💫⚔️🦋"
   },
   "Ivern": {
     "gender": "Male",
@@ -854,7 +854,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Hello tree! ...Goodbye tree.",
-    "emojiClue": "🌲🌿🤝"
+    "emojiClue": "🌲🌿🤝🦌😊"
   },
   "Janna": {
     "gender": "Female",
@@ -871,7 +871,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Let the storm approach. I am the wind.",
-    "emojiClue": "💨🌪️⛵"
+    "emojiClue": "💨🌪️⛵✨🌸"
   },
   "JarvanIV": {
     "gender": "Male",
@@ -889,7 +889,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "For Demacia!",
-    "emojiClue": "🛡️👑⚜️"
+    "emojiClue": "🛡️👑⚜️⚔️🐉"
   },
   "Jax": {
     "gender": "Male",
@@ -907,7 +907,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I've been fighting for so long... I've forgotten what I'm fighting for.",
-    "emojiClue": "🏮💪🗡️"
+    "emojiClue": "🏮💪🗡️🥊🔮"
   },
   "Jayce": {
     "gender": "Male",
@@ -925,7 +925,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Progress is a product of will.",
-    "emojiClue": "🔨⚡🔬"
+    "emojiClue": "🔨⚡🔬🛡️⚙️"
   },
   "Jhin": {
     "gender": "Male",
@@ -942,7 +942,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Death is beautiful. I am the artist.",
-    "emojiClue": "🎭🌹🔫"
+    "emojiClue": "🎭🌹🔫4️⃣🖌️"
   },
   "Jinx": {
     "gender": "Female",
@@ -959,7 +959,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Get Excited!",
-    "emojiClue": "💥🔫😜"
+    "emojiClue": "💥🔫😜🧨💗"
   },
   "Kaisa": {
     "gender": "Female",
@@ -976,7 +976,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The void does not forgive. Neither do I.",
-    "emojiClue": "🔮👁️🚀"
+    "emojiClue": "🔮👁️🚀💜🌌"
   },
   "Kalista": {
     "gender": "Female",
@@ -993,7 +993,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Your oath is your bond.",
-    "emojiClue": "🗡️👻🤝"
+    "emojiClue": "🗡️👻🤝🩸🏹"
   },
   "Karma": {
     "gender": "Female",
@@ -1012,7 +1012,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "All things exist in perfect balance.",
-    "emojiClue": "☯️🌸🔵"
+    "emojiClue": "☯️🌸🔵🛡️✨"
   },
   "Karthus": {
     "gender": "Male",
@@ -1030,7 +1030,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "In the embrace of great Nagakabouros, all things are united.",
-    "emojiClue": "💀🎵☠️"
+    "emojiClue": "💀🎵☠️📖🟢"
   },
   "Kassadin": {
     "gender": "Male",
@@ -1047,7 +1047,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The void calls to me.",
-    "emojiClue": "🌌⚡🔮"
+    "emojiClue": "🌌⚡🔮🟣💨"
   },
   "Katarina": {
     "gender": "Female",
@@ -1064,7 +1064,7 @@
     "rangeType": "Melee",
     "resource": "None",
     "quote": "Death is a kindness I rarely offer.",
-    "emojiClue": "🔪💃🌹"
+    "emojiClue": "🔪💃🌹🩸🔴"
   },
   "Kayle": {
     "gender": "Female",
@@ -1082,7 +1082,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "None shall escape judgement.",
-    "emojiClue": "⚖️👼🔥"
+    "emojiClue": "⚖️👼🔥🗡️✨"
   },
   "Kayn": {
     "gender": "Male",
@@ -1100,7 +1100,7 @@
     "rangeType": "Melee",
     "resource": "None",
     "quote": "I will become the last shadow.",
-    "emojiClue": "🌑🔱⚔️"
+    "emojiClue": "🌑🔱⚔️😈👹"
   },
   "Kennen": {
     "gender": "Male",
@@ -1117,7 +1117,7 @@
     "rangeType": "Ranged",
     "resource": "Energy",
     "quote": "To know peace, you must weather the storm.",
-    "emojiClue": "⚡🌩️🥷"
+    "emojiClue": "⚡🌩️🥷🐹💜"
   },
   "Khazix": {
     "gender": "Male",
@@ -1134,7 +1134,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Isolation is weakness. Adaptation is strength.",
-    "emojiClue": "👁️🪲🌿"
+    "emojiClue": "👁️🪲🌿🟣🗡️"
   },
   "Kindred": {
     "gender": "Other",
@@ -1151,7 +1151,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "All things die... even death.",
-    "emojiClue": "🐑🐺🏹"
+    "emojiClue": "🐑🐺🏹☯️💀"
   },
   "Kled": {
     "gender": "Male",
@@ -1168,7 +1168,7 @@
     "rangeType": "Melee",
     "resource": "None",
     "quote": "Get off my land!",
-    "emojiClue": "🦎🤠⚔️"
+    "emojiClue": "🦎🤠⚔️😤🏔️"
   },
   "KogMaw": {
     "gender": "Male",
@@ -1185,7 +1185,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Ooh, tasty!",
-    "emojiClue": "👾🫧🍬"
+    "emojiClue": "👾🫧🍬🟣💚"
   },
   "KSante": {
     "gender": "Male",
@@ -1202,7 +1202,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I don't avoid danger. I master it.",
-    "emojiClue": "🦁🛡️🌍"
+    "emojiClue": "🦁🛡️🌍💪🥁"
   },
   "LeBlanc": {
     "gender": "Female",
@@ -1219,7 +1219,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Careful... I'm not the only one wearing my face.",
-    "emojiClue": "🎭🪄🕊️"
+    "emojiClue": "🎭🪄🕊️✨🔗"
   },
   "LeeSin": {
     "gender": "Male",
@@ -1236,7 +1236,7 @@
     "rangeType": "Melee",
     "resource": "Energy",
     "quote": "I must be the master of my own fate.",
-    "emojiClue": "🥋🐉🔥"
+    "emojiClue": "🥋🐉🔥👊🌸"
   },
   "Leona": {
     "gender": "Female",
@@ -1253,7 +1253,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The sun is my judge. Its light, my verdict.",
-    "emojiClue": "☀️🛡️⚔️"
+    "emojiClue": "☀️🛡️⚔️✨🔆"
   },
   "Lillia": {
     "gender": "Female",
@@ -1270,7 +1270,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Don't worry, I'll try not to be too loud... or visible... or real.",
-    "emojiClue": "🌺🦌💤"
+    "emojiClue": "🌺🦌💤🌙🔮"
   },
   "Lissandra": {
     "gender": "Female",
@@ -1287,7 +1287,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "All truths are cold. Final truths are coldest of all.",
-    "emojiClue": "🧊👁️❄️"
+    "emojiClue": "🧊👁️❄️🔮💀"
   },
   "Lucian": {
     "gender": "Male",
@@ -1305,7 +1305,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I will purge this world of evil... one bullet at a time.",
-    "emojiClue": "🔫💫⚡"
+    "emojiClue": "🔫💫⚡🌟💛"
   },
   "Lulu": {
     "gender": "Female",
@@ -1323,7 +1323,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Whimsy! Whimsy for everyone!",
-    "emojiClue": "🧚🌈🐢"
+    "emojiClue": "🧚🌈🐢🍄✨"
   },
   "Lux": {
     "gender": "Female",
@@ -1341,7 +1341,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Demacia is a beacon of light, and I will help it shine.",
-    "emojiClue": "✨💫🔮"
+    "emojiClue": "✨💫🔮🌟⚜️"
   },
   "Malphite": {
     "gender": "Male",
@@ -1359,7 +1359,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Unstoppable.",
-    "emojiClue": "🪨💥🌋"
+    "emojiClue": "🪨💥🌋🛡️🗿"
   },
   "Malzahar": {
     "gender": "Male",
@@ -1376,7 +1376,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The void opens wide. Its voice calls to me.",
-    "emojiClue": "👁️🌌🕳️"
+    "emojiClue": "👁️🌌🕳️🟣🪲"
   },
   "Maokai": {
     "gender": "Male",
@@ -1395,7 +1395,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "This place is unnatural... and so am I.",
-    "emojiClue": "🌳💀🌿"
+    "emojiClue": "🌳💀🌿🍃👻"
   },
   "MasterYi": {
     "gender": "Male",
@@ -1412,7 +1412,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "A true master is an eternal student.",
-    "emojiClue": "⚔️👁️🥷"
+    "emojiClue": "⚔️👁️🥷💨🧘"
   },
   "Milio": {
     "gender": "Male",
@@ -1429,7 +1429,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "My fuemigo will warm your heart!",
-    "emojiClue": "🔥🌟🤲"
+    "emojiClue": "🔥🌟🤲😊🧒"
   },
   "MissFortune": {
     "gender": "Female",
@@ -1446,7 +1446,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Guns don't kill people... I do.",
-    "emojiClue": "🔴🔫⚓"
+    "emojiClue": "🔴🔫⚓👠💋"
   },
   "Mordekaiser": {
     "gender": "Male",
@@ -1463,7 +1463,7 @@
     "rangeType": "Melee",
     "resource": "Shield",
     "quote": "Death is a prison. I am the jailer.",
-    "emojiClue": "💀🔒👑"
+    "emojiClue": "💀🔒👑⚔️🟢"
   },
   "Morgana": {
     "gender": "Female",
@@ -1481,7 +1481,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "We'll bring them pain.",
-    "emojiClue": "😈⛓️💜"
+    "emojiClue": "😈⛓️💜🦇👰"
   },
   "Naafiri": {
     "gender": "Female",
@@ -1498,7 +1498,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "We are many. We are one.",
-    "emojiClue": "🐺🗡️🌑"
+    "emojiClue": "🐺🗡️🌑🏜️🐕"
   },
   "Nami": {
     "gender": "Female",
@@ -1515,7 +1515,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The tide has turned.",
-    "emojiClue": "🧜‍♀️🌊✨"
+    "emojiClue": "🧜‍♀️🌊✨💙🐠"
   },
   "Nasus": {
     "gender": "Male",
@@ -1532,7 +1532,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I am eternal.",
-    "emojiClue": "🐕‍🦺⏳🔱"
+    "emojiClue": "🐕‍🦺⏳🔱🏜️📚"
   },
   "Nautilus": {
     "gender": "Male",
@@ -1550,7 +1550,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "None shall be spared.",
-    "emojiClue": "⚓🤿🌊"
+    "emojiClue": "⚓🤿🌊🛡️🫧"
   },
   "Neeko": {
     "gender": "Female",
@@ -1568,7 +1568,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Neeko is many things!",
-    "emojiClue": "🦎🌸🎭"
+    "emojiClue": "🦎🌸🎭🌈💚"
   },
   "Nidalee": {
     "gender": "Female",
@@ -1585,7 +1585,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The wild calls to me.",
-    "emojiClue": "🐆🪃🌿"
+    "emojiClue": "🐆🪃🌿⚔️🐾"
   },
   "Nilah": {
     "gender": "Female",
@@ -1602,7 +1602,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Joy is a weapon.",
-    "emojiClue": "💧😄⚔️"
+    "emojiClue": "💧😄⚔️🌊🎉"
   },
   "Nocturne": {
     "gender": "Other",
@@ -1619,7 +1619,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Embrace the darkness.",
-    "emojiClue": "🌑😱🗡️"
+    "emojiClue": "🌑😱🗡️💤👁️"
   },
   "Nunu": {
     "gender": "Male",
@@ -1636,7 +1636,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Willump says hi!",
-    "emojiClue": "🧒❄️🐻"
+    "emojiClue": "🧒❄️🐻⛄🎵"
   },
   "Olaf": {
     "gender": "Male",
@@ -1654,7 +1654,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I will not die a straw death!",
-    "emojiClue": "🪓⚡🔵"
+    "emojiClue": "🪓⚡🔵😤❄️"
   },
   "Orianna": {
     "gender": "Female",
@@ -1671,7 +1671,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Shall we dance?",
-    "emojiClue": "⚙️🎀⚽"
+    "emojiClue": "⚙️🎀⚽🤖💙"
   },
   "Ornn": {
     "gender": "Male",
@@ -1688,7 +1688,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I forge. I endure.",
-    "emojiClue": "🔨🐏🔥"
+    "emojiClue": "🔨🐏🔥❄️⚒️"
   },
   "Pantheon": {
     "gender": "Male",
@@ -1707,7 +1707,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Courage is a choice.",
-    "emojiClue": "🛡️🏛️🌟"
+    "emojiClue": "🛡️🏛️🌟⚔️🏔️"
   },
   "Poppy": {
     "gender": "Female",
@@ -1726,7 +1726,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I'm looking for a hero.",
-    "emojiClue": "🔨🌸🛡️"
+    "emojiClue": "🔨🌸🛡️💪⚜️"
   },
   "Pyke": {
     "gender": "Male",
@@ -1743,7 +1743,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Everyone goes in the list.",
-    "emojiClue": "🔱🌊💀"
+    "emojiClue": "🔱🌊💀🔪🏴‍☠️"
   },
   "Qiyana": {
     "gender": "Female",
@@ -1760,7 +1760,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I am the greatest.",
-    "emojiClue": "👑🌿⚔️"
+    "emojiClue": "👑🌿⚔️💎🌊"
   },
   "Quinn": {
     "gender": "Female",
@@ -1778,7 +1778,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Valor and I are one.",
-    "emojiClue": "🦅🏹💙"
+    "emojiClue": "🦅🏹💙🐦⚜️"
   },
   "Rakan": {
     "gender": "Male",
@@ -1795,7 +1795,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "My lady calls!",
-    "emojiClue": "🐦‍⬛💃✨"
+    "emojiClue": "🐦‍⬛💃✨❤️🪶"
   },
   "Rammus": {
     "gender": "Male",
@@ -1812,7 +1812,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Ok.",
-    "emojiClue": "🦔👍🏜️"
+    "emojiClue": "🦔👍🏜️🔵🐢"
   },
   "RekSai": {
     "gender": "Female",
@@ -1829,7 +1829,7 @@
     "rangeType": "Melee",
     "resource": "Fury",
     "quote": "Survive.",
-    "emojiClue": "🕳️👾🦷"
+    "emojiClue": "🕳️👾🦷🟣🐛"
   },
   "RenataGlasc": {
     "gender": "Female",
@@ -1846,7 +1846,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Every debt will be repaid.",
-    "emojiClue": "💊💸🧪"
+    "emojiClue": "💊💸🧪😈⚙️"
   },
   "Renekton": {
     "gender": "Male",
@@ -1863,7 +1863,7 @@
     "rangeType": "Melee",
     "resource": "Fury",
     "quote": "Victory is mine to decide.",
-    "emojiClue": "🐊⚔️🔴"
+    "emojiClue": "🐊⚔️🔴😤🏜️"
   },
   "Rengar": {
     "gender": "Male",
@@ -1881,7 +1881,7 @@
     "rangeType": "Melee",
     "resource": "Ferocity",
     "quote": "The hunt is everything.",
-    "emojiClue": "🦁🗡️🌿"
+    "emojiClue": "🦁🗡️🌿😼👁️"
   },
   "Riven": {
     "gender": "Female",
@@ -1898,7 +1898,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "My sins aren't forgotten, just… postponed.",
-    "emojiClue": "🗡️💔🌿"
+    "emojiClue": "🗡️💔🌿⚔️💨"
   },
   "Rumble": {
     "gender": "Male",
@@ -1916,7 +1916,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Let me show you what this baby can do!",
-    "emojiClue": "🤖🔥🛠️"
+    "emojiClue": "🤖🔥🛠️🐹💥"
   },
   "Ryze": {
     "gender": "Male",
@@ -1934,7 +1934,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Magic is power. And it must be controlled.",
-    "emojiClue": "📜🔵⚡"
+    "emojiClue": "📜🔵⚡🧙🌍"
   },
   "Samira": {
     "gender": "Female",
@@ -1951,7 +1951,7 @@
     "rangeType": "Ranged",
     "resource": "Manaless",
     "quote": "Style counts.",
-    "emojiClue": "💃🔫🌹"
+    "emojiClue": "💃🔫🌹⚔️🔴"
   },
   "Sejuani": {
     "gender": "Female",
@@ -1968,7 +1968,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Bow before Winter's Claw!",
-    "emojiClue": "🐗❄️⛓️"
+    "emojiClue": "🐗❄️⛓️🛡️💪"
   },
   "Senna": {
     "gender": "Female",
@@ -1986,7 +1986,7 @@
     "rangeType": "Ranged",
     "resource": "Manaless",
     "quote": "We carry this together.",
-    "emojiClue": "🌑🔫💛"
+    "emojiClue": "🌑🔫💛⚡👻"
   },
   "Seraphine": {
     "gender": "Female",
@@ -2004,7 +2004,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Every voice deserves to be heard.",
-    "emojiClue": "🎤🎵💖"
+    "emojiClue": "🎤🎵💖🌸✨"
   },
   "Sett": {
     "gender": "Male",
@@ -2022,7 +2022,7 @@
     "rangeType": "Melee",
     "resource": "Grit",
     "quote": "You want a piece of the boss?",
-    "emojiClue": "👊🐺💪"
+    "emojiClue": "👊🐺💪😤🥊"
   },
   "Shaco": {
     "gender": "Male",
@@ -2039,7 +2039,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Why so serious?",
-    "emojiClue": "🃏🔪😈"
+    "emojiClue": "🃏🔪😈📦💣"
   },
   "Shen": {
     "gender": "Male",
@@ -2057,7 +2057,7 @@
     "rangeType": "Melee",
     "resource": "Energy",
     "quote": "A demonstration of our principles.",
-    "emojiClue": "⚖️🥷🌙"
+    "emojiClue": "⚖️🥷🌙🛡️☯️"
   },
   "Shyvana": {
     "gender": "Female",
@@ -2074,7 +2074,7 @@
     "rangeType": "Melee",
     "resource": "Fury",
     "quote": "Do not mistake my silence for weakness.",
-    "emojiClue": "🐉🔥👑"
+    "emojiClue": "🐉🔥👑🛡️💜"
   },
   "Singed": {
     "gender": "Male",
@@ -2091,7 +2091,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Have you ever considered… not chasing me?",
-    "emojiClue": "🧪☠️💨"
+    "emojiClue": "🧪☠️💨🏃🟢"
   },
   "Sion": {
     "gender": "Male",
@@ -2108,7 +2108,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I LIVE AGAIN!",
-    "emojiClue": "💀⚔️🏔️"
+    "emojiClue": "💀⚔️🏔️🛡️😤"
   },
   "Sivir": {
     "gender": "Female",
@@ -2125,7 +2125,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Make way for the Battle Mistress.",
-    "emojiClue": "🪃💰🏜️"
+    "emojiClue": "🪃💰🏜️⚔️🔵"
   },
   "Skarner": {
     "gender": "Male",
@@ -2142,7 +2142,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The crystal calls to me.",
-    "emojiClue": "🦂💎🌵"
+    "emojiClue": "🦂💎🌵⚡🔮"
   },
   "Smolder": {
     "gender": "Male",
@@ -2159,7 +2159,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I'm going to be the strongest dragon ever!",
-    "emojiClue": "🐲🔥✨"
+    "emojiClue": "🐲🔥✨🧒🐾"
   },
   "Sona": {
     "gender": "Female",
@@ -2176,7 +2176,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The music never dies.",
-    "emojiClue": "🎹🎵💙"
+    "emojiClue": "🎹🎵💙🌙✨"
   },
   "Soraka": {
     "gender": "Female",
@@ -2193,7 +2193,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Let me guide you.",
-    "emojiClue": "⭐🌙💚"
+    "emojiClue": "⭐🌙💚🦄✨"
   },
   "Swain": {
     "gender": "Male",
@@ -2211,7 +2211,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Victory is made of iron will.",
-    "emojiClue": "🦅🔴👁️"
+    "emojiClue": "🦅🔴👁️👑🐦"
   },
   "Sylas": {
     "gender": "Male",
@@ -2229,7 +2229,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "They locked me away because of what I am. Now I'll tear their world apart.",
-    "emojiClue": "⛓️🔥✊"
+    "emojiClue": "⛓️🔥✊🔮😤"
   },
   "Syndra": {
     "gender": "Female",
@@ -2246,7 +2246,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "My potential is limitless!",
-    "emojiClue": "🔮💜🌑"
+    "emojiClue": "🔮💜🌑⚫✨"
   },
   "TahmKench": {
     "gender": "Male",
@@ -2264,7 +2264,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Every man's got a price. What's yours?",
-    "emojiClue": "🐸🎩😈"
+    "emojiClue": "🐸🎩😈👅💰"
   },
   "Taliyah": {
     "gender": "Female",
@@ -2282,7 +2282,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Stones don't lie.",
-    "emojiClue": "🪨🌊👧"
+    "emojiClue": "🪨🌊👧🏜️🗺️"
   },
   "Talon": {
     "gender": "Male",
@@ -2300,7 +2300,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Death is the only truth.",
-    "emojiClue": "🗡️🌑🩸"
+    "emojiClue": "🗡️🌑🩸🥷🔴"
   },
   "Taric": {
     "gender": "Male",
@@ -2319,7 +2319,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "Gems are truly outrageous.",
-    "emojiClue": "💎🛡️✨"
+    "emojiClue": "💎🛡️✨🏔️🛡️"
   },
   "Teemo": {
     "gender": "Male",
@@ -2336,7 +2336,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Captain Teemo on duty!",
-    "emojiClue": "🍄🔍😈"
+    "emojiClue": "🍄🔍😈🐹🎯"
   },
   "Thresh": {
     "gender": "Male",
@@ -2353,7 +2353,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Your soul will make a fine addition to my collection.",
-    "emojiClue": "⛓️🏮👻"
+    "emojiClue": "⛓️🏮👻💀🪝"
   },
   "Tristana": {
     "gender": "Female",
@@ -2370,7 +2370,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "To the battle!",
-    "emojiClue": "🔫💥🐹"
+    "emojiClue": "🔫💥🐹🧨🏹"
   },
   "Trundle": {
     "gender": "Male",
@@ -2388,7 +2388,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "King of the Trolls!",
-    "emojiClue": "🧊🪓👑"
+    "emojiClue": "🧊🪓👑❄️🦷"
   },
   "Tryndamere": {
     "gender": "Male",
@@ -2405,7 +2405,7 @@
     "rangeType": "Melee",
     "resource": "Fury",
     "quote": "By my blade!",
-    "emojiClue": "⚔️😡🩸"
+    "emojiClue": "⚔️😡🩸💪❄️"
   },
   "TwistedFate": {
     "gender": "Male",
@@ -2423,7 +2423,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Lady Luck is smilin'.",
-    "emojiClue": "🃏🎰⚡"
+    "emojiClue": "🃏🎰⚡🎩🔮"
   },
   "Twitch": {
     "gender": "Male",
@@ -2440,7 +2440,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "They never see me coming.",
-    "emojiClue": "🐀☠️🤢"
+    "emojiClue": "🐀☠️🤢🏹🧪"
   },
   "Udyr": {
     "gender": "Male",
@@ -2457,7 +2457,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The animal within cannot be caged.",
-    "emojiClue": "🐻🦅🌿"
+    "emojiClue": "🐻🦅🌿⚡🐏"
   },
   "Urgot": {
     "gender": "Male",
@@ -2476,7 +2476,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Do you fear death? You will.",
-    "emojiClue": "🦾💀⚙️"
+    "emojiClue": "🦾💀⚙️🔩🦵"
   },
   "Varus": {
     "gender": "Other",
@@ -2495,7 +2495,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Infinite hunger.",
-    "emojiClue": "🏹💉🖤"
+    "emojiClue": "🏹💉🖤💜🌌"
   },
   "Vayne": {
     "gender": "Female",
@@ -2512,7 +2512,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The shadows will hide you no longer.",
-    "emojiClue": "🏹🌙🤫"
+    "emojiClue": "🏹🌙🤫🔫💀"
   },
   "Veigar": {
     "gender": "Male",
@@ -2530,7 +2530,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Prepare yourself for oblivion! Can you do that for me?",
-    "emojiClue": "🔮😈👿"
+    "emojiClue": "🔮😈👿🌑⭐"
   },
   "Velkoz": {
     "gender": "Other",
@@ -2548,7 +2548,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "All that exists, I must understand.",
-    "emojiClue": "👁️🔵💜"
+    "emojiClue": "👁️🔵💜🌌🔮"
   },
   "Vex": {
     "gender": "Female",
@@ -2566,7 +2566,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Ugh, do I have to?",
-    "emojiClue": "😑🌑🖤"
+    "emojiClue": "😑🌑🖤👻🐹"
   },
   "Vi": {
     "gender": "Female",
@@ -2584,7 +2584,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "C'mon, punch something.",
-    "emojiClue": "👊🔩💢"
+    "emojiClue": "👊🔩💢⚙️👮"
   },
   "Viego": {
     "gender": "Male",
@@ -2602,7 +2602,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I will have her back... no matter the cost.",
-    "emojiClue": "👑🖤🗡️"
+    "emojiClue": "👑🖤🗡️💀🦋"
   },
   "Viktor": {
     "gender": "Male",
@@ -2620,7 +2620,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Embrace the glorious evolution.",
-    "emojiClue": "⚙️🤖🔬"
+    "emojiClue": "⚙️🤖🔬💜⚡"
   },
   "Vladimir": {
     "gender": "Male",
@@ -2638,7 +2638,7 @@
     "rangeType": "Ranged",
     "resource": "Manaless",
     "quote": "A crimson shadow falls.",
-    "emojiClue": "🩸🌹🧛"
+    "emojiClue": "🩸🌹🧛💉🔴"
   },
   "Volibear": {
     "gender": "Male",
@@ -2656,7 +2656,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The storm is here.",
-    "emojiClue": "⚡🐻🌩️"
+    "emojiClue": "⚡🐻🌩️❄️🏔️"
   },
   "Warwick": {
     "gender": "Male",
@@ -2674,7 +2674,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "The city will know fear.",
-    "emojiClue": "🐺🩸🧪"
+    "emojiClue": "🐺🩸🧪🌙🦷"
   },
   "Wukong": {
     "gender": "Male",
@@ -2692,7 +2692,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "My legend will shake the stars!",
-    "emojiClue": "🐒👑🥢"
+    "emojiClue": "🐒👑🥢⚔️☁️"
   },
   "Xayah": {
     "gender": "Female",
@@ -2709,7 +2709,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "We fight, we love, we die.",
-    "emojiClue": "🪶❤️🗡️"
+    "emojiClue": "🪶❤️🗡️💜🏹"
   },
   "Xerath": {
     "gender": "Male",
@@ -2727,7 +2727,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "The chains of mortality are broken!",
-    "emojiClue": "⚡🔵💀"
+    "emojiClue": "⚡🔵💀🏜️🔮"
   },
   "XinZhao": {
     "gender": "Male",
@@ -2744,7 +2744,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I will serve with honor.",
-    "emojiClue": "🏮⚔️🔱"
+    "emojiClue": "🏮⚔️🔱⚜️🛡️"
   },
   "Yasuo": {
     "gender": "Male",
@@ -2762,7 +2762,7 @@
     "rangeType": "Melee",
     "resource": "Flow",
     "quote": "An Unforgiven.",
-    "emojiClue": "💨⚔️🌸"
+    "emojiClue": "💨⚔️🌸🌊🗡️"
   },
   "Yone": {
     "gender": "Male",
@@ -2781,7 +2781,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I know my path... and it leads through you.",
-    "emojiClue": "👺⚔️🌑"
+    "emojiClue": "👺⚔️🌑🦋🗡️"
   },
   "Yorick": {
     "gender": "Male",
@@ -2798,7 +2798,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "One for sorrow, two for joy.",
-    "emojiClue": "⚰️💀⛏️"
+    "emojiClue": "⚰️💀⛏️👻🪦"
   },
   "Yuumi": {
     "gender": "Female",
@@ -2815,7 +2815,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Zoomies!",
-    "emojiClue": "🐱📖✨"
+    "emojiClue": "🐱📖✨💙🧚"
   },
   "Zac": {
     "gender": "Male",
@@ -2833,7 +2833,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "It's Zac-time!",
-    "emojiClue": "🟢💚🧪"
+    "emojiClue": "🟢💚🧪🫧💪"
   },
   "Zed": {
     "gender": "Male",
@@ -2851,7 +2851,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "Death is my shadow.",
-    "emojiClue": "🌑🥷⚡"
+    "emojiClue": "🌑🥷⚡👤🗡️"
   },
   "Zeri": {
     "gender": "Female",
@@ -2868,7 +2868,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Steady hands, sharp spark!",
-    "emojiClue": "⚡🔫💙"
+    "emojiClue": "⚡🔫💙🏃💪"
   },
   "Ziggs": {
     "gender": "Male",
@@ -2887,7 +2887,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Boom goes the powder keg!",
-    "emojiClue": "💣💥🧪"
+    "emojiClue": "💣💥🧪🐹🔥"
   },
   "Zilean": {
     "gender": "Male",
@@ -2906,7 +2906,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Time waits for no one.",
-    "emojiClue": "⏰🔮🕰️"
+    "emojiClue": "⏰🔮🕰️🧙⏳"
   },
   "Zoe": {
     "gender": "Female",
@@ -2924,7 +2924,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "I am the Aspect of Twilight!",
-    "emojiClue": "🌟💫🎭"
+    "emojiClue": "🌟💫🎭😜🌈"
   },
   "Zyra": {
     "gender": "Female",
@@ -2942,7 +2942,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Let the gardens grow.",
-    "emojiClue": "🌿🌺🌱"
+    "emojiClue": "🌿🌺🌱🔥🌻"
   },
   "Renata": {
     "gender": "Female",
@@ -2959,7 +2959,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Every debt will be repaid.",
-    "emojiClue": "💊💸🧪"
+    "emojiClue": "💊💸🧪😈⚙️"
   },
   "Belveth": {
     "gender": "Female",
@@ -2976,7 +2976,7 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I am everything you left to rot.",
-    "emojiClue": "👁️🌌🐟💜"
+    "emojiClue": "👁️🌌🐟💜🦑"
   },
   "Rell": {
     "gender": "Female",
@@ -2993,7 +2993,7 @@
     "rangeType": "Melee",
     "resource": "Mana",
     "quote": "I've broken one cage. I can break another.",
-    "emojiClue": "⚙️🛡️🐴⛓️"
+    "emojiClue": "⚙️🛡️🐴⛓️🧲"
   },
   "Mel": {
     "gender": "Female",
@@ -3012,7 +3012,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "What we build today echoes across generations.",
-    "emojiClue": "✨🔶🎨📜"
+    "emojiClue": "✨🔶🎨📜⚙️"
   },
   "Yunara": {
     "gender": "Female",
@@ -3029,7 +3029,7 @@
     "rangeType": "Ranged",
     "resource": "Mana",
     "quote": "Nature's balance will be restored.",
-    "emojiClue": "🌿🪷🌸💨"
+    "emojiClue": "🌿🪷🌸💨🦋"
   },
   "Zaahen": {
     "gender": "Male",
@@ -3047,6 +3047,6 @@
     "rangeType": "Melee",
     "resource": "Manaless",
     "quote": "I was not broken. I was remade.",
-    "emojiClue": "🔥⚔️😈🩸"
+    "emojiClue": "🔥⚔️😈🩸🏜️"
   }
 }

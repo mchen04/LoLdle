@@ -47,6 +47,9 @@ export interface ClassicGuessResult {
 }
 
 export type GameMode = 'classic' | 'quote' | 'ability' | 'emoji' | 'splash'
+  | 'title' | 'pixel' | 'silhouette' | 'spellName' | 'feet' | 'whoami'
+  | 'anagram' | 'missingLetters' | 'skinName' | 'allAbilities' | 'zoomedIcon'
+  | 'warped' | 'colorShift' | 'backwardsQuote' | 'passive'
 
 export interface GameState {
   mode: GameMode

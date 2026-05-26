@@ -7,6 +7,21 @@ const MODES: { key: GameMode; label: string }[] = [
   { key: 'ability', label: 'Ability' },
   { key: 'emoji', label: 'Emoji' },
   { key: 'splash', label: 'Splash' },
+  { key: 'title', label: 'Title' },
+  { key: 'pixel', label: 'Pixel' },
+  { key: 'silhouette', label: 'Shadow' },
+  { key: 'spellName', label: 'Spell' },
+  { key: 'feet', label: 'Feet' },
+  { key: 'whoami', label: 'Who Am I?' },
+  { key: 'anagram', label: 'Anagram' },
+  { key: 'missingLetters', label: 'Fill In' },
+  { key: 'skinName', label: 'Skin Name' },
+  { key: 'allAbilities', label: 'Full Kit' },
+  { key: 'zoomedIcon', label: 'Zoomed Icon' },
+  { key: 'warped', label: 'Warped' },
+  { key: 'colorShift', label: 'Color Shift' },
+  { key: 'backwardsQuote', label: 'Scramble' },
+  { key: 'passive', label: 'Passive' },
 ]
 
 interface Props {
@@ -29,7 +44,7 @@ export function StatsModal({ onClose }: Props) {
           </button>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[60vh] overflow-y-auto scrollbar-thin pr-1">
           {MODES.map(({ key, label }) => {
             const stats = loadModeStats(key)
             return (

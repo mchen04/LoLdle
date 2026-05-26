@@ -88,7 +88,13 @@ export function saveSettings(settings: AppSettings) {
 export function generateShareText(mode: GameMode, guessCount: number, solved: boolean): string {
   const modeNames: Record<GameMode, string> = {
     classic: 'Classic', quote: 'Quote', ability: 'Ability',
-    emoji: 'Emoji', splash: 'Splash'
+    emoji: 'Emoji', splash: 'Splash', title: 'Title',
+    pixel: 'Pixel', silhouette: 'Silhouette', spellName: 'Spell',
+    feet: 'Feet', whoami: 'Who Am I?', anagram: 'Anagram',
+    missingLetters: 'Missing Letters', skinName: 'Skin Name',
+    allAbilities: 'All Abilities', zoomedIcon: 'Zoomed Icon',
+    warped: 'Warped', colorShift: 'Color Shift',
+    backwardsQuote: 'Backwards Quote', passive: 'Passive',
   }
   const squares = solved
     ? Array(guessCount - 1).fill('🟥').concat('🟩').join('')
