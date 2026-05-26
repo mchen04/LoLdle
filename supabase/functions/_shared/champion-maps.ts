@@ -1,6 +1,13 @@
 // Single source of truth: scripts/lib/champion-maps.json
 // Keep in sync — or generate this file from the JSON at build time.
 
+export interface UniverseChampion {
+  races?: { name: string; slug: string }[];
+  roles?: { name: string }[];
+  "associated-faction-slug"?: string;
+  biography?: { quote?: string; "quote-author"?: string };
+}
+
 export const FACTION_MAP: Record<string, string> = {
   demacia: "Demacia", noxus: "Noxus", ionia: "Ionia",
   shurima: "Shurima", freljord: "Freljord", zaun: "Zaun",

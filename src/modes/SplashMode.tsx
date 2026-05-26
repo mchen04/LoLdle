@@ -4,9 +4,8 @@ import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
 import { WrongGuesses } from '../components/WrongGuesses'
 import { GiveUpButton } from '../components/GiveUpButton'
-import { getSplashZoom } from '../utils/gameLogic'
+import { getSplashZoom, hashCode } from '../utils/gameLogic'
 import { getWrongGuesses } from '../data'
-import { hashCode } from '../utils/gameLogic'
 import type { AppSettings } from '../types/champion'
 
 export function SplashMode({ settings }: { settings: AppSettings }) {

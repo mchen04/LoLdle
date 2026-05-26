@@ -11,8 +11,9 @@
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import {
-  FACTION_MAP, ROLE_EMOJI, RACE_EMOJI, REGION_EMOJI,
+  FACTION_MAP,
   detectGender, generateEmoji,
+  type UniverseChampion,
 } from "../_shared/champion-maps.ts";
 
 const MERAKI_BASE =
@@ -40,8 +41,7 @@ async function fetchOptional(url: string) {
   }
 }
 
-// deno-lint-ignore no-explicit-any
-async function fetchUniverseData(ddId: string, name: string): Promise<any> {
+async function fetchUniverseData(ddId: string, name: string): Promise<UniverseChampion | null> {
   const slugs = [
     ddId.toLowerCase(),
     name.toLowerCase().replace(/[^a-z]/g, ""),
@@ -127,8 +127,8 @@ Deno.serve(async (req) => {
     const autoPopulated: string[] = [];
 
     for (const id of championIds) {
-      // deno-lint-ignore no-explicit-any
-      let ddDetail: any;
+      // deno-lint-ignore no-explicit-any -- external Riot API response
+      let ddDetail: Record<string, any>;
       try {
         const ddDetailRes = await fetchJSON(
           `${ddBase}/data/en_US/champion/${id}.json`
@@ -138,8 +138,8 @@ Deno.serve(async (req) => {
         continue;
       }
 
-      // deno-lint-ignore no-explicit-any
-      const meraki: any = await fetchOptional(`${MERAKI_BASE}/${id}.json`);
+      // deno-lint-ignore no-explicit-any -- external Meraki API response
+      const meraki: Record<string, any> | null = await fetchOptional(`${MERAKI_BASE}/${id}.json`);
 
       const sup: Record<string, unknown> =
         (supplement[id] as Record<string, unknown>) ??
@@ -152,8 +152,7 @@ Deno.serve(async (req) => {
         newChampions.push(ddDetail.name);
       }
 
-      // deno-lint-ignore no-explicit-any
-      let universe: any = null;
+      let universe: UniverseChampion | null = null;
       if (!hasSupplement) {
         universe = await fetchUniverseData(id, ddDetail.name);
         autoPopulated.push(ddDetail.name);

@@ -26,8 +26,8 @@ export function AbilityMode({ settings }: { settings: AppSettings }) {
   if (!target || !randomAbility) return null
 
   const isFinished = solved || givenUp
-  const colorRestored = (extras.colorRestored as boolean) ?? false
-  const rotationFixed = (extras.rotationFixed as boolean) ?? false
+  const colorRestored = !!extras.colorRestored
+  const rotationFixed = !!extras.rotationFixed
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
