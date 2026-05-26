@@ -214,20 +214,16 @@ async function main() {
       })
     }
 
-    // Build skins — exclude chromas (no splash art on DD CDN)
+    // Build skins — validate each splash URL exists on DD CDN
     const allSkins = (ddDetail.skins || []).filter(s => s.num !== 0)
-    const chromaParents = new Set(allSkins.filter(s => s.chromas).map(s => s.name))
-    const skins = allSkins
-      .filter(s => {
-        if (!s.name.includes('(')) return true
-        const baseName = s.name.split('(')[0].trim()
-        return !chromaParents.has(baseName)
-      })
-      .map(s => ({
-        id: `${id}_${s.num}`,
-        name: s.name === 'default' ? `${ddDetail.name} ${s.num}` : s.name,
-        splash: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`
-      }))
+    const skinChecks = await Promise.all(allSkins.map(async s => {
+      const url = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`
+      try {
+        const res = await fetch(url, { method: 'HEAD' })
+        return res.ok ? { id: `${id}_${s.num}`, name: s.name === 'default' ? `${ddDetail.name} ${s.num}` : s.name, splash: url } : null
+      } catch { return null }
+    }))
+    const skins = skinChecks.filter(Boolean)
 
     champions.push({
       id,

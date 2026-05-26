@@ -267,21 +267,23 @@ Deno.serve(async (req) => {
         });
       }
 
+      // deno-lint-ignore no-explicit-any -- DD skin entries
       const allSkins = (ddDetail.skins ?? []).filter((s: Record<string, any>) => s.num !== 0);
-      const chromaParents = new Set(
-        allSkins.filter((s: Record<string, any>) => s.chromas).map((s: Record<string, any>) => s.name)
-      );
-      for (const s of allSkins) {
-        if (s.name.includes("(")) {
-          const baseName = s.name.split("(")[0].trim();
-          if (chromaParents.has(baseName)) continue;
-        }
-        skinRows.push({
-          id: `${id}_${s.num}`,
-          champion_id: id,
-          name: s.name === "default" ? `${ddDetail.name} ${s.num}` : s.name,
-          splash_url: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`,
-        });
+      const skinChecks = await Promise.all(allSkins.map(async (s: Record<string, any>) => {
+        const url = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`;
+        try {
+          const res = await fetch(url, { method: "HEAD" });
+          if (!res.ok) return null;
+          return {
+            id: `${id}_${s.num}`,
+            champion_id: id,
+            name: s.name === "default" ? `${ddDetail.name} ${s.num}` : s.name,
+            splash_url: url,
+          };
+        } catch { return null; }
+      }));
+      for (const skin of skinChecks) {
+        if (skin) skinRows.push(skin);
       }
     }
 
