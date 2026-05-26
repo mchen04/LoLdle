@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Champion, GameMode } from '../types/champion'
 import { generateShareText } from '../utils/storage'
 
@@ -9,9 +10,14 @@ interface Props {
 }
 
 export function VictoryState({ champion, mode, guessCount, onNextRound }: Props) {
+  const [copied, setCopied] = useState(false)
+
   const handleShare = () => {
     const text = generateShareText(mode, guessCount, true)
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
   }
 
   return (
@@ -45,7 +51,7 @@ export function VictoryState({ champion, mode, guessCount, onNextRound }: Props)
           className="px-4 py-2.5 bg-lol-card border border-lol-border rounded-lg
                      text-lol-text-light hover:bg-lol-card-hover transition-colors"
         >
-          Share
+          {copied ? 'Copied!' : 'Share'}
         </button>
       </div>
     </div>

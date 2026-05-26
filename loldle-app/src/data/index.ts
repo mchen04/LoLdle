@@ -23,6 +23,7 @@ export function getRandomChampion(exclude?: string[], mode?: GameMode): Champion
     pool = pool.filter(c => c.emojiClue && c.emojiClue.length > 0)
   }
 
+  if (pool.length === 0) pool = [...champions]
   return pool[Math.floor(Math.random() * pool.length)]
 }
 

@@ -1,10 +1,11 @@
 import type { Champion, ClassicGuessResult, MatchResult, YearHint } from '../types/champion'
 
 function arrayMatch(a: string[], b: string[]): MatchResult {
+  if (a.length === 0 || b.length === 0) return 'incorrect'
   const setA = new Set(a.map(s => s.toLowerCase()))
   const setB = new Set(b.map(s => s.toLowerCase()))
   if (setA.size === setB.size && [...setA].every(x => setB.has(x))) return 'correct'
-  if ([...setA].some(x => setB.has(x))) return 'partial'
+  if ([...setA].some(x => setB.has(x)) || [...setB].some(x => setA.has(x))) return 'partial'
   return 'incorrect'
 }
 
