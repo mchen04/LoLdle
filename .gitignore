@@ -5,6 +5,9 @@ node_modules/
 dist/
 dist-ssr/
 
+# Generated data (fetched from Supabase at runtime)
+src/data/champions.json
+
 # Environment
 .env
 *.local
