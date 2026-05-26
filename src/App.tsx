@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { GameMode, AppSettings } from './types/champion'
+import { loadChampions, getChampions } from './data'
 import { ClassicMode } from './modes/ClassicMode'
 import { QuoteMode } from './modes/QuoteMode'
 import { AbilityMode } from './modes/AbilityMode'
@@ -22,6 +23,11 @@ export default function App() {
   const [settings, setSettings] = useState<AppSettings>(loadSettings)
   const [showSettings, setShowSettings] = useState(false)
   const [showStats, setShowStats] = useState(false)
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    loadChampions().then(() => setReady(true))
+  }, [])
 
   useEffect(() => {
     saveSettings(settings)
@@ -38,9 +44,16 @@ export default function App() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
+  if (!ready || getChampions().length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-lol-text text-lg">Loading champions...</p>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
       <header className="sticky top-0 z-40 bg-lol-darker/95 backdrop-blur border-b border-lol-border">
         <div className="max-w-5xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between mb-3">
@@ -75,7 +88,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Mode Tabs */}
           <nav className="flex gap-1 overflow-x-auto scrollbar-thin" role="tablist">
             {MODES.map(mode => (
               <button
@@ -97,16 +109,14 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-6">
         {activeMode === 'classic' && <ClassicMode settings={settings} />}
-        {activeMode === 'quote' && <QuoteMode hardMode={settings.hardMode} />}
-        {activeMode === 'ability' && <AbilityMode hardMode={settings.hardMode} />}
-        {activeMode === 'emoji' && <EmojiMode hardMode={settings.hardMode} />}
-        {activeMode === 'splash' && <SplashMode hardMode={settings.hardMode} />}
+        {activeMode === 'quote' && <QuoteMode settings={settings} />}
+        {activeMode === 'ability' && <AbilityMode settings={settings} />}
+        {activeMode === 'emoji' && <EmojiMode settings={settings} />}
+        {activeMode === 'splash' && <SplashMode settings={settings} />}
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-lol-border bg-lol-darker/50 py-4 px-4">
         <div className="max-w-5xl mx-auto text-center space-y-2">
           <p className="text-xs text-lol-text leading-relaxed">
@@ -124,7 +134,6 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Modals */}
       {showSettings && (
         <SettingsModal
           settings={settings}

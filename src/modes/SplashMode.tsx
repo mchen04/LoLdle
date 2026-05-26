@@ -2,35 +2,41 @@ import { useMemo, useState } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
-import { getSplashZoom } from '../utils/gameLogic'
+import { WrongGuesses } from '../components/WrongGuesses'
+import { GiveUpButton } from '../components/GiveUpButton'
+import { getSplashZoom, hashCode } from '../utils/gameLogic'
 import { getWrongGuesses } from '../data'
-import { hashCode } from '../utils/hash'
+import type { AppSettings } from '../types/champion'
 
-export function SplashMode({ hardMode }: { hardMode?: boolean }) {
-  const { target, guessIds, solved, guessCount, submitGuess, nextRound } = useGame('splash')
+export function SplashMode({ settings }: { settings: AppSettings }) {
+  const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('splash')
   const [skinGuess, setSkinGuess] = useState('')
   const [skinAnswered, setSkinAnswered] = useState(false)
 
   const randomSkin = useMemo(() => {
-    if (!target) return null
-    if (target.skins.length === 0) return null
-    const idx = Math.abs(hashCode(target.id + 'skin')) % target.skins.length
-    return target.skins[idx]
+    if (!target || target.skins.length === 0) return null
+    return target.skins[Math.abs(hashCode(target.id + 'skin')) % target.skins.length]
   }, [target])
 
-  const splashUrl = randomSkin?.splash || target?.splash || ''
-  const zoom = getSplashZoom(guessCount)
-
-  const wrongGuesses = getWrongGuesses(guessIds, target?.id ?? '')
+  const cropOrigin = useMemo(() => {
+    if (!target) return '50% 50%'
+    const x = (Math.abs(hashCode(target.id + 'cropX')) % 60) + 20
+    const y = (Math.abs(hashCode(target.id + 'cropY')) % 60) + 20
+    return `${x}% ${y}%`
+  }, [target])
 
   if (!target) return null
 
+  const splashUrl = randomSkin?.splash || target.splash
+  const zoom = getSplashZoom(guessCount)
+  const isFinished = solved || givenUp
+
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto">
-      {solved ? (
+      {isFinished ? (
         <>
-          <VictoryState champion={target} mode="splash" guessCount={guessCount} onNextRound={nextRound} />
-          {randomSkin && (
+          <VictoryState champion={target} mode="splash" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
+          {randomSkin && !givenUp && (
             <div className="w-full bg-lol-card border border-lol-border rounded-xl p-4 text-center">
               {!skinAnswered ? (
                 <>
@@ -71,45 +77,26 @@ export function SplashMode({ hardMode }: { hardMode?: boolean }) {
           <div className="w-full aspect-square max-w-sm overflow-hidden rounded-xl border-2 border-lol-border bg-lol-card relative">
             <div
               className="w-full h-full transition-transform duration-700 ease-out"
-              style={{ transform: `scale(${zoom})` }}
+              style={{ transform: `scale(${zoom})`, transformOrigin: cropOrigin }}
             >
               <img
                 src={splashUrl}
                 alt="Mystery champion splash"
                 className="w-full h-full object-cover"
+                style={{ filter: 'grayscale(1)' }}
                 draggable={false}
-                onError={e => {
-                  (e.target as HTMLImageElement).style.display = 'none'
-                }}
+                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
               />
             </div>
             <div className="absolute bottom-2 right-2 bg-black/60 px-2 py-1 rounded text-xs text-lol-text">
               {zoom > 1 ? `${zoom.toFixed(1)}x zoom` : 'Full view'}
             </div>
           </div>
-
-          <ChampionSearch
-            onSelect={submitGuess}
-            usedIds={guessIds}
-            placeholder="Guess the champion..."
-            hardMode={hardMode}
-          />
+          <ChampionSearch onSelect={submitGuess} usedIds={guessIds} placeholder="Guess the champion..." hardMode={settings.hardMode} />
+          <GiveUpButton onClick={giveUp} />
         </>
       )}
-
-      {wrongGuesses.length > 0 && !solved && (
-        <div className="w-full space-y-2">
-          <p className="text-xs text-lol-text uppercase tracking-wider">Wrong guesses</p>
-          <div className="flex flex-wrap gap-2">
-            {wrongGuesses.map(c => (
-              <div key={c.id} className="flex items-center gap-2 bg-lol-red/30 px-3 py-1.5 rounded-lg">
-                <img src={c.icon} alt="" className="w-6 h-6 rounded" />
-                <span className="text-sm text-lol-text-light">{c.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {!isFinished && <WrongGuesses guesses={getWrongGuesses(guessIds, target.id)} />}
     </div>
   )
 }

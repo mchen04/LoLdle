@@ -1,5 +1,13 @@
 import type { Champion, ClassicGuessResult, MatchResult, YearHint } from '../types/champion'
 
+export function hashCode(str: string): number {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0
+  }
+  return hash
+}
+
 function arrayMatch(a: string[], b: string[]): MatchResult {
   if (a.length === 0 || b.length === 0) return 'incorrect'
   const setA = new Set(a.map(s => s.toLowerCase()))
@@ -43,7 +51,7 @@ export function getMatchColor(result: MatchResult, colorblind: boolean): string 
   return 'bg-lol-wrong'
 }
 
-const ZOOM_LEVELS = [6, 4.5, 3.5, 2.5, 2, 1.5, 1.2, 1]
+const ZOOM_LEVELS = [5, 4, 3, 2.5, 2, 1.5, 1.2, 1]
 
 export function getSplashZoom(guessCount: number): number {
   return ZOOM_LEVELS[Math.min(guessCount, ZOOM_LEVELS.length - 1)]

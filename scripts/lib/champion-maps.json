@@ -1,0 +1,26 @@
+{
+  "factionMap": {
+    "demacia": "Demacia", "noxus": "Noxus", "ionia": "Ionia",
+    "shurima": "Shurima", "freljord": "Freljord", "zaun": "Zaun",
+    "piltover": "Piltover", "shadow-isles": "Shadow Isles", "void": "The Void",
+    "mount-targon": "Targon", "bilgewater": "Bilgewater", "bandle-city": "Bandle City",
+    "ixtal": "Ixtal", "unaffiliated": "Runeterra", "camavor": "Camavor",
+    "icathia": "Icathia", "blessed-isles": "Blessed Isles"
+  },
+  "roleEmoji": {
+    "Fighter": "⚔️", "Mage": "🔮", "Tank": "🛡️",
+    "Assassin": "🗡️", "Marksman": "🏹", "Support": "💚"
+  },
+  "raceEmoji": {
+    "Darkin": "😈", "Yordle": "🐹", "Vastaya": "🦊", "Void": "🌀",
+    "Celestial": "⭐", "Undead": "💀", "Spirit": "👻", "Dragon": "🐉",
+    "Human": "👤", "Ascended": "☀️", "Golem": "🗿", "Demon": "👹",
+    "God-Warrior": "⚡"
+  },
+  "regionEmoji": {
+    "Demacia": "⚜️", "Noxus": "🔴", "Ionia": "🌸", "Freljord": "❄️",
+    "Shadow Isles": "👻", "The Void": "🟣", "Shurima": "🏜️",
+    "Piltover": "⚙️", "Zaun": "🧪", "Bilgewater": "🏴‍☠️", "Targon": "🏔️",
+    "Bandle City": "🍄", "Ixtal": "🌿", "Runeterra": "🌍"
+  }
+}

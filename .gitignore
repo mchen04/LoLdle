@@ -1,6 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Generated data (fetched from Supabase at runtime)
+src/data/champions.json
+
+# Environment
+.env
+*.local
+
+# Supabase
 supabase/.temp/
-loldle-app/node_modules/
-loldle-app/.env
-loldle-app/dist/
+
+# Logs
 *.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
 .DS_Store
+
+# Deploy
+.vercel/

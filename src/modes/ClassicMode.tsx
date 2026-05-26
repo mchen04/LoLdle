@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useGame } from '../hooks/useGame'
 import { ChampionSearch } from '../components/ChampionSearch'
 import { VictoryState } from '../components/VictoryState'
+import { GiveUpButton } from '../components/GiveUpButton'
 import { evaluateClassicGuess, getMatchColor } from '../utils/gameLogic'
 import { getChampionById } from '../data'
 import type { ClassicGuessResult, AppSettings } from '../types/champion'
@@ -22,7 +23,7 @@ interface Props {
 }
 
 export function ClassicMode({ settings }: Props) {
-  const { target, guessIds, solved, guessCount, submitGuess, nextRound } = useGame('classic')
+  const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('classic')
 
   const guessResults: ClassicGuessResult[] = useMemo(() => {
     if (!target) return []
@@ -34,17 +35,22 @@ export function ClassicMode({ settings }: Props) {
 
   if (!target) return null
 
+  const isFinished = solved || givenUp
+
   return (
     <div className="flex flex-col items-center gap-4 w-full">
-      {solved ? (
-        <VictoryState champion={target} mode="classic" guessCount={guessCount} onNextRound={nextRound} />
+      {isFinished ? (
+        <VictoryState champion={target} mode="classic" guessCount={guessCount} givenUp={givenUp} onNextRound={nextRound} />
       ) : (
-        <ChampionSearch
-          onSelect={submitGuess}
-          usedIds={guessIds}
-          placeholder="Guess a champion..."
-          hardMode={settings.hardMode}
-        />
+        <>
+          <ChampionSearch
+            onSelect={submitGuess}
+            usedIds={guessIds}
+            placeholder="Guess a champion..."
+            hardMode={settings.hardMode}
+          />
+          <GiveUpButton onClick={giveUp} />
+        </>
       )}
 
       {guessResults.length > 0 && (
@@ -68,7 +74,7 @@ export function ClassicMode({ settings }: Props) {
                   key={result.champion.id}
                   result={result}
                   colorblind={settings.colorblind}
-                  isNew={i === 0 && !solved}
+                  isNew={i === 0 && !isFinished}
                 />
               ))}
             </tbody>

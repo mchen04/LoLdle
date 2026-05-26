@@ -2943,5 +2943,110 @@
     "resource": "Mana",
     "quote": "Let the gardens grow.",
     "emojiClue": "🌿🌺🌱"
+  },
+  "Renata": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Zaun"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Every debt will be repaid.",
+    "emojiClue": "💊💸🧪"
+  },
+  "Belveth": {
+    "gender": "Female",
+    "species": [
+      "Void"
+    ],
+    "regions": [
+      "The Void"
+    ],
+    "positions": [
+      "Jungle"
+    ],
+    "releaseYear": 2022,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I am everything you left to rot.",
+    "emojiClue": "👁️🌌🐟💜"
+  },
+  "Rell": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2020,
+    "rangeType": "Melee",
+    "resource": "Mana",
+    "quote": "I've broken one cage. I can break another.",
+    "emojiClue": "⚙️🛡️🐴⛓️"
+  },
+  "Mel": {
+    "gender": "Female",
+    "species": [
+      "Human"
+    ],
+    "regions": [
+      "Noxus",
+      "Piltover"
+    ],
+    "positions": [
+      "Mid",
+      "Support"
+    ],
+    "releaseYear": 2025,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "What we build today echoes across generations.",
+    "emojiClue": "✨🔶🎨📜"
+  },
+  "Yunara": {
+    "gender": "Female",
+    "species": [
+      "Vastaya"
+    ],
+    "regions": [
+      "Ionia"
+    ],
+    "positions": [
+      "Support"
+    ],
+    "releaseYear": 2025,
+    "rangeType": "Ranged",
+    "resource": "Mana",
+    "quote": "Nature's balance will be restored.",
+    "emojiClue": "🌿🪷🌸💨"
+  },
+  "Zaahen": {
+    "gender": "Male",
+    "species": [
+      "Darkin"
+    ],
+    "regions": [
+      "Runeterra"
+    ],
+    "positions": [
+      "Top",
+      "Jungle"
+    ],
+    "releaseYear": 2025,
+    "rangeType": "Melee",
+    "resource": "Manaless",
+    "quote": "I was not broken. I was remade.",
+    "emojiClue": "🔥⚔️😈🩸"
   }
 }
