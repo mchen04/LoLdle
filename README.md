@@ -1,16 +1,42 @@
 # LoLdle
 
-A League of Legends champion guessing game with five game modes.
+A League of Legends champion guessing game with 19 game modes, fully responsive across all devices.
 
 ## Game Modes
 
-- **Classic** — Guess a champion; get color-coded feedback on 8 attributes (gender, position, species, resource, range, region, year)
-- **Quote** — Identify a champion from an in-game quote. Region hint available after 3 guesses
-- **Ability** — Identify a champion from a greyscaled, rotated ability icon. Buttons to restore color and fix rotation as hints
-- **Emoji** — Guess the champion from emoji clues revealed one at a time (up to 5)
-- **Splash** — Identify a champion from a greyscaled, zoomed-in splash art that progressively zooms out
+| Mode | Mechanic |
+|------|----------|
+| **Classic** | Guess a champion; get color-coded feedback on 8 attributes (gender, position, species, resource, range, region, year) |
+| **Quote** | Identify a champion from an in-game quote. Region hint after 3 guesses |
+| **Ability** | Identify a champion from a greyscaled, rotated ability icon. Restore color / fix rotation as hints |
+| **Emoji** | Guess from emoji clues revealed one at a time (up to 5) |
+| **Splash** | Identify from a greyscaled, zoomed-in splash art that progressively zooms out |
+| **Title** | Guess the champion from their title. Hints: first letter, region, species |
+| **Pixel** | Identify a champion from a heavily blurred icon that clears with each guess |
+| **Spell** | Identify a champion from an ability name. Hints: ability slot, second ability |
+| **Feet** | Guess the champion from a cropped image of their feet |
+| **Who Am I?** | 7 champion attributes revealed one at a time (range, resource, gender, position, species, region, year) |
+| **Anagram** | Unscramble the champion name; letters lock into place with each wrong guess |
+| **Fill In** | Fill in missing letters (~60% hidden); letters reveal with each wrong guess |
+| **Skin** | Guess the champion from a skin name (champion name stripped). Blurred splash hint after 3 guesses |
+| **Kit** | Identify from the full 5-ability kit (greyscaled). Restore color / show names as hints |
+| **Zoomed** | Guess from a heavily zoomed champion icon that zooms out with each guess |
+| **Warped** | Identify from a perspective-warped, color-shifted splash art that unwarps with guesses |
+| **Colors** | Guess from a hue-shifted champion icon that returns to true colors with guesses |
+| **Scramble** | Quote with words in random order; words lock into place with each wrong guess |
+| **Passive** | Identify a champion from their passive ability icon. Hints: passive name, region |
 
 All modes support **Give Up** (reveals answer, breaks streak) and **Next Round** (infinite play).
+
+## Features
+
+- **Fully responsive** — works on all screen sizes from 320px phones to desktop, including landscape
+- **No scrolling required** — every mode fits on a single screen; search bar pinned at bottom
+- **Hamburger menu on mobile** — 3-column grid of mode buttons with emoji icons; desktop shows inline tabs
+- **Settings** — Colorblind mode, Scale to Fit (Classic grid), Click to Guess, Hard Mode (hides champion names)
+- **Statistics** — Per-mode tracking: games played, win rate, best score, streaks, average guesses
+- **Share** — Copy emoji result grid to clipboard
+- **Persistent progress** — Game state and stats saved to localStorage
 
 ## Tech Stack
 
@@ -61,15 +87,16 @@ Enable `pg_cron` + `pg_net` extensions in Supabase dashboard, then uncomment the
 
 ```
 ├── src/
-│   ├── modes/          # 5 game mode components
-│   ├── components/     # Shared UI (ChampionSearch, VictoryState, modals)
+│   ├── modes/          # 19 game mode components
+│   ├── components/     # Shared UI (ChampionSearch, VictoryState, WrongGuesses, modals)
 │   ├── hooks/          # useGame hook (state + persistence)
-│   ├── utils/          # Game logic, storage, hash
+│   ├── utils/          # Game logic, storage, Supabase client
 │   ├── types/          # TypeScript interfaces
 │   └── data/           # champions.json + data access functions
 ├── scripts/            # Data fetching and seeding scripts
 ├── supabase/
 │   ├── functions/      # Edge Functions (sync-champions)
 │   └── migrations/     # Database schema
-└── public/             # Static assets
+└── public/
+    └── feet/           # Champion feet images for Feet mode
 ```
