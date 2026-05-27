@@ -32,6 +32,7 @@ All modes support **Give Up** (reveals answer, breaks streak) and **Next Round**
 
 - **Fully responsive** — works on all screen sizes from 320px phones to desktop, including landscape
 - **No scrolling required** — every mode fits on a single screen; search bar pinned at bottom
+- **Viewport-aware dropdown** — champion search suggestions flip above the input when near the viewport edge, with dynamic height capping and mobile keyboard support via `visualViewport` API
 - **Hamburger menu on mobile** — 3-column grid of mode buttons with emoji icons; desktop shows inline tabs
 - **Settings** — Colorblind mode, Scale to Fit (Classic grid), Click to Guess, Hard Mode (hides champion names)
 - **Statistics** — Per-mode tracking: games played, win rate, best score, streaks, average guesses

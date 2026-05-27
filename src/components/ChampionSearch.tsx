@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react'
 import type { Champion } from '../types/champion'
 import { searchChampions } from '../data'
 
@@ -15,8 +15,11 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
   const [results, setResults] = useState<Champion[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const [openAbove, setOpenAbove] = useState(false)
+  const [maxH, setMaxH] = useState(192)
   const inputRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (query.length > 0) {
@@ -57,6 +60,34 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
     }
   }, [isOpen, results, selectedIndex, handleSelect])
 
+  useLayoutEffect(() => {
+    if (!isOpen || !wrapperRef.current) return
+
+    function recalc() {
+      const rect = wrapperRef.current!.getBoundingClientRect()
+      const vh = window.visualViewport?.height ?? window.innerHeight
+      const spaceBelow = vh - rect.bottom
+      const spaceAbove = rect.top
+      const preferred = 192
+      const pad = 8
+
+      if (spaceBelow < preferred && spaceAbove > spaceBelow) {
+        setOpenAbove(true)
+        setMaxH(Math.max(0, Math.min(preferred, spaceAbove - pad)))
+      } else {
+        setOpenAbove(false)
+        setMaxH(Math.max(0, Math.min(preferred, spaceBelow - pad)))
+      }
+    }
+
+    recalc()
+
+    const vv = window.visualViewport
+    const target = vv ?? window
+    target.addEventListener('resize', recalc)
+    return () => target.removeEventListener('resize', recalc)
+  }, [isOpen])
+
   useEffect(() => {
     if (listRef.current && isOpen) {
       const activeEl = listRef.current.children[selectedIndex] as HTMLElement
@@ -65,7 +96,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
   }, [selectedIndex, isOpen])
 
   return (
-    <div className="relative w-full max-w-md mx-auto flex-shrink-0">
+    <div ref={wrapperRef} className="relative w-full max-w-md mx-auto flex-shrink-0">
       <div className="relative">
         <input
           ref={inputRef}
@@ -98,8 +129,10 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
       {isOpen && (
         <div
           ref={listRef}
-          className="absolute z-50 w-full mt-1 bg-lol-card border border-lol-border rounded-lg
-                     shadow-xl max-h-48 overflow-y-auto scrollbar-thin"
+          className={`absolute z-50 w-full bg-lol-card border border-lol-border rounded-lg
+                     shadow-xl overflow-y-auto scrollbar-thin
+                     ${openAbove ? 'bottom-full mb-1' : 'mt-1'}`}
+          style={{ maxHeight: maxH }}
           role="listbox"
         >
           {results.map((champion, i) => (
