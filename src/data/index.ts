@@ -1,4 +1,4 @@
-import { supabase } from '../utils/supabase'
+import { fetchChampions, type DbChampionRow } from '../utils/db'
 import type { Champion, GameMode } from '../types/champion'
 
 let champions: Champion[] = []
@@ -15,26 +15,7 @@ const FEET_CHAMPIONS = new Set([
   'XinZhao', 'Zed', 'Ziggs', 'Zoe', 'Zyra', 'Yunara',
 ])
 
-interface DbChampion {
-  id: string
-  name: string
-  title: string
-  gender: string
-  positions: string[]
-  species: string[]
-  resource: string
-  range_type: string
-  regions: string[]
-  release_year: number
-  icon_url: string
-  splash_url: string
-  quote: string
-  emoji_clue: string
-  abilities: { name: string; icon_url: string; slot: string }[]
-  skins: { id: string; name: string; splash_url: string }[]
-}
-
-function mapDbChampion(row: DbChampion): Champion {
+function mapDbChampion(row: DbChampionRow): Champion {
   return {
     id: row.id,
     name: row.name,
@@ -66,23 +47,12 @@ function mapDbChampion(row: DbChampion): Champion {
 export async function loadChampions(): Promise<Champion[]> {
   if (loaded) return champions
 
-  if (!supabase) {
-    console.warn('Supabase not configured, no champion data available')
-    loaded = true
-    return champions
+  try {
+    const rows = await fetchChampions()
+    champions = rows.map(mapDbChampion)
+  } catch (err) {
+    console.warn('Failed to load champions:', err)
   }
-
-  const { data, error } = await supabase
-    .from('champions')
-    .select('*, abilities(*), skins(*)')
-
-  if (error) {
-    console.warn('Failed to load champions from Supabase:', error.message)
-    loaded = true
-    return champions
-  }
-
-  champions = (data as DbChampion[]).map(mapDbChampion)
   loaded = true
   return champions
 }

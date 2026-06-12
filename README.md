@@ -43,7 +43,8 @@ All modes support **Give Up** (reveals answer, breaks streak) and **Next Round**
 
 - React 19 + TypeScript + Vite
 - Tailwind CSS 4
-- Supabase (database + Edge Functions for auto-updates)
+- Neon Postgres (primary database) with Supabase as a switchable fallback
+- Supabase Edge Functions for auto-updates (Supabase provider only)
 
 ## Data Sources
 
@@ -65,16 +66,41 @@ npm run dev        # Start dev server at localhost:5173
 npm run build      # Production build
 ```
 
+Copy `.env.example` to `.env` and fill in credentials.
+
+## Database Providers
+
+The app loads champion data from either **Neon** (default) or **Supabase**, selected by an env flag:
+
+```bash
+VITE_DB_PROVIDER=neon       # default — uses VITE_NEON_DATABASE_URL
+VITE_DB_PROVIDER=supabase   # fallback — uses VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY
+```
+
+The provider abstraction lives in `src/utils/db.ts`; both providers return identical row shapes, so switching requires only the env change and a rebuild.
+
+- **Neon**: `VITE_NEON_DATABASE_URL` must be a **read-only role's** connection string (the `loldle_read` role — select-only on game data), since Vite env vars ship in the client bundle. Never put the owner connection string in `.env`. Schema: `neon/schema.sql`, read-only role grants are documented there.
+- **Supabase**: unchanged from before — anon key + RLS read policies. Schema: `supabase/migrations/`.
+
+To re-copy all data from Supabase into Neon:
+
+```bash
+NEON_DATABASE_URL=postgres://neondb_owner:...@.../neondb node scripts/migrate-supabase-to-neon.mjs
+```
+
 ## Data Pipeline
 
 ```bash
 node scripts/fetch-champions.mjs   # Fetch latest DD + Meraki + Universe data → src/data/champions.json
 node scripts/seed-supabase.mjs     # Seed Supabase DB from champions.json
+NEON_DATABASE_URL=... node scripts/migrate-supabase-to-neon.mjs  # Copy Supabase → Neon
 ```
 
 The fetch script auto-detects the latest Data Dragon version. New champions are auto-populated from Universe API (quotes, species, regions) and heuristics (gender, emoji).
 
-## Auto-Updates (Supabase)
+## Auto-Updates (Supabase provider)
+
+> Note: the daily sync below updates the **Supabase** database. When running on Neon, re-run the migrate script after a sync (or seed Neon directly) to pick up new champions.
 
 A deployed Edge Function (`sync-champions`) syncs champion data daily:
 
@@ -91,10 +117,11 @@ Enable `pg_cron` + `pg_net` extensions in Supabase dashboard, then uncomment the
 │   ├── modes/          # 19 game mode components
 │   ├── components/     # Shared UI (ChampionSearch, VictoryState, WrongGuesses, modals)
 │   ├── hooks/          # useGame hook (state + persistence)
-│   ├── utils/          # Game logic, storage, Supabase client
+│   ├── utils/          # Game logic, storage, db provider abstraction (Neon/Supabase)
 │   ├── types/          # TypeScript interfaces
 │   └── data/           # champions.json + data access functions
-├── scripts/            # Data fetching and seeding scripts
+├── scripts/            # Data fetching, seeding, and Neon migration scripts
+├── neon/               # Neon schema (mirrors supabase/migrations)
 ├── supabase/
 │   ├── functions/      # Edge Functions (sync-champions)
 │   └── migrations/     # Database schema

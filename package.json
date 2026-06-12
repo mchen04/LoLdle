@@ -12,6 +12,7 @@
     "seed-db": "node scripts/seed-supabase.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@supabase/supabase-js": "^2.106.2",
     "@tailwindcss/vite": "^4.3.0",
     "react": "^19.2.6",
