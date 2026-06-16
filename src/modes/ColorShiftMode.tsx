@@ -11,8 +11,6 @@ const HUE_STAGES = [180, 150, 120, 90, 60, 35, 15, 0]
 export function ColorShiftMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('colorShift')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const hue = isFinished ? 0 : HUE_STAGES[Math.min(wrongGuesses.length, HUE_STAGES.length - 1)]

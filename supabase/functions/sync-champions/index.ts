@@ -12,9 +12,14 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import {
   FACTION_MAP,
-  detectGender, generateEmoji,
+  generateEmoji,
   type UniverseChampion,
 } from "../_shared/champion-maps.ts";
+// @deno-types="../_shared/champion-normalizer.d.ts"
+import {
+  mapWithConcurrency,
+  resolveChampionData,
+} from "../_shared/champion-normalizer.mjs";
 
 const MERAKI_BASE =
   "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions";
@@ -27,15 +32,49 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-async function fetchJSON(url: string) {
+interface DDragonImage {
+  full: string;
+}
+
+interface DDragonSpell {
+  name: string;
+  image: DDragonImage;
+}
+
+interface DDragonSkin {
+  num: number;
+  name: string;
+}
+
+interface DDragonDetail {
+  name: string;
+  title: string;
+  lore?: string;
+  blurb?: string;
+  tags?: string[];
+  partype?: string;
+  image: DDragonImage;
+  passive?: { name: string; image: DDragonImage };
+  spells?: DDragonSpell[];
+  skins?: DDragonSkin[];
+  stats?: { attackrange?: number };
+}
+
+interface MerakiChampion {
+  releaseDate?: string;
+  positions?: string | string[];
+  attackType?: string;
+}
+
+async function fetchJSON<T = unknown>(url: string): Promise<T> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Fetch failed: ${url} → ${res.status}`);
   return res.json();
 }
 
-async function fetchOptional(url: string) {
+async function fetchOptional<T = unknown>(url: string): Promise<T | null> {
   try {
-    return await fetchJSON(url);
+    return await fetchJSON<T>(url);
   } catch {
     return null;
   }
@@ -47,10 +86,107 @@ async function fetchUniverseData(ddId: string, name: string): Promise<UniverseCh
     name.toLowerCase().replace(/[^a-z]/g, ""),
   ];
   for (const slug of [...new Set(slugs)]) {
-    const data = await fetchOptional(`${UNIVERSE_BASE}/${slug}/index.json`);
+    const data = await fetchOptional<{ champion?: UniverseChampion }>(`${UNIVERSE_BASE}/${slug}/index.json`);
     if (data?.champion) return data.champion;
   }
   return null;
+}
+
+interface ResolvedChampionRows {
+  championRow: Record<string, unknown>;
+  abilityRows: Record<string, unknown>[];
+  skinRows: Record<string, unknown>[];
+  newChampion: string | null;
+  autoPopulated: string | null;
+}
+
+async function resolveChampionRows(
+  id: string,
+  context: {
+    ddBase: string;
+    supplement: Record<string, Record<string, unknown>>;
+    existingIds: Set<string>;
+  },
+): Promise<ResolvedChampionRows | null> {
+  let ddDetail: DDragonDetail;
+  try {
+    const ddDetailRes = await fetchJSON<{ data: Record<string, DDragonDetail> }>(
+      `${context.ddBase}/data/en_US/champion/${id}.json`
+    );
+    ddDetail = ddDetailRes.data[id];
+  } catch {
+    return null;
+  }
+
+  const sup: Record<string, unknown> =
+    (context.supplement[id] as Record<string, unknown>) ??
+    (context.supplement[ddDetail.name] as Record<string, unknown>) ??
+    {};
+  const hasSupplement =
+    !!context.supplement[id] || !!context.supplement[ddDetail.name];
+
+  const [meraki, universe] = await Promise.all([
+    fetchOptional<MerakiChampion>(`${MERAKI_BASE}/${id}.json`),
+    hasSupplement
+      ? Promise.resolve(null)
+      : fetchUniverseData(id, ddDetail.name),
+  ]);
+
+  const { champion, skinCandidates } = resolveChampionData({
+    id,
+    ddDetail,
+    meraki,
+    supplement: sup,
+    universe,
+    ddBase: context.ddBase,
+    factionMap: FACTION_MAP,
+    generateEmoji,
+  });
+
+  const skinChecks = await Promise.all(skinCandidates.map(async (skin) => {
+    try {
+      const res = await fetch(skin.splash, { method: "HEAD" });
+      if (!res.ok) return null;
+      return {
+        id: skin.id,
+        champion_id: id,
+        name: skin.name,
+        splash_url: skin.splash,
+      };
+    } catch { return null; }
+  }));
+  const validSkinRows: Record<string, unknown>[] = [];
+  for (const skin of skinChecks) {
+    if (skin) validSkinRows.push(skin);
+  }
+
+  return {
+    championRow: {
+      id: champion.id,
+      name: champion.name,
+      title: champion.title,
+      gender: champion.gender,
+      positions: champion.positions,
+      species: champion.species,
+      resource: champion.resource,
+      range_type: champion.rangeType,
+      regions: champion.regions,
+      release_year: champion.releaseYear,
+      icon_url: champion.icon,
+      splash_url: champion.splash,
+      quote: champion.quote,
+      emoji_clue: champion.emojiClue,
+    },
+    abilityRows: champion.abilities.map((ability) => ({
+      champion_id: id,
+      name: ability.name,
+      icon_url: ability.icon,
+      slot: ability.slot,
+    })),
+    skinRows: validSkinRows,
+    newChampion: context.existingIds.has(id) ? null : ddDetail.name,
+    autoPopulated: hasSupplement ? null : ddDetail.name,
+  };
 }
 
 Deno.serve(async (req) => {
@@ -65,7 +201,7 @@ Deno.serve(async (req) => {
     );
 
     // 1. Get latest DD version
-    const versions = await fetchJSON(
+    const versions = await fetchJSON<string[]>(
       "https://ddragon.leagueoflegends.com/api/versions.json"
     );
     const ddVersion: string = versions[0];
@@ -94,7 +230,7 @@ Deno.serve(async (req) => {
     }
 
     // 3. Fetch champion list
-    const ddChampions = await fetchJSON(
+    const ddChampions = await fetchJSON<{ data: Record<string, unknown> }>(
       `${ddBase}/data/en_US/champion.json`
     );
     const championIds = Object.keys(ddChampions.data);
@@ -126,165 +262,19 @@ Deno.serve(async (req) => {
     const newChampions: string[] = [];
     const autoPopulated: string[] = [];
 
-    for (const id of championIds) {
-      // deno-lint-ignore no-explicit-any -- external Riot API response
-      let ddDetail: Record<string, any>;
-      try {
-        const ddDetailRes = await fetchJSON(
-          `${ddBase}/data/en_US/champion/${id}.json`
-        );
-        ddDetail = ddDetailRes.data[id];
-      } catch {
-        continue;
-      }
+    const resolvedRows = await mapWithConcurrency(
+      championIds,
+      6,
+      (id) => resolveChampionRows(id, { ddBase, supplement, existingIds }),
+    );
 
-      // deno-lint-ignore no-explicit-any -- external Meraki API response
-      const meraki: Record<string, any> | null = await fetchOptional(`${MERAKI_BASE}/${id}.json`);
-
-      const sup: Record<string, unknown> =
-        (supplement[id] as Record<string, unknown>) ??
-        (supplement[ddDetail.name] as Record<string, unknown>) ??
-        {};
-      const hasSupplement =
-        !!supplement[id] || !!supplement[ddDetail.name];
-
-      if (!existingIds.has(id)) {
-        newChampions.push(ddDetail.name);
-      }
-
-      let universe: UniverseChampion | null = null;
-      if (!hasSupplement) {
-        universe = await fetchUniverseData(id, ddDetail.name);
-        autoPopulated.push(ddDetail.name);
-      }
-
-      // --- Resolve fields (same priority as fetch-champions.mjs) ---
-
-      let gender = sup.gender as string;
-      if (!gender) {
-        gender = detectGender(ddDetail.lore || ddDetail.blurb || "");
-      }
-
-      let species = sup.species as string[];
-      if (!species || species.length === 0) {
-        if (universe?.races?.length) {
-          species = universe.races.map(
-            (r: { name: string }) => r.name
-          );
-        } else {
-          species = ["Human"];
-        }
-      }
-
-      let regions = sup.regions as string[];
-      if (!regions || regions.length === 0) {
-        if (universe) {
-          const slug = universe["associated-faction-slug"] as string;
-          regions = [FACTION_MAP[slug] || "Runeterra"];
-        } else {
-          regions = ["Runeterra"];
-        }
-      }
-
-      let quote = sup.quote as string;
-      if (!quote) {
-        quote = universe?.biography?.quote || "";
-      }
-
-      let emojiClue = sup.emojiClue as string;
-      if (!emojiClue) {
-        const ddRoles = ddDetail.tags || [];
-        emojiClue = generateEmoji(ddRoles, species, regions[0]);
-      }
-
-      let releaseYear = (sup.releaseYear as number) || 2009;
-      if (meraki?.releaseDate) {
-        releaseYear = new Date(
-          meraki.releaseDate as string
-        ).getFullYear();
-      }
-
-      let positions = (sup.positions as string[]) || [];
-      if (meraki?.positions) {
-        const mp = Array.isArray(meraki.positions)
-          ? meraki.positions
-          : [meraki.positions];
-        const posMap: Record<string, string> = {
-          TOP: "Top", JUNGLE: "Jungle", MIDDLE: "Mid",
-          BOTTOM: "Bot", SUPPORT: "Support", MID: "Mid", ADC: "Bot",
-        };
-        positions = mp.map(
-          (p: string) => posMap[p.toUpperCase()] || p
-        );
-      }
-
-      let rangeType = (sup.rangeType as string) || "Melee";
-      if (meraki?.attackType) {
-        rangeType =
-          meraki.attackType === "RANGED" ? "Ranged" : "Melee";
-      } else if (ddDetail.stats?.attackrange >= 400) {
-        rangeType = "Ranged";
-      }
-
-      let resource = ddDetail.partype || "Mana";
-      if (resource === "None" || resource === "") resource = "Manaless";
-      if (sup.resource) resource = sup.resource as string;
-
-      championRows.push({
-        id,
-        name: ddDetail.name,
-        title: ddDetail.title,
-        gender,
-        positions:
-          positions.length > 0 ? positions : ddDetail.tags || [],
-        species,
-        resource,
-        range_type: rangeType,
-        regions,
-        release_year: releaseYear,
-        icon_url: `${ddBase}/img/champion/${ddDetail.image.full}`,
-        splash_url: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`,
-        quote,
-        emoji_clue: emojiClue,
-      });
-
-      if (ddDetail.passive) {
-        abilityRows.push({
-          champion_id: id,
-          name: ddDetail.passive.name,
-          icon_url: `${ddBase}/img/passive/${ddDetail.passive.image.full}`,
-          slot: "P",
-        });
-      }
-      const slots = ["Q", "W", "E", "R"];
-      for (let i = 0; i < (ddDetail.spells?.length ?? 0); i++) {
-        const spell = ddDetail.spells[i];
-        abilityRows.push({
-          champion_id: id,
-          name: spell.name,
-          icon_url: `${ddBase}/img/spell/${spell.image.full}`,
-          slot: slots[i],
-        });
-      }
-
-      // deno-lint-ignore no-explicit-any -- DD skin entries
-      const allSkins = (ddDetail.skins ?? []).filter((s: Record<string, any>) => s.num !== 0);
-      const skinChecks = await Promise.all(allSkins.map(async (s: Record<string, any>) => {
-        const url = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${s.num}.jpg`;
-        try {
-          const res = await fetch(url, { method: "HEAD" });
-          if (!res.ok) return null;
-          return {
-            id: `${id}_${s.num}`,
-            champion_id: id,
-            name: s.name === "default" ? `${ddDetail.name} ${s.num}` : s.name,
-            splash_url: url,
-          };
-        } catch { return null; }
-      }));
-      for (const skin of skinChecks) {
-        if (skin) skinRows.push(skin);
-      }
+    for (const resolved of resolvedRows) {
+      if (!resolved) continue;
+      championRows.push(resolved.championRow);
+      abilityRows.push(...resolved.abilityRows);
+      skinRows.push(...resolved.skinRows);
+      if (resolved.newChampion) newChampions.push(resolved.newChampion);
+      if (resolved.autoPopulated) autoPopulated.push(resolved.autoPopulated);
     }
 
     // 6. Upsert in batches

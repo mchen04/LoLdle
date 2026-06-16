@@ -1,25 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { lazy, Suspense, useState, useEffect, useRef } from 'react'
 import type { GameMode, AppSettings } from './types/champion'
 import { loadChampions, getChampions } from './data'
-import { ClassicMode } from './modes/ClassicMode'
-import { QuoteMode } from './modes/QuoteMode'
-import { AbilityMode } from './modes/AbilityMode'
-import { EmojiMode } from './modes/EmojiMode'
-import { SplashMode } from './modes/SplashMode'
-import { TitleMode } from './modes/TitleMode'
-import { PixelMode } from './modes/PixelMode'
-import { SpellNameMode } from './modes/SpellNameMode'
-import { FeetMode } from './modes/FeetMode'
-import { WhoAmIMode } from './modes/WhoAmIMode'
-import { AnagramMode } from './modes/AnagramMode'
-import { MissingLettersMode } from './modes/MissingLettersMode'
-import { SkinNameMode } from './modes/SkinNameMode'
-import { AllAbilitiesMode } from './modes/AllAbilitiesMode'
-import { ZoomedIconMode } from './modes/ZoomedIconMode'
-import { WarpedMode } from './modes/WarpedMode'
-import { ColorShiftMode } from './modes/ColorShiftMode'
-import { BackwardsQuoteMode } from './modes/BackwardsQuoteMode'
-import { PassiveMode } from './modes/PassiveMode'
 import { SettingsModal } from './components/SettingsModal'
 import { StatsModal } from './components/StatsModal'
 import { loadSettings, saveSettings } from './utils/storage'
@@ -46,27 +27,29 @@ const MODES: { key: GameMode; label: string; icon: string }[] = [
   { key: 'passive', label: 'Passive', icon: '💠' },
 ]
 
-const MODE_COMPONENT: Record<GameMode, React.FC<{ settings: AppSettings }>> = {
-  classic: ClassicMode,
-  quote: QuoteMode,
-  ability: AbilityMode,
-  emoji: EmojiMode,
-  splash: SplashMode,
-  title: TitleMode,
-  pixel: PixelMode,
-  spellName: SpellNameMode,
-  feet: FeetMode,
-  whoami: WhoAmIMode,
-  anagram: AnagramMode,
-  missingLetters: MissingLettersMode,
-  skinName: SkinNameMode,
-  allAbilities: AllAbilitiesMode,
-  zoomedIcon: ZoomedIconMode,
-  warped: WarpedMode,
-  colorShift: ColorShiftMode,
-  backwardsQuote: BackwardsQuoteMode,
-  passive: PassiveMode,
+const MODE_COMPONENT = {
+  classic: lazy(() => import('./modes/ClassicMode').then(module => ({ default: module.ClassicMode }))),
+  quote: lazy(() => import('./modes/QuoteMode').then(module => ({ default: module.QuoteMode }))),
+  ability: lazy(() => import('./modes/AbilityMode').then(module => ({ default: module.AbilityMode }))),
+  emoji: lazy(() => import('./modes/EmojiMode').then(module => ({ default: module.EmojiMode }))),
+  splash: lazy(() => import('./modes/SplashMode').then(module => ({ default: module.SplashMode }))),
+  title: lazy(() => import('./modes/TitleMode').then(module => ({ default: module.TitleMode }))),
+  pixel: lazy(() => import('./modes/PixelMode').then(module => ({ default: module.PixelMode }))),
+  spellName: lazy(() => import('./modes/SpellNameMode').then(module => ({ default: module.SpellNameMode }))),
+  feet: lazy(() => import('./modes/FeetMode').then(module => ({ default: module.FeetMode }))),
+  whoami: lazy(() => import('./modes/WhoAmIMode').then(module => ({ default: module.WhoAmIMode }))),
+  anagram: lazy(() => import('./modes/AnagramMode').then(module => ({ default: module.AnagramMode }))),
+  missingLetters: lazy(() => import('./modes/MissingLettersMode').then(module => ({ default: module.MissingLettersMode }))),
+  skinName: lazy(() => import('./modes/SkinNameMode').then(module => ({ default: module.SkinNameMode }))),
+  allAbilities: lazy(() => import('./modes/AllAbilitiesMode').then(module => ({ default: module.AllAbilitiesMode }))),
+  zoomedIcon: lazy(() => import('./modes/ZoomedIconMode').then(module => ({ default: module.ZoomedIconMode }))),
+  warped: lazy(() => import('./modes/WarpedMode').then(module => ({ default: module.WarpedMode }))),
+  colorShift: lazy(() => import('./modes/ColorShiftMode').then(module => ({ default: module.ColorShiftMode }))),
+  backwardsQuote: lazy(() => import('./modes/BackwardsQuoteMode').then(module => ({ default: module.BackwardsQuoteMode }))),
+  passive: lazy(() => import('./modes/PassiveMode').then(module => ({ default: module.PassiveMode }))),
 }
+
+type LoadState = 'loading' | 'ready' | 'error'
 
 export default function App() {
   const [activeMode, setActiveMode] = useState<GameMode>('classic')
@@ -74,12 +57,30 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false)
   const [showStats, setShowStats] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [ready, setReady] = useState(false)
+  const [loadState, setLoadState] = useState<LoadState>('loading')
+  const [loadError, setLoadError] = useState<string | null>(null)
+  const [loadAttempt, setLoadAttempt] = useState(0)
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    loadChampions().then(() => setReady(true))
-  }, [])
+    let cancelled = false
+
+    loadChampions()
+      .then(() => {
+        if (cancelled) return
+        setLoadError(null)
+        setLoadState('ready')
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return
+        setLoadError(err instanceof Error ? err.message : 'Failed to load champion data')
+        setLoadState('error')
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [loadAttempt])
 
   useEffect(() => {
     saveSettings(settings)
@@ -108,10 +109,30 @@ export default function App() {
     return () => document.removeEventListener('mousedown', handler)
   }, [menuOpen])
 
-  if (!ready || getChampions().length === 0) {
+  if (loadState === 'loading') {
     return (
       <div className="flex items-center justify-center h-full">
         <p className="text-lol-text text-lg">Loading champions...</p>
+      </div>
+    )
+  }
+
+  if (loadState === 'error' || getChampions().length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full px-4">
+        <div className="max-w-sm text-center space-y-3">
+          <h1 className="text-lg font-semibold text-lol-text-light">Champion data unavailable</h1>
+          <p className="text-sm text-lol-text">{loadError ?? 'No champion data returned from the configured database.'}</p>
+          <button
+            onClick={() => {
+              setLoadState('loading')
+              setLoadAttempt(attempt => attempt + 1)
+            }}
+            className="px-4 py-2 bg-lol-gold text-lol-darker rounded-lg text-sm font-semibold hover:bg-lol-gold-light transition-colors"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     )
   }
@@ -232,7 +253,9 @@ export default function App() {
       {/* Main game area - fills remaining space, never scrolls at page level */}
       <main className="flex-1 min-h-0 overflow-hidden">
         <div className="h-full max-w-5xl mx-auto px-3 py-2 sm:py-3">
-          <ActiveComponent settings={settings} />
+          <Suspense fallback={<div className="h-full flex items-center justify-center text-lol-text">Loading mode...</div>}>
+            <ActiveComponent key={activeMode} settings={settings} />
+          </Suspense>
         </div>
       </main>
 

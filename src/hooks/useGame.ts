@@ -3,86 +3,94 @@ import type { Champion, GameMode } from '../types/champion'
 import { getChampionById, getRandomChampion } from '../data'
 import { saveModeProgress, loadModeProgress, clearModeProgress, recordResult } from '../utils/storage'
 
+interface GameRuntimeState {
+  target: Champion
+  guessIds: string[]
+  solved: boolean
+  givenUp: boolean
+  hintRevealed: boolean
+  extras: Record<string, unknown>
+}
+
+function createGameState(mode: GameMode): GameRuntimeState {
+  const saved = loadModeProgress(mode)
+  const champion = saved ? getChampionById(saved.targetId) : null
+
+  if (saved && champion) {
+    return {
+      target: champion,
+      guessIds: saved.guessIds,
+      solved: saved.solved,
+      givenUp: saved.givenUp ?? false,
+      hintRevealed: saved.hintRevealed ?? false,
+      extras: saved.extras ?? {},
+    }
+  }
+
+  return {
+    target: getRandomChampion(undefined, mode),
+    guessIds: [],
+    solved: false,
+    givenUp: false,
+    hintRevealed: false,
+    extras: {},
+  }
+}
+
 export function useGame(mode: GameMode) {
-  const [target, setTarget] = useState<Champion | null>(null)
-  const [guessIds, setGuessIds] = useState<string[]>([])
-  const [solved, setSolved] = useState(false)
-  const [givenUp, setGivenUp] = useState(false)
-  const [hintRevealed, setHintRevealed] = useState(false)
-  const [extras, setExtras] = useState<Record<string, unknown>>({})
+  const [state, setState] = useState(() => createGameState(mode))
+  const { target, guessIds, solved, givenUp, hintRevealed, extras } = state
 
   useEffect(() => {
-    const saved = loadModeProgress(mode)
-    const champion = saved ? getChampionById(saved.targetId) : null
-
-    if (saved && champion) {
-      setTarget(champion)
-      setGuessIds(saved.guessIds)
-      setSolved(saved.solved)
-      setGivenUp(saved.givenUp ?? false)
-      setHintRevealed(saved.hintRevealed ?? false)
-      setExtras(saved.extras ?? {})
-    } else {
-      setTarget(getRandomChampion(undefined, mode))
-      setGuessIds([])
-      setSolved(false)
-      setGivenUp(false)
-      setHintRevealed(false)
-      setExtras({})
-    }
-  }, [mode])
-
-  useEffect(() => {
-    if (target) {
-      saveModeProgress(mode, {
-        targetId: target.id,
-        guessIds,
-        solved,
-        givenUp,
-        hintRevealed,
-        extras,
-      })
-    }
+    saveModeProgress(mode, {
+      targetId: target.id,
+      guessIds,
+      solved,
+      givenUp,
+      hintRevealed,
+      extras,
+    })
   }, [mode, target, guessIds, solved, givenUp, hintRevealed, extras])
 
   const submitGuess = useCallback((champion: Champion) => {
-    if (solved || givenUp || !target) return false
+    if (solved || givenUp) return false
     if (guessIds.includes(champion.id)) return false
 
     const newGuessIds = [champion.id, ...guessIds]
-    setGuessIds(newGuessIds)
 
     if (champion.id === target.id) {
-      setSolved(true)
       recordResult(mode, 'win', newGuessIds.length)
+      setState(prev => ({ ...prev, guessIds: newGuessIds, solved: true }))
       return true
     }
+    setState(prev => ({ ...prev, guessIds: newGuessIds }))
     return false
   }, [solved, givenUp, target, guessIds, mode])
 
   const giveUp = useCallback(() => {
-    if (solved || givenUp || !target) return
-    setGivenUp(true)
+    if (solved || givenUp) return
+    setState(prev => ({ ...prev, givenUp: true }))
     recordResult(mode, 'giveUp', guessIds.length)
-  }, [solved, givenUp, target, mode, guessIds.length])
+  }, [solved, givenUp, mode, guessIds.length])
 
   const nextRound = useCallback(() => {
     clearModeProgress(mode)
-    const newTarget = getRandomChampion([target?.id || ''], mode)
-    setTarget(newTarget)
-    setGuessIds([])
-    setSolved(false)
-    setGivenUp(false)
-    setHintRevealed(false)
-    setExtras({})
+    setState({
+      target: getRandomChampion([target.id], mode),
+      guessIds: [],
+      solved: false,
+      givenUp: false,
+      hintRevealed: false,
+      extras: {},
+    })
   }, [mode, target])
 
   const revealHint = useCallback(() => {
-    setHintRevealed(true)
+    setState(prev => ({ ...prev, hintRevealed: true }))
   }, [])
 
   const updateExtra = useCallback((key: string, value: unknown) => {
-    setExtras(prev => ({ ...prev, [key]: value }))
+    setState(prev => ({ ...prev, extras: { ...prev.extras, [key]: value } }))
   }, [])
 
   return {

@@ -16,18 +16,18 @@ export function SpellNameMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('spellName')
 
   const primaryAbility = useMemo(() => {
-    if (!target || target.abilities.length === 0) return null
+    if (target.abilities.length === 0) return null
     return target.abilities[Math.abs(hashCode(target.id + 'spell')) % target.abilities.length]
   }, [target])
 
   const secondAbility = useMemo(() => {
-    if (!target || target.abilities.length < 2 || !primaryAbility) return null
+    if (target.abilities.length < 2 || !primaryAbility) return null
     const others = target.abilities.filter(a => a.slot !== primaryAbility.slot)
     if (others.length === 0) return null
     return others[Math.abs(hashCode(target.id + 'spell2')) % others.length]
   }, [target, primaryAbility])
 
-  if (!target || !primaryAbility) return null
+  if (!primaryAbility) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

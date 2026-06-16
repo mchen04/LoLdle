@@ -21,8 +21,6 @@ const WARP_STAGES: WarpStage[] = [
 export function WarpedMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('warped')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const stageIdx = isFinished ? WARP_STAGES.length - 1 : Math.min(wrongGuesses.length, WARP_STAGES.length - 1)

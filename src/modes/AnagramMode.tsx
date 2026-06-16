@@ -23,7 +23,6 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('anagram')
 
   const { scrambled, revealed } = useMemo(() => {
-    if (!target) return { scrambled: [], revealed: [] }
     const letters = target.name.split('')
     const seed = hashCode(target.id + 'anagram')
     const shuffled = shuffleWithSeed(letters, seed)
@@ -34,8 +33,6 @@ export function AnagramMode({ settings }: { settings: AppSettings }) {
     }
     return { scrambled: shuffled, revealed: letters }
   }, [target])
-
-  if (!target) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

@@ -27,8 +27,6 @@ function buildClues(champion: Champion): Clue[] {
 export function WhoAmIMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('whoami')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const clues = buildClues(target)

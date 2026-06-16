@@ -16,11 +16,11 @@ export function SkinNameMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('skinName')
 
   const randomSkin = useMemo(() => {
-    if (!target || target.skins.length === 0) return null
+    if (target.skins.length === 0) return null
     return target.skins[Math.abs(hashCode(target.id + 'skinname')) % target.skins.length]
   }, [target])
 
-  if (!target || !randomSkin) return null
+  if (!randomSkin) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

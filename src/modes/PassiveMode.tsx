@@ -11,11 +11,10 @@ export function PassiveMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('passive')
 
   const passive = useMemo(() => {
-    if (!target) return null
     return target.abilities.find(a => a.slot === 'P') || null
   }, [target])
 
-  if (!target || !passive) return null
+  if (!passive) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

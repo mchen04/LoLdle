@@ -9,8 +9,6 @@ import type { AppSettings } from '../types/champion'
 export function TitleMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('title')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const hintLevel = (extras.hintLevel as number) || 0

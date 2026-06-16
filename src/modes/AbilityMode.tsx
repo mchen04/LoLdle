@@ -14,16 +14,15 @@ export function AbilityMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, hintRevealed, extras, submitGuess, nextRound, revealHint, giveUp, updateExtra } = useGame('ability')
 
   const randomAbility = useMemo(() => {
-    if (!target || target.abilities.length === 0) return null
+    if (target.abilities.length === 0) return null
     return target.abilities[Math.abs(hashCode(target.id)) % target.abilities.length]
   }, [target])
 
   const rotation = useMemo(() => {
-    if (!target) return 90
     return ROTATIONS[Math.abs(hashCode(target.id + 'rot')) % ROTATIONS.length]
   }, [target])
 
-  if (!target || !randomAbility) return null
+  if (!randomAbility) return null
 
   const isFinished = solved || givenUp
   const colorRestored = !!extras.colorRestored

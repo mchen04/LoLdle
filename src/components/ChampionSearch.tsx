@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo } from 'react'
 import type { Champion } from '../types/champion'
 import { searchChampions } from '../data'
 
@@ -12,7 +12,6 @@ interface Props {
 
 export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder = 'Type champion name...', hardMode = false }: Props) {
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<Champion[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
   const [openAbove, setOpenAbove] = useState(false)
@@ -21,28 +20,26 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
   const listRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (query.length > 0) {
-      const filtered = searchChampions(query).filter(c => !usedIds.includes(c.id))
-      setResults(filtered)
-      setIsOpen(filtered.length > 0)
-      setSelectedIndex(0)
-    } else {
-      setResults([])
-      setIsOpen(false)
-    }
-  }, [query, usedIds])
+  const usedIdSet = useMemo(() => new Set(usedIds), [usedIds])
+  const results = useMemo(() => searchChampions(query, usedIdSet), [query, usedIdSet])
+  const activeIndex = Math.min(selectedIndex, Math.max(results.length - 1, 0))
+  const showResults = isOpen && results.length > 0
+
+  const handleQueryChange = useCallback((value: string) => {
+    setQuery(value)
+    setSelectedIndex(0)
+    setIsOpen(value.trim().length > 0)
+  }, [])
 
   const handleSelect = useCallback((champion: Champion) => {
     onSelect(champion)
     setQuery('')
-    setResults([])
     setIsOpen(false)
     inputRef.current?.focus()
   }, [onSelect])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (!isOpen) return
+    if (!showResults) return
 
     if (e.key === 'ArrowDown') {
       e.preventDefault()
@@ -52,16 +49,16 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
       setSelectedIndex(i => Math.max(i - 1, 0))
     } else if (e.key === 'Enter') {
       e.preventDefault()
-      if (results[selectedIndex]) {
-        handleSelect(results[selectedIndex])
+      if (results[activeIndex]) {
+        handleSelect(results[activeIndex])
       }
     } else if (e.key === 'Escape') {
       setIsOpen(false)
     }
-  }, [isOpen, results, selectedIndex, handleSelect])
+  }, [showResults, results, activeIndex, handleSelect])
 
   useLayoutEffect(() => {
-    if (!isOpen || !wrapperRef.current) return
+    if (!showResults || !wrapperRef.current) return
 
     function recalc() {
       const rect = wrapperRef.current!.getBoundingClientRect()
@@ -86,14 +83,14 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
     const target = vv ?? window
     target.addEventListener('resize', recalc)
     return () => target.removeEventListener('resize', recalc)
-  }, [isOpen])
+  }, [showResults])
 
   useEffect(() => {
-    if (listRef.current && isOpen) {
-      const activeEl = listRef.current.children[selectedIndex] as HTMLElement
+    if (listRef.current && showResults) {
+      const activeEl = listRef.current.children[activeIndex] as HTMLElement
       activeEl?.scrollIntoView({ block: 'nearest' })
     }
-  }, [selectedIndex, isOpen])
+  }, [activeIndex, showResults])
 
   return (
     <div ref={wrapperRef} className="relative w-full max-w-md mx-auto flex-shrink-0">
@@ -102,7 +99,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
           ref={inputRef}
           type="text"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={e => handleQueryChange(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => results.length > 0 && setIsOpen(true)}
           disabled={disabled}
@@ -117,7 +114,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
         />
         {query && !disabled && (
           <button
-            onClick={() => { setQuery(''); setIsOpen(false) }}
+            onClick={() => { setQuery(''); setSelectedIndex(0); setIsOpen(false) }}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-lol-text hover:text-lol-text-light"
             aria-label="Clear search"
           >
@@ -126,7 +123,7 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
         )}
       </div>
 
-      {isOpen && (
+      {showResults && (
         <div
           ref={listRef}
           className={`absolute z-50 w-full bg-lol-card border border-lol-border rounded-lg
@@ -141,9 +138,9 @@ export function ChampionSearch({ onSelect, disabled, usedIds = [], placeholder =
               onClick={() => handleSelect(champion)}
               onMouseEnter={() => setSelectedIndex(i)}
               className={`w-full flex items-center gap-2 px-3 py-1.5 text-left transition-colors
-                ${i === selectedIndex ? 'bg-lol-card-hover' : 'hover:bg-lol-card-hover'}`}
+                ${i === activeIndex ? 'bg-lol-card-hover' : 'hover:bg-lol-card-hover'}`}
               role="option"
-              aria-selected={i === selectedIndex}
+              aria-selected={i === activeIndex}
             >
               {!hardMode && (
                 <img

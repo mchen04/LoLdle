@@ -57,7 +57,7 @@ export function StatsModal({ onClose }: Props) {
                       : '-'
                   } />
                   <StatBox label="Best" value={
-                    stats.bestScore === Infinity ? '-' : stats.bestScore
+                    stats.bestScore === null ? '-' : stats.bestScore
                   } />
                   <StatBox label="Streak" value={stats.currentStreak} />
                   <StatBox label="Best Streak" value={stats.bestStreak} />

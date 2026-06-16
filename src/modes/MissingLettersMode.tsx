@@ -30,11 +30,8 @@ export function MissingLettersMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('missingLetters')
 
   const hiddenIndices = useMemo(() => {
-    if (!target) return []
     return getHiddenIndices(target.name, hashCode(target.id + 'missing'))
   }, [target])
-
-  if (!target) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

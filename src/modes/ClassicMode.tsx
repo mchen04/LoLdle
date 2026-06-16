@@ -45,14 +45,11 @@ export function ClassicMode({ settings }: Props) {
   const { containerRef, scale } = useScaleToFit(settings.scaleToFit)
 
   const guessResults: ClassicGuessResult[] = useMemo(() => {
-    if (!target) return []
     return guessIds.flatMap(id => {
       const guess = getChampionById(id)
       return guess ? [evaluateClassicGuess(guess, target)] : []
     })
   }, [guessIds, target])
-
-  if (!target) return null
 
   const isFinished = solved || givenUp
   const scaled = scale < 1

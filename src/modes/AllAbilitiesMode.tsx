@@ -11,7 +11,7 @@ const SLOT_ORDER = ['P', 'Q', 'W', 'E', 'R']
 export function AllAbilitiesMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('allAbilities')
 
-  if (!target || target.abilities.length === 0) return null
+  if (target.abilities.length === 0) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

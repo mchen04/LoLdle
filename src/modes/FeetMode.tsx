@@ -9,8 +9,6 @@ import type { AppSettings } from '../types/champion'
 export function FeetMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('feet')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const feetSrc = `/feet/${target.id}.jpg`

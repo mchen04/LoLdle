@@ -9,8 +9,6 @@ import type { AppSettings } from '../types/champion'
 export function QuoteMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, hintRevealed, submitGuess, nextRound, revealHint, giveUp } = useGame('quote')
 
-  if (!target) return null
-
   const isFinished = solved || givenUp
 
   return (

@@ -11,8 +11,6 @@ const BLUR_LEVELS = [24, 18, 14, 10, 7, 4, 2, 0]
 export function PixelMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('pixel')
 
-  if (!target) return null
-
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
   const blur = isFinished ? 0 : BLUR_LEVELS[Math.min(wrongGuesses.length, BLUR_LEVELS.length - 1)]

@@ -23,13 +23,13 @@ export function BackwardsQuoteMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, extras, submitGuess, nextRound, giveUp, updateExtra } = useGame('backwardsQuote')
 
   const { scrambledWords, originalWords } = useMemo(() => {
-    if (!target?.quote) return { scrambledWords: [], originalWords: [] }
+    if (!target.quote) return { scrambledWords: [], originalWords: [] }
     const words = target.quote.split(/\s+/).filter(w => w.length > 0)
     const scrambled = shuffleWords(words, hashCode(target.id + 'bquote'))
     return { scrambledWords: scrambled, originalWords: words }
   }, [target])
 
-  if (!target || !target.quote) return null
+  if (!target.quote) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

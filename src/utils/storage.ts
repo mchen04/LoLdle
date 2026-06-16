@@ -25,14 +25,14 @@ interface ModeStats {
   gamesPlayed: number
   gamesWon: number
   totalGuesses: number
-  bestScore: number
+  bestScore: number | null
   currentStreak: number
   bestStreak: number
 }
 
 const DEFAULT_STATS: ModeStats = {
   gamesPlayed: 0, gamesWon: 0, totalGuesses: 0,
-  bestScore: Infinity, currentStreak: 0, bestStreak: 0
+  bestScore: null, currentStreak: 0, bestStreak: 0
 }
 
 const DEFAULT_SETTINGS: AppSettings = {
@@ -55,7 +55,17 @@ export function clearModeProgress(mode: GameMode) {
 }
 
 export function loadModeStats(mode: GameMode): ModeStats {
-  return safeJsonParse(localStorage.getItem(`${STORAGE_PREFIX}${mode}_stats`), DEFAULT_STATS)
+  const raw = safeJsonParse<Partial<ModeStats> | null>(localStorage.getItem(`${STORAGE_PREFIX}${mode}_stats`), null)
+  return {
+    gamesPlayed: raw?.gamesPlayed ?? DEFAULT_STATS.gamesPlayed,
+    gamesWon: raw?.gamesWon ?? DEFAULT_STATS.gamesWon,
+    totalGuesses: raw?.totalGuesses ?? DEFAULT_STATS.totalGuesses,
+    bestScore: typeof raw?.bestScore === 'number' && Number.isFinite(raw.bestScore)
+      ? raw.bestScore
+      : null,
+    currentStreak: raw?.currentStreak ?? DEFAULT_STATS.currentStreak,
+    bestStreak: raw?.bestStreak ?? DEFAULT_STATS.bestStreak,
+  }
 }
 
 export function saveModeStats(mode: GameMode, stats: ModeStats) {
@@ -68,7 +78,7 @@ export function recordResult(mode: GameMode, outcome: 'win' | 'giveUp', guessCou
   if (outcome === 'win') {
     stats.totalGuesses += guessCount
     stats.gamesWon++
-    stats.bestScore = Math.min(stats.bestScore, guessCount)
+    stats.bestScore = stats.bestScore === null ? guessCount : Math.min(stats.bestScore, guessCount)
     stats.currentStreak++
     stats.bestStreak = Math.max(stats.bestStreak, stats.currentStreak)
   } else {

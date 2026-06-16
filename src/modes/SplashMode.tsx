@@ -14,18 +14,15 @@ export function SplashMode({ settings }: { settings: AppSettings }) {
   const [skinAnswered, setSkinAnswered] = useState(false)
 
   const randomSkin = useMemo(() => {
-    if (!target || target.skins.length === 0) return null
+    if (target.skins.length === 0) return null
     return target.skins[Math.abs(hashCode(target.id + 'skin')) % target.skins.length]
   }, [target])
 
   const cropOrigin = useMemo(() => {
-    if (!target) return '50% 50%'
     const x = (Math.abs(hashCode(target.id + 'cropX')) % 60) + 20
     const y = (Math.abs(hashCode(target.id + 'cropY')) % 60) + 20
     return `${x}% ${y}%`
   }, [target])
-
-  if (!target) return null
 
   const splashUrl = randomSkin?.splash || target.splash
   const zoom = getSplashZoom(guessCount)

@@ -14,13 +14,10 @@ export function ZoomedIconMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('zoomedIcon')
 
   const cropOrigin = useMemo(() => {
-    if (!target) return '50% 50%'
     const x = (Math.abs(hashCode(target.id + 'zoomX')) % 50) + 25
     const y = (Math.abs(hashCode(target.id + 'zoomY')) % 50) + 25
     return `${x}% ${y}%`
   }, [target])
-
-  if (!target) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp

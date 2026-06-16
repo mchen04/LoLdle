@@ -19,11 +19,9 @@ export function EmojiMode({ settings }: { settings: AppSettings }) {
   const { target, guessIds, solved, givenUp, guessCount, submitGuess, nextRound, giveUp } = useGame('emoji')
 
   const emojiArray = useMemo(() => {
-    if (!target?.emojiClue) return []
+    if (!target.emojiClue) return []
     return parseEmojis(target.emojiClue)
   }, [target])
-
-  if (!target) return null
 
   const wrongGuesses = getWrongGuesses(guessIds, target.id)
   const isFinished = solved || givenUp
